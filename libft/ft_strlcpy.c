@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   strlcpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 14:40:22 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 12:01:15 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/11 14:43:34 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/11 14:45:51 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	*p;
-	int		i;
+	size_t i;
 
 	i = 0;
-	if ((p = malloc(count * size)) == NULL)
-		return (0);
-	while (*p[i])
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		p[i] = 0;
+		dst[i] = src[i];
 		i++;
 	}
-	return (p);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

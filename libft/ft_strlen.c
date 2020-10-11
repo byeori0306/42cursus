@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 14:40:22 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 12:01:15 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/11 14:41:08 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/11 14:42:31 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlen(const char *s)
 {
-	size_t	*p;
-	int		i;
+	size_t len;
 
-	i = 0;
-	if ((p = malloc(count * size)) == NULL)
-		return (0);
-	while (*p[i])
-	{
-		p[i] = 0;
-		i++;
-	}
-	return (p);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }

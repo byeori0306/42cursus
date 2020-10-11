@@ -6,18 +6,17 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 13:34:16 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/10 14:47:53 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/11 13:31:11 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char *temp;
-	const unsigned char *s;
-	int i;
+	unsigned char		*temp;
+	const unsigned char	*s;
+	int					i;
 
 	temp = dst;
 	s = src;
@@ -26,20 +25,11 @@ void *ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		temp[i] = s[i];
 		if (s[i] == (char)c)
-			break;
+			break ;
 		i++;
 	}
-
 	if (i == n)
-		return NULL;
+		return (0);
 	else
-		return &dst[++i];
-}
-
-int main(void)
-{
-	char dst[] = "Make a cake";
-	char src[] = "sour cream";
-
-	printf("%s\n", ft_memccpy(dst, src, 'c', 7));
+		return (&dst[++i]);
 }

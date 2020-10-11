@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 14:40:22 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 12:01:15 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/11 14:46:48 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/11 14:49:01 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	*p;
-	int		i;
+	size_t i;
+	size_t j;
 
 	i = 0;
-	if ((p = malloc(count * size)) == NULL)
-		return (0);
-	while (*p[i])
-	{
-		p[i] = 0;
+	j = 0;
+	while (dst[i] != '\0')
 		i++;
+	while (src[i] != '\0' && (i + j + 1) < size)
+	{
+		dst[i + j] = src[j];
+		j++;
 	}
-	return (p);
+	dst[i + j] = '\0';
+	while (src[j] != '\0')
+		j++;
+	if (i > size)
+		return (j + size);
+	else
+		return (i + j);
 }

@@ -6,20 +6,13 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:59:02 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/08 20:47:27 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/11 13:49:51 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-	   	c += 32;
-	return c;
-}
-
-int main(void)
-{
-	printf("%c", ft_tolower('A'));
+		c += 32;
+	return (c);
 }

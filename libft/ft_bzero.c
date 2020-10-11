@@ -6,14 +6,13 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:47:25 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/09 16:06:19 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/11 11:59:23 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	if (n == 0)
-		return;
-
+		return ;
 	memset(s, 0, n);
 }
