@@ -6,9 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:17:12 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:52:06 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:39:49 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -27,7 +29,7 @@ int	ft_atoi(const char *str)
 		sign = -1;
 		str++;
 	}
-	while (isdigit(*str))
+	while (ft_isdigit(*str))
 	{
 		result = result * 10 + *str - '0';
 		str++;

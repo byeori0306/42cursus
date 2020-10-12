@@ -6,15 +6,14 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 11:16:29 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 14:49:25 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 19:35:36 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
-# include <stdlib.h>
+#include <stddef.h>
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -41,5 +40,6 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
+void	ft_putchar_fd(char c, int fd);
 
 #endif

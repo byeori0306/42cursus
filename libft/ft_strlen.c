@@ -6,9 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 14:41:08 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 14:42:31 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:59:35 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 size_t	ft_strlen(const char *s)
 {

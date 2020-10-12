@@ -6,11 +6,9 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 19:00:50 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 16:21:23 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:41:45 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalpha(int c)
 {

@@ -6,13 +6,15 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 19:29:52 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:45:08 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:41:29 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	if (isalpha(c) || isdigit(c))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }

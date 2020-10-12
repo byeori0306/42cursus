@@ -6,9 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 16:30:30 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:51:09 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:44:18 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -16,7 +19,7 @@ char	*ft_strdup(const char *s1)
 	int		len;
 	int		i;
 
-	len = strlen(s1);
+	len = ft_strlen(s1);
 	if ((dup = (char *)malloc(sizeof(char) * len + 1)) == NULL)
 		return (0);
 	i = 0;

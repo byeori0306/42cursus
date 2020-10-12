@@ -6,9 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 15:39:12 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:43:07 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 19:01:32 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

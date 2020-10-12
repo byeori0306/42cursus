@@ -6,11 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 12:02:29 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:29:52 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:58:09 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

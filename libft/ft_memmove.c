@@ -6,12 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 14:48:36 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:33:16 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:58:28 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
+#include <stddef.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

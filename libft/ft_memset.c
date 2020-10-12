@@ -6,9 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:01:49 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 12:13:01 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:58:52 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {

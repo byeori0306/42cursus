@@ -6,13 +6,15 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:47:25 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 11:59:23 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:56:15 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
 	if (n == 0)
 		return ;
-	memset(s, 0, n);
+	ft_memset(s, 0, n);
 }

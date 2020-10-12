@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:19:15 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/12 19:02:01 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/12 19:33:49 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/12 19:56:26 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	const char *last = 0;
+#include <unistd.h>
 
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			last = s;
-		s++;
-	}
-	return ((char *)last);
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
 }
