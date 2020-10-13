@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 15:24:29 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/11 13:35:25 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/13 19:11:18 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*p1;
 	const unsigned char	*p2;
-	int					i;
+	size_t				i;
 
 	i = 0;
 	p1 = s1;

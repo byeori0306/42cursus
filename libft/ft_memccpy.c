@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 13:34:16 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/12 18:57:31 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/13 19:10:58 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char		*temp;
 	const unsigned char	*s;
-	int					i;
+	size_t				i;
 
 	temp = dst;
 	s = src;

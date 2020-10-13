@@ -5,16 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 19:33:49 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/12 19:56:26 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/13 18:34:47 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/13 19:17:13 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (fd < 0)
 		return ;
-	write(fd, &c, 1);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }
