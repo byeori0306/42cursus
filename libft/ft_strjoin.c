@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcpy.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/11 14:43:34 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:57:19 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/15 13:35:34 by dahpark           #+#    #+#             */
+/*   Updated: 2020/10/15 13:57:31 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
+	char *result;
+	int len1;
+	int len2;
 
-	i = 0;
-	while (src[i] != '\0' && i + 1 < dstsize)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if ((result = (char *)malloc(sizeof(char) * (len1 + len2))) == NULL)
+		return (0);
+	
+	ft_strlcpy(result, s1, len1 + 1);
+	ft_strlcpy(&result[len1], s2, len2 + 1);
+
+	return (result);
 }
