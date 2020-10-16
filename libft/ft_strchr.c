@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 14:58:42 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/16 13:37:00 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/16 15:00:58 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
-	
 	return (0);
 }
