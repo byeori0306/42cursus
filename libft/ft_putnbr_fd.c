@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 21:34:56 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/14 22:09:48 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:38:33 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_nbr(int n, int fd)
 	else
 	{
 		print_nbr(n / 10, fd);
-		n = (n % 10) + 48;
+		n = n % 10 + '0';
 		write(fd, &n, 1);
 	}
 }
