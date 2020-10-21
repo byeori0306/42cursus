@@ -6,12 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 10:13:55 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/18 14:23:17 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/21 20:27:20 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int		get_arr_len(char const *s, char c)
 {
@@ -45,17 +44,25 @@ int		get_str_len(char const *s, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+void	free_arr(char **arr)
 {
-	int		i;
-	int		j;
-	int		arr_len;
-	int		str_len;
-	char	**arr;
+	int i;
 
-	arr_len = get_arr_len(s, c);
-	if ((arr = (char **)malloc(sizeof(char *) * (arr_len + 1))) == NULL)
-		return (0);
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+char	**fill_arr(char **arr, char const *s, char c)
+{
+	int i;
+	int j;
+	int str_len;
+
 	i = 0;
 	while (*s)
 	{
@@ -63,7 +70,10 @@ char	**ft_split(char const *s, char c)
 		{
 			str_len = get_str_len(&(*s), c);
 			if ((arr[i] = (char *)malloc(sizeof(char) * (str_len + 1))) == NULL)
+			{
+				free_arr(arr);
 				return (0);
+			}
 			j = 0;
 			while (*s && *s != c)
 				arr[i][j++] = *s++;
@@ -73,21 +83,19 @@ char	**ft_split(char const *s, char c)
 		if (*s == c)
 			s++;
 	}
+	return (arr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		arr_len;
+	char	**arr;
+
+	arr_len = get_arr_len(s, c);
+	if ((arr = (char **)malloc(sizeof(char *) * (arr_len + 1))) == NULL)
+		return (0);
+	if (fill_arr(arr, s, c) == NULL)
+		return (0);
 	arr[arr_len] = 0;
 	return (arr);
 }
-/*
-int main(void)
-{
-	char *s = "0a0aa0aaa0aaaa";
-	char c = '0';
-	int i = 0;
-	char **result = ft_split(s, c);
-
-	while (result[i])
-	{
-		printf("result #%d : %s\n", i, result[i]);
-		i++;
-	}
-}
-*/
