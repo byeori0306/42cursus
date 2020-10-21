@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 10:06:10 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/18 14:22:49 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:21:49 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,14 @@ char	*ft_itoa(int n)
 	len = get_len(n);
 	if ((arr = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (0);
+	if (n < 0)
+		num = n * -1;
+	else
+		num = n;
 	if (n == 0)
 		arr[0] = '0';
 	else if (n < 0)
-	{
 		arr[0] = '-';
-		num = n * -1;
-	}
-	else
-		num = n;
 	while (num > 0)
 	{
 		arr[len - (i++) - 1] = (num % 10 + '0');

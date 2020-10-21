@@ -6,16 +6,17 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:17:12 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/12 18:39:49 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:21:34 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define LONG_MAX 9223372036854775807
 
 int	ft_atoi(const char *str)
 {
-	int sign;
-	int result;
+	int					sign;
+	unsigned long long	result;
 
 	sign = 1;
 	result = 0;
@@ -30,9 +31,11 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	while (ft_isdigit(*str))
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	return (result * sign);
+		result = result * 10 + *str++ - '0';
+	if (sign == 1 && result > LONG_MAX)
+		return (-1);
+	else if (sign == -1 && (result - 1) > LONG_MAX)
+		return (0);
+	else
+		return ((int)result * sign);
 }
