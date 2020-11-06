@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark </var/mail/dahpark>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 21:13:31 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/01 16:56:49 by dahpark          ###   ########.fr       */
+/*   Created: 2020/11/01 21:05:18 by dahpark           #+#    #+#             */
+/*   Updated: 2020/11/01 21:19:44 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst == NULL || new == NULL)
+	if (lst == NULL || f == NULL)
 		return ;
-	if (*lst == NULL)
+	while (lst)
 	{
-		*lst = new;
-		return;
+		f(lst->content);
+		lst = lst->next;
 	}
-	while ((*lst)->next)
-		*lst = (*lst)->next;
-	(*lst)->next = new;
 }

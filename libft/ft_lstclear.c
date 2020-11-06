@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark </var/mail/dahpark>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 21:13:31 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/01 16:56:49 by dahpark          ###   ########.fr       */
+/*   Created: 2020/11/01 18:37:35 by dahpark           #+#    #+#             */
+/*   Updated: 2020/11/05 20:43:23 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (lst == NULL || new == NULL)
+	if (lst == NULL || del == NULL)
 		return ;
-	if (*lst == NULL)
+	while (*lst)
 	{
-		*lst = new;
-		return;
-	}
-	while ((*lst)->next)
+		ft_lstdelone(*lst, del);
 		*lst = (*lst)->next;
-	(*lst)->next = new;
+	}
 }
