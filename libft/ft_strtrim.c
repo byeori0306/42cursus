@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:43:19 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/16 14:15:09 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/08 19:20:43 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (tail >= 0 && ft_strchr(set, s1[tail]))
 		tail--;
 	len = tail - head + 1;
+	if (len <= 0)
+		return (ft_strdup(""));
 	if ((result = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (0);
 	i = 0;

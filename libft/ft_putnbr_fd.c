@@ -6,39 +6,17 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 21:34:56 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/17 15:38:33 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/08 21:04:25 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	print_nbr(int n, int fd)
-{
-	if (n <= 0)
-		return ;
-	else
-	{
-		print_nbr(n / 10, fd);
-		n = n % 10 + '0';
-		write(fd, &n, 1);
-	}
-}
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int input;
-
-	if (n == 0)
-	{
-		write(fd, "0", 1);
-		return ;
-	}
-	else if (n < 0)
-	{
-		input = n * (-1);
-		write(fd, "-", 1);
-	}
-	else
-		input = n;
-	print_nbr(n, fd);
+	char *num;
+		
+	num = ft_itoa(n);
+	ft_putstr_fd(num, fd);
 }

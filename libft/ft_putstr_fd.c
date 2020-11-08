@@ -6,11 +6,10 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 18:34:47 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/13 19:17:13 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/08 20:32:10 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
