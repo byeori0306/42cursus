@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 13:34:16 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/13 19:10:58 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/14 19:54:31 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		temp[i] = s[i];
-		if (s[i] == (char)c)
+		if (s[i] == (unsigned char)c)
 			break ;
 		i++;
 	}
