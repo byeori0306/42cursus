@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 14:41:08 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/12 18:59:35 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/21 12:43:46 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t len;
 
 	len = 0;
-	while (s[len] != '\0')
+	while (*s++)
 		len++;
 	return (len);
 }

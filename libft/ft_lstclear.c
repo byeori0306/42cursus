@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark </var/mail/dahpark>                +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:37:35 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/05 20:43:23 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/22 15:12:07 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (lst == NULL || del == NULL)
+	t_list *temp;
+
+	if (!lst || !del)
 		return ;
 	while (*lst)
 	{
+		temp = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = (*lst)->next;
+		*lst = temp;
 	}
 }

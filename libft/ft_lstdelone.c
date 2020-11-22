@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 14:59:02 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/01 17:52:07 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/21 19:13:07 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL)
+	if (!lst)
 		return ;
-	if (del == NULL)
+	if (!del)
 		return ;
 	del(lst->content);
 	free(lst);
