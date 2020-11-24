@@ -6,32 +6,32 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 10:13:55 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/21 20:27:20 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/24 13:18:42 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		get_arr_len(char const *s, char c)
+static	int		get_arr_len(char const *s, char c)
 {
 	int len;
 
 	len = 0;
 	while (*s)
 	{
-		if (*s != c)
+		if (*s == c)
+			s++;
+		else
 		{
 			len++;
 			while (*s && *s != c)
 				s++;
 		}
-		if (*s == c)
-			s++;
 	}
 	return (len);
 }
 
-int		get_str_len(char const *s, char c)
+static	int		get_str_len(char const *s, char c)
 {
 	int len;
 
@@ -44,7 +44,7 @@ int		get_str_len(char const *s, char c)
 	return (len);
 }
 
-void	free_arr(char **arr)
+static	void	free_arr(char **arr)
 {
 	int i;
 
@@ -57,7 +57,7 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-char	**fill_arr(char **arr, char const *s, char c)
+static	int		fill_arr(char **arr, char const *s, char c)
 {
 	int i;
 	int j;
@@ -66,13 +66,15 @@ char	**fill_arr(char **arr, char const *s, char c)
 	i = 0;
 	while (*s)
 	{
-		if (*s != c)
+		if (*s == c)
+			s++;
+		else
 		{
-			str_len = get_str_len(&(*s), c);
-			if ((arr[i] = (char *)malloc(sizeof(char) * (str_len + 1))) == NULL)
+			str_len = get_str_len(s, c);
+			if (!(arr[i] = (char *)malloc(sizeof(char) * (str_len + 1))))
 			{
 				free_arr(arr);
-				return (0);
+				return (1);
 			}
 			j = 0;
 			while (*s && *s != c)
@@ -80,22 +82,20 @@ char	**fill_arr(char **arr, char const *s, char c)
 			arr[i][j] = '\0';
 			i++;
 		}
-		if (*s == c)
-			s++;
 	}
-	return (arr);
+	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	int		arr_len;
 	char	**arr;
 
 	arr_len = get_arr_len(s, c);
-	if ((arr = (char **)malloc(sizeof(char *) * (arr_len + 1))) == NULL)
-		return (0);
-	if (fill_arr(arr, s, c) == NULL)
-		return (0);
-	arr[arr_len] = 0;
+	if (!(arr = (char **)malloc(sizeof(char *) * (arr_len + 1))))
+		return (NULL);
+	if (fill_arr(arr, s, c))
+		return (NULL);
+	arr[arr_len] = NULL;
 	return (arr);
 }
