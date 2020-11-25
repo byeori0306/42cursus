@@ -6,14 +6,14 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 21:34:56 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/14 21:53:37 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/24 16:32:36 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-void	print_nbr(unsigned int n, int fd)
+static	void	print_nbr(unsigned int n, int fd)
 {
 	if (n <= 0)
 		return ;
@@ -25,7 +25,7 @@ void	print_nbr(unsigned int n, int fd)
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	unsigned int input;
 

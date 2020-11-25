@@ -6,13 +6,13 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 10:06:10 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/21 15:21:49 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/24 16:31:45 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		get_len(int n)
+static	unsigned int	get_len(int n)
 {
 	unsigned int num;
 	unsigned int len;
@@ -35,7 +35,7 @@ int		get_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char					*ft_itoa(int n)
 {
 	unsigned int	i;
 	unsigned int	len;
