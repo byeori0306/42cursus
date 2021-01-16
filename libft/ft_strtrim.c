@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 16:30:30 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/22 15:54:01 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/16 12:43:19 by dahpark           #+#    #+#             */
+/*   Updated: 2020/11/08 19:20:43 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*dup;
-	int		len;
 	int		i;
+	int		head;
+	int		tail;
+	int		len;
+	char	*result;
 
-	len = ft_strlen(s1);
-	if ((dup = (char *)malloc(sizeof(char) * len + 1)) == NULL)
+	head = 0;
+	tail = ft_strlen(s1) - 1;
+	while (s1[head] && ft_strchr(set, s1[head]))
+		head++;
+	while (tail >= 0 && ft_strchr(set, s1[tail]))
+		tail--;
+	len = tail - head + 1;
+	if (len <= 0)
+		return (ft_strdup(""));
+	if ((result = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (0);
 	i = 0;
-	while (s1[i] != '\0')
+	while (i < len)
 	{
-		dup[i] = s1[i];
+		result[i] = s1[head + i];
 		i++;
 	}
-	dup[len] = '\0';
-	return (dup);
+	result[i] = '\0';
+	return (result);
 }

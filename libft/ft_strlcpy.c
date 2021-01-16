@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 14:43:34 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:57:19 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/08 14:47:16 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	if (dstsize != 0)
+		dst[i] = '\0';
 	return (ft_strlen(src));
 }

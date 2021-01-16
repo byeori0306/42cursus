@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 14:58:42 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:59:30 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/08 16:17:46 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@ char	*ft_strchr(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == (char)c)
-			break ;
+			return ((char *)s);
 		s++;
 	}
-	return ((char *)s);
+	if (*s == c)
+		return ((char *)s);
+	return (0);
 }

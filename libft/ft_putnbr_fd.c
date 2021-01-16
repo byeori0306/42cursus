@@ -6,25 +6,26 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 21:34:56 by dahpark           #+#    #+#             */
-/*   Updated: 2020/10/14 22:09:48 by dahpark          ###   ########.fr       */
+/*   Updated: 2020/11/24 16:32:36 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
-void	print_nbr(int n, int fd)
+static	void	print_nbr(unsigned int n, int fd)
 {
 	if (n <= 0)
 		return ;
 	else
 	{
 		print_nbr(n / 10, fd);
-		n = (n % 10) + 48;
+		n = n % 10 + '0';
 		write(fd, &n, 1);
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	unsigned int input;
 
@@ -40,5 +41,5 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	else
 		input = n;
-	print_nbr(n, fd);
+	print_nbr(input, fd);
 }
