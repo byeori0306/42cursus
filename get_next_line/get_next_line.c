@@ -33,24 +33,45 @@ char	*gnl_strjoin(char *s1, char *s2)
 int	gnl_split(char **storage, char *eol, char **line)
 {	
 	size_t len;
-	//size_t length;
 	
 	len = eol - *storage;
-	// printf("line length : %ld\n", len);
-	if (!(line[0] = (char *)malloc(sizeof(char) * (len + 2))))
+	if (!(*line = (char *)malloc(sizeof(char) * (len + 1))))
 		return (-1);
-	ft_strlcpy(line[0], *storage, len);
-	//length = ft_strlen(*storage) - len;
+	if (len == 0)
+		(*line)[0] = '\0';
+	else
+		ft_strlcpy(*line, *storage, len);
 	ft_memmove(*storage, eol+1, ft_strlen(*storage)-len);
-	// printf("new storage length : %ld\n", length);
 
 	return (1);
 }
 
+int gnl_result(size_t size, char **storage, char **line)
+{
+	char *eol;
+
+	if (size < 0)
+		return (-1);
+	if (*storage && (eol = (ft_strchr(*storage, '\n'))))
+		return (gnl_split(storage, eol, line));
+	else if (*storage)
+	{
+		if (!(*line = ft_strdup(*storage)))
+			return (-1);
+		free(*storage);
+		*storage = NULL;
+	}
+	else
+	{
+		if (!(*line = ft_strdup("")))
+			return (-1);
+	}
+	return (0);
+}
+
 int	get_next_line(int fd, char **line)
 {
-	int size;
-	int result;
+	size_t size;
 	char *buf;
 	static char *storage;
 	char *eol;
@@ -62,30 +83,14 @@ int	get_next_line(int fd, char **line)
 	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[size] = '\0';
-		storage = gnl_strjoin(storage, buf); // storage NULL
-		if ((ft_strchr(storage, '\n')))
-			break;
+		if (!(storage = gnl_strjoin(storage, buf)))
+			return (-1);
+		if ((eol = (ft_strchr(storage, '\n'))))
+		{
+			free(buf);
+			return (gnl_split(&storage, eol, line));
+		}
 	}
 	free(buf);
-	//printf("storage: %s\n", storage);
-	if (size < 0)
-		return (-1);
-	else if (size == 0 && !storage)
-		return (0);
-	if ((eol = (ft_strchr(storage, '\n'))))
-	{
-		result = gnl_split(&storage, eol, line);
-		if (size >= 0 && size < BUFFER_SIZE)
-			result = 0;
-		return (result);
-	}
-	else if (storage)
-	{
-		*line = ft_strdup(storage);
-		free(storage);
-		storage = NULL;
-	}
-	else
-		*line = ft_strdup("");
-	return (0);
+	return (gnl_result(size, &storage, line));
 }
