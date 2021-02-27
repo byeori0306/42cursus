@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 03:10:48 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 03:25:46 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/02/28 04:13:20 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <stddef.h>
+# define OPEN_MAX 256
 
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *s);

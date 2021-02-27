@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 02:57:06 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 03:03:53 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/02/28 04:13:01 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		get_next_line(int fd, char **line)
 	static char	*storage;
 	char		*eol;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
