@@ -1,0 +1,29 @@
+CC=gcc
+CFLAGS=-Wall -Wextra
+NAME=libftprintf.a
+SRCS=ft_printf.c\
+     src/ft_print.c\
+     src/ft_putchar.c\
+     src/ft_is_specifier.c
+OBJS=$(SRCS:.c=.o)
+AR=ar rsc
+RM=rm -f
+
+all: $(NAME)
+
+$(NAME): $(OBJS) libft
+	@$(MAKE) -C ./libft
+	cp libft/libft.a $@
+	$(AR) $@ $(OBJS)
+
+clean:
+	@$(MAKE) -C ./libft clean
+	@$(RM) $(OBJS)
+
+fclean: clean
+	@$(MAKE) -C ./libft fclean
+	@$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
