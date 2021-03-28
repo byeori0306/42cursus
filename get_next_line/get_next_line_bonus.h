@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/28 03:10:48 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 04:13:20 by dahpark          ###   ########.fr       */
+/*   Created: 2021/02/28 03:33:49 by dahpark           #+#    #+#             */
+/*   Updated: 2021/02/28 03:49:41 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stddef.h>
 # define OPEN_MAX 256

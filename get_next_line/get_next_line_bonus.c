@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/28 02:57:06 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 04:13:01 by dahpark          ###   ########.fr       */
+/*   Created: 2021/02/28 03:35:18 by dahpark           #+#    #+#             */
+/*   Updated: 2021/02/28 04:26:36 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*gnl_strjoin(char *s1, char *s2)
 {
@@ -81,24 +81,24 @@ int		get_next_line(int fd, char **line)
 {
 	ssize_t		size;
 	char		*buf;
-	static char	*storage;
+	static char	*storage[OPEN_MAX];
 	char		*eol;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[size] = '\0';
-		if (!(storage = gnl_strjoin(storage, buf)))
+		if (!(storage[fd] = gnl_strjoin(storage[fd], buf)))
 			return (-1);
-		if ((eol = (ft_strchr(storage, '\n'))))
+		if ((eol = (ft_strchr(storage[fd], '\n'))))
 		{
 			free(buf);
-			return (gnl_split(&storage, eol, line));
+			return (gnl_split(&storage[fd], eol, line));
 		}
 	}
 	free(buf);
-	return (gnl_result(size, &storage, line));
+	return (gnl_result(size, &storage[fd], line));
 }
