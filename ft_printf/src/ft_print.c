@@ -1,7 +1,7 @@
 #include "../ft_printf.h"
 #include <stdio.h>
 
-int	ft_print_char(t_flag flag)
+int	ft_print_char(t_option option)
 {
 	int cnt;
 
@@ -10,7 +10,7 @@ int	ft_print_char(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_string(t_flag flag)
+int	ft_print_string(t_option option)
 {
 	int cnt;
 
@@ -19,7 +19,7 @@ int	ft_print_string(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_pointer(t_flag flag)
+int	ft_print_pointer(t_option option)
 {
 	int cnt;
 
@@ -28,7 +28,7 @@ int	ft_print_pointer(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_int(t_flag flag)
+int ft_print_int(t_option option)
 {
 	int cnt;
 
@@ -37,7 +37,7 @@ int	ft_print_int(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_un_int(t_flag flag)
+int	ft_print_un_int(t_option option)
 {
 	int cnt;
 
@@ -46,7 +46,7 @@ int	ft_print_un_int(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_hex(t_flag flag)
+int	ft_print_hex(t_option option)
 {
 	int cnt;
 
@@ -55,7 +55,7 @@ int	ft_print_hex(t_flag flag)
 	return (cnt);
 }
 
-int	ft_print_percent(t_flag flag)
+int	ft_print_percent(t_option option)
 {
 	int cnt;
 

@@ -2,9 +2,10 @@ CC=gcc
 CFLAGS=-Wall -Wextra
 NAME=libftprintf.a
 SRCS=ft_printf.c\
-     src/ft_print.c\
-     src/ft_putchar.c\
-     src/ft_is_specifier.c
+	 src/ft_print.c\
+	 src/ft_putchar.c\
+	 src/ft_check.c\
+	 src/ft_set_option.c
 OBJS=$(SRCS:.c=.o)
 AR=ar rsc
 RM=rm -f

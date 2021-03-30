@@ -2,92 +2,96 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 #include <stdio.h>
-#include <ctype.h>
 
-t_flag	ft_init_flag(t_flag flag)
+t_option	ft_init_option(void)
 {
-	flag.specifier = 0;
-	flag.left_align = 0;
-	flag.zero = 0;
-	flag.star = 0;
-	flag.width = 0;
-	flag.precision = 0;
+	t_option	option;
+
+	option.left_align = 0;
+	option.zero = 0;
+	option.width = 0;
+	option.precision = 0;
+
+	return (option);
 }
 
-int	ft_parse_flag(const char *format, int i, t_flag flag)
+int	ft_process_option(int i, const char *format, t_option *option, va_list args)
 {
 	while (format[i])
 	{
-		if (!ft_is_specifier(format[i]) && !ft_is_flag(format[i]) && !ft_isdigit(format[i]))
+		if (!ft_is_specifier(format[i]) && !ft_is_option(format[i]) && !ft_is_width(format[i]))
 			break;
 		if (format[i] == '-')
-			printf("-\n"); //flag.left_align = 1;
-		else if (format[i] == '0')
-			printf("0\n"); //flag.zero = 1;
-		else if (format[i] == '*')
-			printf("*\n"); //flag.star = 1;
-		else if (format[i] == '.')
-			printf(".\n"); //flag.precision = 1;
-		else if (ft_is_specifier(format[i]))
-		{
-			flag.specifier = format[i]; // need?
+			option->left_align = 1;
+		if (format[i] == '0')
+			option->zero = 1;
+		if (ft_is_width(format[i]))
+			i = ft_set_width(i, format, args, option);
+		if (format[i] == '.')
+			i = ft_set_precision(++i, format, args, option);
+		if (ft_is_specifier(format[i]))
 			break;
-		}
 		i++;
 	}
-
 	return (i);
 }
 
-int	ft_process_args(char specifier, t_flag flag, va_list args)
+int	ft_process_args(char type, t_option option, va_list args)
 {
 	int cnt;
 
 	cnt = 0;
 
-	if (specifier == 'c')
-		cnt = ft_print_char(flag);
-	else if (specifier == 's')
-		cnt = ft_print_string(flag);
-	else if (specifier == 'p')
-		cnt = ft_print_pointer(flag);
-	else if (specifier == 'd' || specifier == 'i')
-		cnt = ft_print_int(flag);
-	else if (specifier == 'u')
-		cnt = ft_print_un_int(flag);
-	else if (specifier == 'x')
-		cnt = ft_print_hex(flag);
-	else if (specifier == 'X')
-		cnt = ft_print_hex(flag);
-	else if (specifier == '%')
-		cnt = ft_print_percent(flag);
+	if (type == 'c')
+		cnt = ft_print_char(option);
+	else if (type == 's')
+		cnt = ft_print_string(option);
+	else if (type == 'p')
+		cnt = ft_print_pointer(option);
+	else if (type == 'd' || type == 'i')
+		cnt = ft_print_int(option);
+	else if (type == 'u')
+		cnt = ft_print_un_int(option);
+	else if (type == 'x')
+		cnt = ft_print_hex(option);
+	else if (type == 'X')
+		cnt = ft_print_hex(option);
+	else if (type == '%')
+		cnt = ft_print_percent(option);
 
 	return (cnt);
+}
+
+void	ft_print_option(t_option option)
+{
+	printf("dash : %d\n", option.left_align);
+	printf("zero : %d\n", option.zero);
+	printf("width : %d\n", option.width);
+	printf("precision : %d\n", option.precision);
 }
 
 int	ft_process_format(const char *format, va_list args)
 {
 	int cnt;
 	int i;
-	t_flag flag;
+	t_option option;
 	
 	cnt = 0;
 	i = 0;
 	
 	while (format[i])
 	{
-		flag = ft_init_flag(flag);
-		if (format[i] != '%')
-			cnt += ft_putchar(format[i]);
-		else if (format[i] == '%')
+		if (format[i] == '%')
 		{
-			i = ft_parse_flag(format, ++i, flag);
+			option = ft_init_option();
+			i = ft_process_option(++i, format, &option, args);
+			ft_print_option(option);
 			if (ft_is_specifier(format[i]))
-				cnt += ft_process_args(format[i], flag, args);
-			else // need?
-				cnt += ft_putchar(format[i]);	
+				cnt += ft_process_args(format[i], option, args);
 		}
-		format++;
+		else // format[i] != % 
+			cnt += ft_putchar(format[i]);
+		i++;
 	}
 
 	return (cnt);
