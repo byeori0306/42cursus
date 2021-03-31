@@ -29,10 +29,15 @@ int ft_set_precision(int i, const char *format, va_list args, t_option *option);
 int	ft_print_char(t_option option);
 int	ft_print_string(t_option option);
 int	ft_print_pointer(t_option option);
-int	ft_print_int(t_option option);
 int	ft_print_un_int(t_option option);
 int	ft_print_hex(t_option option);
 int	ft_print_percent(t_option option);
+
+int	ft_putstr(char *s);
+int	ft_cal_width(int width, int precision, int len);
+int	ft_print_width(int width, int left_align, int zero);
+int	ft_print_num(char *num, int len, int minus, int precision);
+int	ft_print_int(int num, t_option option);
 
 void	ft_print_option(t_option option);
 

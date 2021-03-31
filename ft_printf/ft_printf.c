@@ -49,7 +49,7 @@ int	ft_process_args(char type, t_option option, va_list args)
 	else if (type == 'p')
 		cnt = ft_print_pointer(option);
 	else if (type == 'd' || type == 'i')
-		cnt = ft_print_int(option);
+		cnt = ft_print_int(va_arg(args, int), option);
 	else if (type == 'u')
 		cnt = ft_print_un_int(option);
 	else if (type == 'x')

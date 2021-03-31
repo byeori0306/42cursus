@@ -28,15 +28,6 @@ int	ft_print_pointer(t_option option)
 	return (cnt);
 }
 
-int ft_print_int(t_option option)
-{
-	int cnt;
-
-	cnt = 0;
-	printf("I");
-	return (cnt);
-}
-
 int	ft_print_un_int(t_option option)
 {
 	int cnt;
