@@ -1,0 +1,161 @@
+Test 199 (d_width_neg_fits) : FAILED.
+    First line of code: {return test("%7d", -14);}
+      expected output : "    -14"
+      your output     : "     -14"
+      expected (nonprintable as hex) : "    -14"
+      actual   (nonprintable as hex) : "     -14"
+
+Test 202 (d_width_neg_exactfit) : FAILED.
+    First line of code: {return test("%5d", -2562);}
+      expected output : "-2562"
+      your output     : " -2562"
+      expected (nonprintable as hex) : "-2562"
+      actual   (nonprintable as hex) : " -2562"
+
+Test 206 (d_width_neg_fits_lj) : FAILED.
+    First line of code: {return test("%-7d", -14);}
+      expected output : "-14    "
+      your output     : "-14     "
+      expected (nonprintable as hex) : "-14    "
+      actual   (nonprintable as hex) : "-14     "
+
+Test 209 (d_width_neg_exactfit_lj) : FAILED.
+    First line of code: {return test("%-5d", -2562);}
+      expected output : "-2562"
+      your output     : "-2562 "
+      expected (nonprintable as hex) : "-2562"
+      actual   (nonprintable as hex) : "-2562 "
+
+Test 220 (d_zp_neg_fits) : FAILED.
+    First line of code: {return test("%07d", -54);}
+      expected output : "-000054"
+      your output     : "00000-54"
+      expected (nonprintable as hex) : "-000054"
+      actual   (nonprintable as hex) : "00000-54"
+
+Test 223 (d_zp_neg_exactfit) : FAILED.
+    First line of code: {return test("%04d", -532);}
+      expected output : "-532"
+      your output     : "0-532"
+      expected (nonprintable as hex) : "-532"
+      actual   (nonprintable as hex) : "0-532"
+
+Test 226 (d_prec_width_fit_fit_neg) : FAILED.
+    First line of code: {return test("%10.5d", -216);}
+      expected output : "    -00216"
+      your output     : "     -00216"
+      expected (nonprintable as hex) : "    -00216"
+      actual   (nonprintable as hex) : "     -00216"
+
+Test 229 (d_prec_width_nofit_fit_neg) : FAILED.
+    First line of code: {return test("%8.3d", -8473);}
+      expected output : "   -8473"
+      your output     : "    -8473"
+      expected (nonprintable as hex) : "   -8473"
+      actual   (nonprintable as hex) : "    -8473"
+
+Test 235 (d_prec_width_fit_fit_neg_lj) : FAILED.
+    First line of code: {return test("%-10.5d", -216);}
+      expected output : "-00216    "
+      your output     : "-00216     "
+      expected (nonprintable as hex) : "-00216    "
+      actual   (nonprintable as hex) : "-00216     "
+
+Test 238 (d_prec_width_nofit_fit_neg_lj) : FAILED.
+    First line of code: {return test("%-8.3d", -8473);}
+      expected output : "-8473   "
+      your output     : "-8473    "
+      expected (nonprintable as hex) : "-8473   "
+      actual   (nonprintable as hex) : "-8473    "
+
+Test 243 (d_prec_width_ff_pos_zp) : FAILED.
+    First line of code: {return test("%08.5d", 34);}
+      expected output : "   00034"
+      your output     : "00000034"
+      expected (nonprintable as hex) : "   00034"
+      actual   (nonprintable as hex) : "00000034"
+
+Test 244 (d_prec_width_ff_neg_zp) : FAILED.
+    First line of code: {return test("%010.5d", -216);}
+      expected output : "    -00216"
+      your output     : "00000-00216"
+      expected (nonprintable as hex) : "    -00216"
+      actual   (nonprintable as hex) : "00000-00216"
+
+Test 245 (d_prec_width_ff_zero_zp) : FAILED.
+    First line of code: {return test("%08.5d", 0);}
+      expected output : "   00000"
+      your output     : "00000000"
+      expected (nonprintable as hex) : "   00000"
+      actual   (nonprintable as hex) : "00000000"
+
+Test 246 (d_prec_width_nf_pos_zp) : FAILED.
+    First line of code: {return test("%08.3d", 8375);}
+      expected output : "    8375"
+      your output     : "00008375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "00008375"
+
+Test 247 (d_prec_width_nf_neg_zp) : FAILED.
+    First line of code: {return test("%08.3d", -8473);}
+      expected output : "   -8473"
+      your output     : "0000-8473"
+      expected (nonprintable as hex) : "   -8473"
+      actual   (nonprintable as hex) : "0000-8473"
+
+Test 253 (d_prec_width_ff_neg_ljzp_ignoreflag) : FAILED.
+    First line of code: {return test("%0-10.5d", -216);}
+      expected output : "-00216    "
+      your output     : "-00216     "
+      expected (nonprintable as hex) : "-00216    "
+      actual   (nonprintable as hex) : "-00216     "
+
+Test 256 (d_prec_width_nf_neg_ljzp_ignoreflag) : FAILED.
+    First line of code: {return test("%0-8.3d", -8473);}
+      expected output : "-8473   "
+      your output     : "-8473    "
+      expected (nonprintable as hex) : "-8473   "
+      actual   (nonprintable as hex) : "-8473    "
+
+Test 261 (d_prec0val0_basic) : FAILED.
+    First line of code: {return test("%.0d", 0);}
+      expected output : ""
+      your output     : "0"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "0"
+
+Test 262 (d_prec0val0_implicit) : FAILED.
+    First line of code: {return test("%.d", 0);}
+      expected output : ""
+      your output     : "0"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "0"
+
+Test 263 (d_prec0val0_w) : FAILED.
+    First line of code: {return test("%5.0d", 0);}
+      expected output : "     "
+      your output     : "    0"
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "    0"
+
+Test 264 (d_prec0val0_w_impl) : FAILED.
+    First line of code: {return test("%5.d", 0);}
+      expected output : "     "
+      your output     : "    0"
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "    0"
+
+Test 265 (d_prec0val0_wlj) : FAILED.
+    First line of code: {return test("%-5.0d", 0);}
+      expected output : "     "
+      your output     : "0    "
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "0    "
+
+Test 266 (d_prec0val0_wlj_impl) : FAILED.
+    First line of code: {return test("%-5.d", 0);}
+      expected output : "     "
+      your output     : "0    "
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "0    "
+
