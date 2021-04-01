@@ -1,0 +1,7 @@
+Test 347 (u_uintmax) : FAILED.
+    First line of code: {return test("%u", 4294967295u);}
+      expected output : "4294967295"
+      your output     : "-1"
+      expected (nonprintable as hex) : "4294967295"
+      actual   (nonprintable as hex) : "-1"
+
