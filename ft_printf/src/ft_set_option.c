@@ -32,6 +32,7 @@ int	ft_set_precision(int i, const char *format, va_list args, t_option *option)
 	int temp;
 
 	temp = 0;
+	option->precision = 0;
 	if (format[i] == '*')
 	{
 		option->precision = va_arg(args, int);
@@ -46,5 +47,7 @@ int	ft_set_precision(int i, const char *format, va_list args, t_option *option)
 		}
 		option->precision = temp;
 	}
+	if (option->precision >= 0)
+		option->zero = 0;
 	return (i);
 }

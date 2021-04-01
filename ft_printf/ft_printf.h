@@ -34,9 +34,9 @@ int	ft_print_hex(t_option option);
 int	ft_print_percent(t_option option);
 
 int	ft_putstr(char *s);
-int	ft_cal_width(int width, int precision, int len);
-int	ft_print_width(int width, int left_align, int zero);
-int	ft_print_num(char *num, int len, int minus, int precision);
+int	ft_cal_width(int width, int precision, int len, int minus);
+int	ft_print_width(int width, int minus, t_option option);
+int	ft_print_num(char *num, int len, int minus, t_option option);
 int	ft_print_int(int num, t_option option);
 
 void	ft_print_option(t_option option);

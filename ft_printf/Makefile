@@ -4,6 +4,7 @@ NAME=libftprintf.a
 SRCS=ft_printf.c\
 	 src/ft_print.c\
 	 src/ft_putchar.c\
+	 src/ft_putstr.c\
 	 src/ft_check.c\
 	 src/ft_set_option.c\
 	 src/ft_print_int.c

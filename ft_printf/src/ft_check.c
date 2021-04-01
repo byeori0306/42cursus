@@ -1,4 +1,4 @@
-#include "../libft/libft.h"
+#include "../ft_printf.h"
 
 char	*ft_is_specifier(char c)
 {

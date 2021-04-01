@@ -10,7 +10,7 @@ t_option	ft_init_option(void)
 	option.left_align = 0;
 	option.zero = 0;
 	option.width = 0;
-	option.precision = 0;
+	option.precision = -1;
 
 	return (option);
 }
@@ -61,7 +61,7 @@ int	ft_process_args(char type, t_option option, va_list args)
 
 	return (cnt);
 }
-
+/*
 void	ft_print_option(t_option option)
 {
 	printf("dash : %d\n", option.left_align);
@@ -69,7 +69,7 @@ void	ft_print_option(t_option option)
 	printf("width : %d\n", option.width);
 	printf("precision : %d\n", option.precision);
 }
-
+*/
 int	ft_process_format(const char *format, va_list args)
 {
 	int cnt;
@@ -85,7 +85,6 @@ int	ft_process_format(const char *format, va_list args)
 		{
 			option = ft_init_option();
 			i = ft_process_option(++i, format, &option, args);
-			ft_print_option(option);
 			if (ft_is_specifier(format[i]))
 				cnt += ft_process_args(format[i], option, args);
 		}

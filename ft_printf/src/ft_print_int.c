@@ -1,67 +1,57 @@
 #include "../ft_printf.h"
 #include <stdlib.h>
 
-int	ft_putstr(char *s)
+int ft_cal_width(int width, int precision, int len, int minus)
 {
-	int i;
-	
-	i = 0;
-	while(s[i] != '\0')
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
-
-	return (i);
-}
-
-int ft_cal_width(int width, int precision, int len)
-{
+	if (minus == 1)
+		width -= 1;
 	if (precision >= len)
 		return (width - precision);
 	else
 		return (width - len);
 }
 
-int	ft_print_width(int width, int left_align, int zero)
+int	ft_print_width(int n_pad, int minus, t_option option)
 {
+	char padding;
 	int cnt;
 
 	cnt = 0;
-	while (width > 0)
+	if (option.left_align == 0 && option.zero == 1)
 	{
-		if (left_align == 0 && zero == 1)
-			ft_putchar('0');
-		else
-			ft_putchar(' ');
-		width -= 1;
-		cnt++;
+		if (minus == 1)
+			cnt += ft_putchar('-');
+		padding = '0';
+	}
+	else
+		padding = ' ';
+	while (n_pad > 0)
+	{
+		cnt += ft_putchar(padding);
+		n_pad--;
 	}
 	return (cnt);
 }
 
-int	ft_print_num(char *num, int len, int minus, int precision)
+int	ft_print_num(char *num, int len, int minus, t_option option)
 {
 	int cnt;
 
 	cnt = 0;
 	
 	// minus
-	if (minus == 1)
+	if (minus == 1 && (option.left_align == 1 || option.zero == 0))
 	{
-		ft_putchar('-');
-		cnt += 1;
+		cnt += ft_putchar('-');
 	}
-
 	// precision
-	if (precision >= 0)
+	if (option.precision > 0)
 	{
-		precision = precision - len;
-		while (precision > 0)
+		option.precision = option.precision - len;
+		while (option.precision > 0)
 		{
-			ft_putchar('0');
-			precision -= 1;
-			cnt++;
+			cnt += ft_putchar('0');
+			option.precision -= 1;
 		}
 	}
 	// num
@@ -79,6 +69,8 @@ int	ft_print_int(int num, t_option option)
 	int width;
 
 	minus = 0;
+	if (num == 0 && option.precision == 0)
+		return (cnt = ft_print_width(option.width, minus, option));
 	if (num < 0)
 	{
 		minus = 1;
@@ -90,14 +82,14 @@ int	ft_print_int(int num, t_option option)
 	cnt = 0;
 	
 	if (option.left_align == 1)
-		cnt += ft_print_num(n_str, n_len, minus, option.precision);
+		cnt += ft_print_num(n_str, n_len, minus, option);
 	if (width > 0)
 	{
-		width = ft_cal_width(width, option.precision, n_len);
-		cnt += ft_print_width(width, option.left_align, option.zero);
+		width = ft_cal_width(width, option.precision, n_len, minus);
+		cnt += ft_print_width(width, minus, option);
 	}
 	if (option.left_align == 0)
-		cnt += ft_print_num(n_str, n_len, minus, option.precision);
+		cnt += ft_print_num(n_str, n_len, minus, option);
 
 	free(n_str);
 	return (cnt);
