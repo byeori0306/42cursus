@@ -1,0 +1,28 @@
+Test 390 (x_basic_zero) : FAILED.
+    First line of code: {return test("this %x number", 0);}
+      expected output : "this 0 number"
+      your output     : "this  number"
+      expected (nonprintable as hex) : "this 0 number"
+      actual   (nonprintable as hex) : "this  number"
+
+Test 394 (x_width_zero_fits) : FAILED.
+    First line of code: {return test("%3x", 0);}
+      expected output : "  0"
+      your output     : "   "
+      expected (nonprintable as hex) : "  0"
+      actual   (nonprintable as hex) : "   "
+
+Test 398 (x_width_zero_fits_lj) : FAILED.
+    First line of code: {return test("%-3x", 0);}
+      expected output : "0  "
+      your output     : "   "
+      expected (nonprintable as hex) : "0  "
+      actual   (nonprintable as hex) : "   "
+
+Test 4197 (x_neg_prec_star_03) : FAILED.
+    First line of code: {return test("%.*x", -1, 0);}
+      expected output : "0"
+      your output     : ""
+      expected (nonprintable as hex) : "0"
+      actual   (nonprintable as hex) : ""
+
