@@ -1,0 +1,119 @@
+Test  36 (s_space_padded_field_width) : FAILED.
+    First line of code: {return test("%32s", "abc");}
+      expected output : "                             abc"
+      your output     : "                                 abc"
+      expected (nonprintable as hex) : "                             abc"
+      actual   (nonprintable as hex) : "                                 abc"
+
+Test  37 (s_space_padded_field_width2) : FAILED.
+    First line of code: {return test("%16s", "nark nark");}
+      expected output : "       nark nark"
+      your output     : "                 nark nark"
+      expected (nonprintable as hex) : "       nark nark"
+      actual   (nonprintable as hex) : "                 nark nark"
+
+Test  38 (s_space_padded_over_field_width) : FAILED.
+    First line of code: {return test("%5s", "goes over");}
+      expected output : "goes over"
+      your output     : "      goes over"
+      expected (nonprintable as hex) : "goes over"
+      actual   (nonprintable as hex) : "      goes over"
+
+Test  39 (s_space_padded_field_width_lj) : FAILED.
+    First line of code: {return test("%-32s", "abc");}
+      expected output : "abc                             "
+      your output     : "abc                                 "
+      expected (nonprintable as hex) : "abc                             "
+      actual   (nonprintable as hex) : "abc                                 "
+
+Test  40 (s_space_padded_field_width2_lj) : FAILED.
+    First line of code: {return test("%-16s", "nark nark");}
+      expected output : "nark nark       "
+      your output     : "nark nark                 "
+      expected (nonprintable as hex) : "nark nark       "
+      actual   (nonprintable as hex) : "nark nark                 "
+
+Test  41 (s_space_padded_over_field_width_lj) : FAILED.
+    First line of code: {return test("%-5s", "goes over");}
+      expected output : "goes over"
+      your output     : "goes over      "
+      expected (nonprintable as hex) : "goes over"
+      actual   (nonprintable as hex) : "goes over      "
+
+Test  49 (s_two_strings_prec_0trunc) : FAILED.
+    First line of code: {return test("%.5s%7s", "yo", "boi");}
+      expected output : "yo    boi"
+      your output     : "yo        boi"
+      expected (nonprintable as hex) : "yo    boi"
+      actual   (nonprintable as hex) : "yo        boi"
+
+Test  70 (s_two_s_prec_width_2trunc) : FAILED.
+    First line of code: {return test("%3s%3s", "hello", "world");}
+      expected output : "helloworld"
+      your output     : "    hello    world"
+      expected (nonprintable as hex) : "helloworld"
+      actual   (nonprintable as hex) : "    hello    world"
+
+Test  71 (s_two_strings_lj_and_rj) : FAILED.
+    First line of code: {return test("%-7s%5s", "hello", "world");}
+      expected output : "hello  world"
+      your output     : "hello              world"
+      expected (nonprintable as hex) : "hello  world"
+      actual   (nonprintable as hex) : "hello              world"
+
+Test  72 (s_two_strings_rj_and_lj) : FAILED.
+    First line of code: {return test("%7s%-5s", "hello", "world");}
+      expected output : "  helloworld"
+      your output     : "        helloworld      "
+      expected (nonprintable as hex) : "  helloworld"
+      actual   (nonprintable as hex) : "        helloworld      "
+
+Test  75 (s_null_space_padded_field_width) : FAILED.
+    First line of code: {return test("%32s", NULL);}
+      expected output : "                          (null)"
+      your output     : "                                 (null)"
+      expected (nonprintable as hex) : "                          (null)"
+      actual   (nonprintable as hex) : "                                 (null)"
+
+Test  76 (s_null_space_padded_over_field_width) : FAILED.
+    First line of code: {return test("%2s", NULL);}
+      expected output : "(null)"
+      your output     : "   (null)"
+      expected (nonprintable as hex) : "(null)"
+      actual   (nonprintable as hex) : "   (null)"
+
+Test  77 (s_null_space_padded_field_width_lj) : FAILED.
+    First line of code: {return test("%-32s", NULL);}
+      expected output : "(null)                          "
+      your output     : "(null)                                 "
+      expected (nonprintable as hex) : "(null)                          "
+      actual   (nonprintable as hex) : "(null)                                 "
+
+Test  78 (s_null_space_padded_field_width2_lj) : FAILED.
+    First line of code: {return test("%-16s", NULL);}
+      expected output : "(null)          "
+      your output     : "(null)                 "
+      expected (nonprintable as hex) : "(null)          "
+      actual   (nonprintable as hex) : "(null)                 "
+
+Test  79 (s_null_space_padded_over_field_width_lj) : FAILED.
+    First line of code: {return test("%-3s", NULL);}
+      expected output : "(null)"
+      your output     : "(null)    "
+      expected (nonprintable as hex) : "(null)"
+      actual   (nonprintable as hex) : "(null)    "
+
+Test  85 (s_width_3_s_hidden) : FAILED.
+    First line of code: {return test("%3s", s_hidden);}
+      expected output : "hi low"
+      your output     : "    hi low"
+      expected (nonprintable as hex) : "hi low"
+      actual   (nonprintable as hex) : "    hi low"
+
+Test  86 (s_width_9_s_hidden) : FAILED.
+    First line of code: {return test("%9s", s_hidden);}
+      expected output : "   hi low"
+      your output     : "          hi low"
+      expected (nonprintable as hex) : "   hi low"
+      actual   (nonprintable as hex) : "          hi low"
+
