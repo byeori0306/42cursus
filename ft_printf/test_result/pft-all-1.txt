@@ -1,0 +1,69 @@
+Test 588 (moul_d_7) : FAILED.
+    First line of code: {return test("%d", INT_MIN);}
+      expected output : "-2147483648"
+      your output     : "--2147483648"
+      expected (nonprintable as hex) : "-2147483648"
+      actual   (nonprintable as hex) : "--2147483648"
+
+Test 590 (moul_d_9) : FAILED.
+    First line of code: {return test("%d", INT_MAX + 1);}
+      expected output : "-2147483648"
+      your output     : "--2147483648"
+      expected (nonprintable as hex) : "-2147483648"
+      actual   (nonprintable as hex) : "--2147483648"
+
+Test 601 (moul_i_7) : FAILED.
+    First line of code: {return test("%i", INT_MIN);}
+      expected output : "-2147483648"
+      your output     : "--2147483648"
+      expected (nonprintable as hex) : "-2147483648"
+      actual   (nonprintable as hex) : "--2147483648"
+
+Test 603 (moul_i_9) : FAILED.
+    First line of code: {return test("%i", INT_MAX + 1);}
+      expected output : "-2147483648"
+      your output     : "--2147483648"
+      expected (nonprintable as hex) : "-2147483648"
+      actual   (nonprintable as hex) : "--2147483648"
+
+Test 640 (moul_leftjusty_2) : FAILED.
+    First line of code: {return test("%%-d 42 == %-d
+", INT_MIN);}
+      expected output : "%-d 42 == -2147483648
+"
+      your output     : "%-d 42 == --2147483648
+"
+      expected (nonprintable as hex) : "%-d 42 == -2147483648\x0a"
+      actual   (nonprintable as hex) : "%-d 42 == --2147483648\x0a"
+
+Test 647 (moul_star_2) : FAILED.
+    First line of code: {return test("%% *.5i 42 == |% *.5i|
+", 4, 42);}
+      expected output : "% *.5i 42 == | 00042|
+"
+      your output     : "% *.5i 42 == |*.5i|
+"
+      expected (nonprintable as hex) : "% *.5i 42 == | 00042|\x0a"
+      actual   (nonprintable as hex) : "% *.5i 42 == |*.5i|\x0a"
+
+Test 4192 (notintsubject_o_neg_prec_star_01) : FAILED.
+    First line of code: {return test("%.*o", -3, 12345);}
+      expected output : "30071"
+      your output     : "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      expected (nonprintable as hex) : "30071"
+      actual   (nonprintable as hex) : "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+Test 4193 (notintsubject_o_neg_prec_star_02) : FAILED.
+    First line of code: {return test("%.*o", -1, 12345);}
+      expected output : "30071"
+      your output     : "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      expected (nonprintable as hex) : "30071"
+      actual   (nonprintable as hex) : "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+Test 4194 (notintsubject_o_neg_prec_star_03) : FAILED.
+    First line of code: {return test("%.*o", -1, 0);}
+      expected output : "0"
+      your output     : "ff8ce6c"
+      expected (nonprintable as hex) : "0"
+      actual   (nonprintable as hex) : "ff8ce6c"
+
