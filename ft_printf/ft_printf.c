@@ -43,9 +43,9 @@ int	ft_process_args(char type, t_option option, va_list args)
 	cnt = 0;
 
 	if (type == 'c')
-		cnt = ft_print_char(option);
+		cnt = ft_print_char(va_arg(args, char), option);
 	else if (type == 's')
-		cnt = ft_print_string(option);
+		cnt = ft_print_string(va_arg(args, char *), option);
 	else if (type == 'p')
 		cnt = ft_print_pointer(option);
 	else if (type == 'd' || type == 'i')

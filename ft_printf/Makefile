@@ -12,7 +12,9 @@ SRCS=ft_printf.c\
 	 src/ft_print_unsigned_int.c\
 	 src/ft_print_hex.c\
 	 src/ft_convert_hex.c\
-	 src/ft_print_percent.c
+	 src/ft_print_percent.c\
+	 src/ft_print_string.c\
+	 src/ft_print_char.c
 OBJS=$(SRCS:.c=.o)
 AR=ar rsc
 RM=rm -f
