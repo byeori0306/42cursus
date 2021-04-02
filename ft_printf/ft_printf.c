@@ -1,7 +1,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include "ft_printf.h"
-#include <stdio.h>
 
 t_option	ft_init_option(void)
 {
@@ -79,6 +78,8 @@ int	ft_process_format(const char *format, va_list args)
 			i = ft_process_option(++i, format, &option, args);
 			if (ft_is_specifier(format[i]))
 				cnt += ft_process_args(format[i], option, args);
+			else
+				break;
 		}
 		else // format[i] != % 
 			cnt += ft_putchar(format[i]);

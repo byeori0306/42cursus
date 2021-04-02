@@ -37,6 +37,8 @@ char *ft_utoa(unsigned int n);
 int ft_get_hex_len(unsigned long long num);
 char *ft_convert_hex(unsigned long long num, int letter_case);
 int	ft_print_ptr(char *str, int len, t_option option);
+char	*ft_lldtoa(long long int n);
+//static	unsigned int	get_len(long long int n);
 
 int	ft_print_int(int num, t_option option);
 int	ft_print_unsigned_int(unsigned int num, t_option option);

@@ -14,7 +14,8 @@ SRCS=ft_printf.c\
 	 src/ft_print_percent.c\
 	 src/ft_print_string.c\
 	 src/ft_print_char.c\
-	 src/ft_print_pointer.c
+	 src/ft_print_pointer.c\
+	 src/ft_lldtoa.c
 OBJS=$(SRCS:.c=.o)
 AR=ar rsc
 RM=rm -f

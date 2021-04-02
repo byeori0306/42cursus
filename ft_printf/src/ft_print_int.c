@@ -72,11 +72,8 @@ int	ft_print_int(int num, t_option option)
 	if (num == 0 && option.precision == 0)
 		return (cnt = ft_print_width(option.width, minus, option));
 	if (num < 0)
-	{
 		minus = 1;
-		num *= -1;
-	}
-	n_str = ft_itoa(num);
+	n_str = ft_lldtoa((long long int)num);
 	n_len = ft_strlen(n_str);
 	width = option.width;
 	cnt = 0;
