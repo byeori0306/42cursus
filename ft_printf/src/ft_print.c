@@ -28,24 +28,6 @@ int	ft_print_pointer(t_option option)
 	return (cnt);
 }
 
-int	ft_print_un_int(t_option option)
-{
-	int cnt;
-
-	cnt = 0;
-	printf("UI");
-	return (cnt);
-}
-
-int	ft_print_hex(t_option option)
-{
-	int cnt;
-
-	cnt = 0;
-	printf("H");
-	return (cnt);
-}
-
 int	ft_print_percent(t_option option)
 {
 	int cnt;

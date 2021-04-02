@@ -51,25 +51,17 @@ int	ft_process_args(char type, t_option option, va_list args)
 	else if (type == 'd' || type == 'i')
 		cnt = ft_print_int(va_arg(args, int), option);
 	else if (type == 'u')
-		cnt = ft_print_un_int(option);
+		cnt = ft_print_unsigned_int(va_arg(args, unsigned int), option);
 	else if (type == 'x')
-		cnt = ft_print_hex(option);
+		cnt = ft_print_hex(va_arg(args, unsigned int), option, 0);
 	else if (type == 'X')
-		cnt = ft_print_hex(option);
+		cnt = ft_print_hex(va_arg(args, unsigned int), option, 1);
 	else if (type == '%')
 		cnt = ft_print_percent(option);
 
 	return (cnt);
 }
-/*
-void	ft_print_option(t_option option)
-{
-	printf("dash : %d\n", option.left_align);
-	printf("zero : %d\n", option.zero);
-	printf("width : %d\n", option.width);
-	printf("precision : %d\n", option.precision);
-}
-*/
+
 int	ft_process_format(const char *format, va_list args)
 {
 	int cnt;
