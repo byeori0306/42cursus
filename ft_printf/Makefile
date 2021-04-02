@@ -2,7 +2,6 @@ CC=gcc
 CFLAGS=-Wall -Wextra
 NAME=libftprintf.a
 SRCS=ft_printf.c\
-	 src/ft_print.c\
 	 src/ft_putchar.c\
 	 src/ft_putstr.c\
 	 src/ft_utoa.c\
@@ -14,7 +13,8 @@ SRCS=ft_printf.c\
 	 src/ft_convert_hex.c\
 	 src/ft_print_percent.c\
 	 src/ft_print_string.c\
-	 src/ft_print_char.c
+	 src/ft_print_char.c\
+	 src/ft_print_pointer.c
 OBJS=$(SRCS:.c=.o)
 AR=ar rsc
 RM=rm -f

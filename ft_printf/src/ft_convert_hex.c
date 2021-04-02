@@ -1,7 +1,7 @@
 #include "../ft_printf.h"
 #include <stdlib.h>
 
-int		ft_get_hex_len(unsigned int num)
+int		ft_get_hex_len(unsigned long long num)
 {
 	int cnt;
 
@@ -14,13 +14,13 @@ int		ft_get_hex_len(unsigned int num)
 	return (cnt);
 }
 
-char	*ft_convert_hex(unsigned int num, int letter_case)
+char	*ft_convert_hex(unsigned long long num, int letter_case)
 {
 	char *str;
 	char *base;
 	int len;
 	int i;
-	
+
 	if (num == 0)
 		return (ft_strdup("0"));
 	if (letter_case == 0)
