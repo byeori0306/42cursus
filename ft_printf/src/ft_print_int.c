@@ -32,7 +32,7 @@ int	ft_print_width(int n_pad, int minus, t_option option)
 	}
 	return (cnt);
 }
-
+#include <stdio.h>
 int	ft_print_num(char *num, int len, int minus, t_option option)
 {
 	int cnt;
@@ -40,10 +40,8 @@ int	ft_print_num(char *num, int len, int minus, t_option option)
 	cnt = 0;
 	
 	// minus
-	if (minus == 1 && (option.left_align == 1 || option.zero == 0))
-	{
+	if (minus == 1 && (!(option.left_align == 0 && option.zero == 1) || option.width == 0))
 		cnt += ft_putchar('-');
-	}
 	// precision
 	if (option.precision > 0)
 	{

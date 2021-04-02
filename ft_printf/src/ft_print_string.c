@@ -55,14 +55,14 @@ int	ft_print_string(char *str, t_option option)
 	width = option.width;
 	
 	if (option.precision == 0)
-		return (cnt = ft_print_str_width(width, option));
+		return (cnt = ft_print_width(width, 0, option));
 	
 	if (option.left_align == 1)
 		cnt += ft_print_str(str, len, option);
 	if (width > 0)
 	{
 		width = ft_cal_str_width(width, option.precision, len);
-		cnt += ft_print_str_width(width, option);
+		cnt += ft_print_width(width, 0, option);
 	}
 	if (option.left_align == 0)
 		cnt += ft_print_str(str, len, option);
