@@ -1,17 +1,39 @@
-#include "../ft_printf.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_set_option.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 14:00:33 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 14:05:33 by dahpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_set_width(int i, const char *format, va_list args, t_option *option)
+#include "../include/ft_printf.h"
+
+t_option	ft_init_option(void)
+{
+	t_option	option;
+
+	option.left_align = 0;
+	option.zero = 0;
+	option.width = 0;
+	option.precision = -1;
+	return (option);
+}
+
+int			ft_set_width(int i, const char *format, va_list args, t_option *opt)
 {
 	int temp;
 
 	temp = 0;
 	if (format[i] == '*')
 	{
-		if ((option->width = va_arg(args, int)) < 0)
+		if ((opt->width = va_arg(args, int)) < 0)
 		{
-			option->left_align = 1;
-			option->width *= -1;
+			opt->left_align = 1;
+			opt->width *= -1;
 		}
 		i++;
 	}
@@ -22,20 +44,20 @@ int	ft_set_width(int i, const char *format, va_list args, t_option *option)
 			temp = temp * 10;
 			temp += format[i++] - '0';
 		}
-		option->width = temp;
+		opt->width = temp;
 	}
 	return (i);
 }
 
-int	ft_set_precision(int i, const char *format, va_list args, t_option *option)
+int			ft_set_prec(int i, const char *format, va_list args, t_option *opt)
 {
 	int temp;
 
 	temp = 0;
-	option->precision = 0;
+	opt->precision = 0;
 	if (format[i] == '*')
 	{
-		option->precision = va_arg(args, int);
+		opt->precision = va_arg(args, int);
 		i++;
 	}
 	else
@@ -45,9 +67,9 @@ int	ft_set_precision(int i, const char *format, va_list args, t_option *option)
 			temp = temp * 10;
 			temp += format[i++] - '0';
 		}
-		option->precision = temp;
+		opt->precision = temp;
 	}
-	if (option->precision >= 0)
-		option->zero = 0;
+	if (opt->precision >= 0)
+		opt->zero = 0;
 	return (i);
 }

@@ -1,32 +1,30 @@
-#include "../ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_unsigned_int.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 14:21:49 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 16:41:50 by dahpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/ft_printf.h"
 #include <stdlib.h>
 
 int	ft_print_unsigned_int(unsigned int num, t_option option)
 {
-	char *n_str;
-	int n_len;
-	int cnt;
-	int minus;
-	int width;
+	char	*n_str;
+	int		n_len;
+	int		cnt;
 
-	minus = 0;
 	if (num == 0 && option.precision == 0)
-		return (cnt = ft_print_width(option.width, minus, option));
-	n_str = ft_utoa(num);
+		return (cnt = ft_consider_width(option.width, option, 0));
+	if (!(n_str = ft_utoa(num)))
+		return (-1);
 	n_len = ft_strlen(n_str);
-	width = option.width;
-	cnt = 0;
-	
-	if (option.left_align == 1)
-		cnt += ft_print_num(n_str, n_len, minus, option);
-	if (width > 0)
-	{
-		width = ft_cal_width(width, option.precision, n_len, minus);
-		cnt += ft_print_width(width, minus, option);
-	}
-	if (option.left_align == 0)
-		cnt += ft_print_num(n_str, n_len, minus, option);
-
+	cnt = ft_consider_align(n_str, n_len, option, 0);
 	free(n_str);
 	return (cnt);
 }

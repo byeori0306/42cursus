@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:07:01 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 15:46:39 by dahpark          ###   ########.fr       */
+/*   Created: 2021/04/03 13:47:37 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 14:44:11 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-#include <stdlib.h>
 
-int	ft_print_int(int num, t_option option)
+int		ft_is_specifier(char c)
 {
-	char	*n_str;
-	int		n_len;
-	int		cnt;
-	int		minus;
+	char *spec;
 
-	minus = 0;
-	if (num == 0 && option.precision == 0)
-		return (cnt = ft_consider_width(option.width, option, minus));
-	if (num < 0)
-		minus = 1;
-	if (!(n_str = ft_lldtoa((long long int)num)))
-		return (-1);
-	n_len = ft_strlen(n_str);
-	cnt = ft_consider_align(n_str, n_len, option, minus);
-	free(n_str);
-	return (cnt);
+	spec = "cspdiuxX%";
+	while (*spec)
+	{
+		if (*spec == c)
+			return (1);
+		spec++;
+	}
+	return (0);
+}
+
+char	*ft_is_option(char c)
+{
+	return (ft_strchr("-0.", c));
+}
+
+char	*ft_is_width(char c)
+{
+	return (ft_strchr("123456789*", c));
 }

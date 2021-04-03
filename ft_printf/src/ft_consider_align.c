@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_consider_align.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:07:01 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 15:46:39 by dahpark          ###   ########.fr       */
+/*   Created: 2021/04/03 15:37:59 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 15:39:28 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-#include <stdlib.h>
 
-int	ft_print_int(int num, t_option option)
+int	ft_consider_align(char *str, int len, t_option opt, int minus)
 {
-	char	*n_str;
-	int		n_len;
-	int		cnt;
-	int		minus;
+	int cnt;
+	int width;
 
-	minus = 0;
-	if (num == 0 && option.precision == 0)
-		return (cnt = ft_consider_width(option.width, option, minus));
-	if (num < 0)
-		minus = 1;
-	if (!(n_str = ft_lldtoa((long long int)num)))
-		return (-1);
-	n_len = ft_strlen(n_str);
-	cnt = ft_consider_align(n_str, n_len, option, minus);
-	free(n_str);
+	cnt = 0;
+	width = opt.width;
+	if (opt.left_align == 1)
+		cnt += ft_consider_prec(str, len, opt, minus);
+	if (width > 0)
+	{
+		width = ft_cal_width(width, opt.precision, len, minus);
+		cnt += ft_consider_width(width, opt, minus);
+	}
+	if (opt.left_align == 0)
+		cnt += ft_consider_prec(str, len, opt, minus);
 	return (cnt);
 }

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_consider_prec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:07:01 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 15:46:39 by dahpark          ###   ########.fr       */
+/*   Created: 2021/04/03 15:36:55 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 15:37:08 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-#include <stdlib.h>
 
-int	ft_print_int(int num, t_option option)
+int	ft_consider_prec(char *num, int len, t_option option, int minus)
 {
-	char	*n_str;
-	int		n_len;
-	int		cnt;
-	int		minus;
+	int cnt;
+	int prec;
 
-	minus = 0;
-	if (num == 0 && option.precision == 0)
-		return (cnt = ft_consider_width(option.width, option, minus));
-	if (num < 0)
-		minus = 1;
-	if (!(n_str = ft_lldtoa((long long int)num)))
-		return (-1);
-	n_len = ft_strlen(n_str);
-	cnt = ft_consider_align(n_str, n_len, option, minus);
-	free(n_str);
+	cnt = 0;
+	prec = option.precision;
+	if (minus == 1 && (!(option.left_align == 0 && option.zero == 1) \
+				|| option.width == 0))
+		cnt += ft_putchar('-');
+	if (prec > 0)
+	{
+		prec -= len;
+		while (prec > 0)
+		{
+			cnt += ft_putchar('0');
+			prec--;
+		}
+	}
+	cnt += ft_putstr(num);
 	return (cnt);
 }

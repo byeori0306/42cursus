@@ -1,15 +1,19 @@
-#include "../ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 14:26:12 by dahpark           #+#    #+#             */
+/*   Updated: 2021/04/03 16:42:26 by dahpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/ft_printf.h"
 #include <stdlib.h>
 
-int ft_cal_str_width(int width, int precision, int len)
-{
-	if (precision >= 0 && precision < len)
-		return (width - precision);
-	else
-		return (width - len);
-}
-
-int	ft_print_str_width(int n_pad, t_option option)
+/*int	ft_print_str_width(int n_pad, t_option option)
 {
 	int cnt;
 
@@ -20,52 +24,54 @@ int	ft_print_str_width(int n_pad, t_option option)
 		n_pad--;
 	}
 	return (cnt);
-}
+}*/
 
-int	ft_print_str(char *str, int len, t_option option)
+static int	ft_consider_str_prec(char *str, int len, t_option opt)
 {
 	int cnt;
 	int prec;
 
 	cnt = 0;
-	prec = option.precision;
-	
-	// precision
+	prec = opt.precision;
 	if (prec > 0 && prec < len)
 	{
 		while (prec > cnt)
 			cnt += ft_putchar(str[cnt]);
 	}
 	else
-		cnt += ft_putstr(str);	
-
+		cnt += ft_putstr(str);
 	return (cnt);
 }
 
-int	ft_print_string(char *str, t_option option)
+static int	ft_consider_str_align(char *str, int len, t_option opt)
+{
+	int cnt;
+	int width;
+
+	cnt = 0;
+	width = opt.width;
+	if (opt.left_align == 1)
+		cnt += ft_consider_str_prec(str, len, opt);
+	if (width > 0)
+	{
+		width = ft_cal_str_width(width, opt.precision, len);
+		cnt += ft_consider_width(width, opt, 0);
+	}
+	if (opt.left_align == 0)
+		cnt += ft_consider_str_prec(str, len, opt);
+	return (cnt);
+}
+
+int			ft_print_string(char *str, t_option option)
 {
 	int len;
 	int cnt;
-	int width;
-	
+
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
-	cnt = 0;
-	width = option.width;
-	
 	if (option.precision == 0)
-		return (cnt = ft_print_width(width, 0, option));
-	
-	if (option.left_align == 1)
-		cnt += ft_print_str(str, len, option);
-	if (width > 0)
-	{
-		width = ft_cal_str_width(width, option.precision, len);
-		cnt += ft_print_width(width, 0, option);
-	}
-	if (option.left_align == 0)
-		cnt += ft_print_str(str, len, option);
-
+		return (cnt = ft_consider_width(option.width, option, 0));
+	cnt = ft_consider_str_align(str, len, option);
 	return (cnt);
 }
