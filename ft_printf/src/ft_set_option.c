@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:00:33 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 14:05:33 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 03:28:28 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ int			ft_set_prec(int i, const char *format, va_list args, t_option *opt)
 		opt->precision = va_arg(args, int);
 		i++;
 	}
+	else if (format[i] == '-')
+	{
+		opt->precision = -1;
+		i++;
+	}
 	else
 	{
 		while (ft_isdigit(format[i]))
@@ -69,7 +74,5 @@ int			ft_set_prec(int i, const char *format, va_list args, t_option *opt)
 		}
 		opt->precision = temp;
 	}
-	if (opt->precision >= 0)
-		opt->zero = 0;
 	return (i);
 }

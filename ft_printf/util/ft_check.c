@@ -6,32 +6,39 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:47:37 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 14:44:11 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 03:24:53 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		ft_is_specifier(char c)
+static int	ft_check(char *list, char c)
 {
-	char *spec;
-
-	spec = "cspdiuxX%";
-	while (*spec)
+	while (*list)
 	{
-		if (*spec == c)
+		if (*list == c)
 			return (1);
-		spec++;
+		list++;
 	}
 	return (0);
 }
 
-char	*ft_is_option(char c)
+int			ft_is_specifier(char c)
 {
-	return (ft_strchr("-0.", c));
+	return (ft_check("cspdiuxX%", c));
 }
 
-char	*ft_is_width(char c)
+int			ft_is_num_type(char c)
 {
-	return (ft_strchr("123456789*", c));
+	return (ft_check("diuxXp", c));
+}
+
+int			ft_is_option(char c)
+{
+	return (ft_check("-0.", c));
+}
+
+int			ft_is_width(char c)
+{
+	return (ft_check("123456789*", c));
 }

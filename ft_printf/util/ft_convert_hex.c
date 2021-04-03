@@ -6,16 +6,16 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:53:10 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 13:57:08 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 03:23:45 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include <stdlib.h>
 
-static int		ft_get_hex_len(unsigned long long num)
+static unsigned int	ft_get_hex_len(unsigned long long num)
 {
-	int cnt;
+	unsigned int cnt;
 
 	cnt = 0;
 	while (num > 0)
@@ -26,12 +26,12 @@ static int		ft_get_hex_len(unsigned long long num)
 	return (cnt);
 }
 
-char			*ft_convert_hex(unsigned long long num, int letter_case)
+char				*ft_convert_hex(unsigned long long num, int letter_case)
 {
-	char	*str;
-	char	*base;
-	int		len;
-	int		i;
+	char			*str;
+	char			*base;
+	unsigned int	len;
+	unsigned int	i;
 
 	if (num == 0)
 		return (ft_strdup("0"));

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 15:35:24 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 16:41:32 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 03:15:34 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,21 @@ int	ft_cal_str_width(int width, int prec, int len)
 		return (width - len);
 }
 
-int	ft_consider_width(int n_pad, t_option option, int minus)
+int	ft_consider_width(int n_pad, t_option opt, int minus)
 {
 	char	padding;
 	int		cnt;
 
 	cnt = 0;
-	if (option.left_align == 0 && option.zero == 1)
+	padding = ' ';
+	if (ft_is_num_type(opt.type) && opt.precision >= 0)
+		opt.zero = 0;
+	if (opt.left_align == 0 && opt.zero == 1)
 	{
 		if (minus == 1)
 			cnt += ft_putchar('-');
 		padding = '0';
 	}
-	else
-		padding = ' ';
 	while (n_pad > 0)
 	{
 		cnt += ft_putchar(padding);

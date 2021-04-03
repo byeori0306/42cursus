@@ -6,25 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:26:12 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/03 16:42:26 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 03:27:59 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include <stdlib.h>
-
-/*int	ft_print_str_width(int n_pad, t_option option)
-{
-	int cnt;
-
-	cnt = 0;
-	while (n_pad > 0)
-	{
-		cnt += ft_putchar(' ');
-		n_pad--;
-	}
-	return (cnt);
-}*/
 
 static int	ft_consider_str_prec(char *str, int len, t_option opt)
 {
