@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:47:30 by dahpark           #+#    #+#             */
-/*   Updated: 2021/04/04 04:12:58 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/04/04 14:24:32 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_consider_ptr_prec(char *str, int len, t_option opt, int empty)
 			prec--;
 		}
 	}
-	if (empty == 0 && opt.precision != 0)
+	if (empty == 0)
 		cnt += ft_putstr(str);
 	return (cnt);
 }
