@@ -7,7 +7,10 @@ RUN apt-get install -y nginx openssl php-fpm \
 
 COPY srcs/scripts /scripts
 
-RUN sh scripts/certificate.sh
+ENV AUTO 1
+COPY srcs/ssl/priv.key /etc/ssl/private/
+COPY srcs/ssl/cert.crt /etc/ssl/certs/
+RUN chmod 600 /etc/ssl/*
 COPY srcs/files/default /etc/nginx/sites-available/
 
 RUN sh scripts/set_phpmyadmin.sh
