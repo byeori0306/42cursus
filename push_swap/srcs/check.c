@@ -60,11 +60,11 @@ int	is_dup(t_node *x)
 	int num;
 
 	temp = x;
-	num = x->data;
+	num = x->value;
 	while (x->next)
 	{
 		x = x->next;
-		if (x->data == num)
+		if (x->value == num)
 			return (TRUE);
 	}
 	if (temp->next)

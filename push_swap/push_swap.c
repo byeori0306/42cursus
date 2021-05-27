@@ -5,7 +5,7 @@ void	print_q(t_node *node)
 {
 	while (node)
 	{
-		printf("%d ", node->data);
+		printf("%d ", node->value);
 		node = node->next;
 	}
 	printf("\n");
@@ -39,9 +39,25 @@ t_deque	fill_deque(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_deque a;
-	init_deque(&a);	
+	t_deque b;
+	init_deque(&a);
+	init_deque(&b);
+
 	if (argc < 2)
 		return (0);
 
 	a = fill_deque(argc, argv);
+	//printf("before sort :\n");
+	//print_q(a.head);
+	
+	if (a.size == 3)
+		sort_3(&a);
+	else if (a.size == 5)
+		sort_5(&a, &b);
+	else
+		a_to_b(&a, &b, a.size);
+	
+	//printf("after sort : \n");
+	//print_q(a.head);
+	//print_q(b.head);
 }

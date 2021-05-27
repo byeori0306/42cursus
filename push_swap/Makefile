@@ -4,11 +4,18 @@ NAME=push_swap
 LIB_PATH=./libft
 LIB=./libft/libft.a
 SRCS=push_swap.c\
-     deque/init.c\
-     deque/del.c\
-     deque/add.c\
-     srcs/instructions.c\
-     srcs/check.c
+     srcs/list/init.c\
+     srcs/list/del.c\
+     srcs/list/add.c\
+     srcs/instructions/push.c\
+     srcs/instructions/swap.c\
+     srcs/instructions/rotate.c\
+     srcs/instructions/reverse_rotate.c\
+     srcs/check.c\
+     srcs/find_median.c\
+     srcs/sort_3.c\
+     srcs/sort_5.c\
+     srcs/sort.c
 OBJS=$(SRCS:.c=.o)
 RM=rm -f
 
