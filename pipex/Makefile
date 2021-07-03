@@ -16,7 +16,9 @@ NAME=pipex
 LIB_PATH=./libft
 LIB=./libft/libft.a
 SRCS=pipex.c\
-	get_path.c
+	get_path.c\
+	execute_cmd.c\
+	print_error.c
 OBJS=$(SRCS:.c=.o)
 RM=rm -f
 

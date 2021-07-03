@@ -27,8 +27,21 @@
 # define STD_ERR 2
 # define CHILD 0
 
+typedef	struct s_pipex
+{
+	char *in_file;
+	char *cmd_1;
+	char *cmd_2;
+	char *out_file;
+	char **paths;
+	int pipe_fd[2];
+}				t_pipex;
+
 void	print_error(char *message);
+void	print_err(char *message, t_pipex *pipex);
 void	free_arr(char **arr);
 char	**find_paths(char **env);
+void	execute_cmd1(t_pipex *pipex);
+void	execute_cmd2(t_pipex *pipex);
 
 #endif
