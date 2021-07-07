@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 15:45:21 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/05 18:07:09 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/15 13:35:34 by dahpark           #+#    #+#             */
+/*   Updated: 2021/07/04 15:39:41 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-void	free_2d(char **arr)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
+	char	*result;
+	int		len1;
+	int		len2;
 
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-void	exit_err(char *message, t_pipex *pipex)
-{
-	ft_putstr_fd("Error\n", STD_ERR);
-	ft_putstr_fd(message, STD_ERR);
-	if (pipex->cmd_1)
-		free_2d(pipex->cmd_1);
-	if (pipex->cmd_2)
-		free_2d(pipex->cmd_2);
-	if (pipex->paths)
-		free_2d(pipex->paths);
-	exit(EXIT_FAIL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if ((result = (char *)malloc(sizeof(char) * (len1 + len2 + 1))) == NULL)
+		return (0);
+	ft_strlcpy(result, s1, len1 + 1);
+	ft_strlcpy(&result[len1], s2, len2 + 1);
+	result[len1 + len2] = '\0';
+	return (result);
 }

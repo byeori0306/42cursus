@@ -6,42 +6,56 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:54:24 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/03 21:11:00 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/07/05 18:20:44 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
 
-static void	check_input(int argc, char **argv)
+static	void	check_input(int argc, t_pipex *pipex)
 {
 	if (argc < 5)
-		print_error("It should be executed like ./pipex infile cmd1 cmd2 outfile.\n");
+		exit_err("form : ./pipex infile cmd1 cmd2 outfile.\n", pipex);
 	else if (argc > 5)
-		print_error("Too many arguments.\n");
-	if (access(argv[1], F_OK) != 0) // F_OK? R_OK?
-		print_error("Please check input file.\n");
+		exit_err("Too many arguments.\n", pipex);
+	if (access(pipex->infile, F_OK) != 0)
+		exit_err("Please check input file.\n", pipex);
+	else if (access(pipex->infile, R_OK) != 0)
+		exit_err("Permission to input file denied.\n", pipex);
+	if (access(pipex->outfile, F_OK) == 0 && access(pipex->outfile, W_OK) != 0)
+		exit_err("Permission to output file denied.\n", pipex);
+	else if (access(pipex->outfile, F_OK) != 0)
+		open(pipex->outfile, O_CREAT, 0644);
 }
 
-static void	init_pipex(t_pipex *pipex, char **argv, char **env)
+static	void	init_pipex(t_pipex *pipex, int argc, char **argv, char **env)
 {
-	int fds[2];
-
-	if (pipe(fds[2]) < 0)
-		print_error("Create pipe failed.\n");
-	pipex->in_file = argv[1];
-	pipex->cmd_1 = argv[2];
-	pipex->cmd_2 = argv[3];
-	pipex->out_file = argv[4];
-	pipex->paths = find_paths(env);
-	pipex->pipe_fd[2] = fds[2];
+	pipex->infile = argv[1];
+	pipex->cmd_1 = NULL;
+	pipex->cmd_2 = NULL;
+	pipex->outfile = argv[argc - 1];
+	pipex->envp = env;
+	pipex->paths = NULL;
 }
 
-int	main(int argc, char **argv, char **env)
+static	void	fill_pipex(t_pipex *pipex, char **argv)
+{
+	pipex->cmd_1 = ft_split(argv[2], ' ');
+	pipex->cmd_2 = ft_split(argv[3], ' ');
+	if (!pipex->cmd_1 || !pipex->cmd_2)
+		exit_err("Parse command failed.\n", pipex);
+	pipex->paths = find_paths(pipex);
+	if (pipe(pipex->pipe_fd) < 0)
+		exit_err("Create pipe failed.\n", pipex);
+}
+
+int				main(int argc, char **argv, char **env)
 {
 	t_pipex pipex;
-	check_input(argc, argv);
-	init_pipex(&pipex, argv, env);
-	execute_cmd1(&pipex);
-	execute_cmd2(&pipex);
+
+	init_pipex(&pipex, argc, argv, env);
+	check_input(argc, &pipex);
+	fill_pipex(&pipex, argv);
+	execute_cmd_1(&pipex);
+	execute_cmd_2(&pipex);
 }

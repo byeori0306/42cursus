@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 15:45:21 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/05 18:07:09 by dahpark          ###   ########.fr       */
+/*   Created: 2020/10/07 15:39:12 by dahpark           #+#    #+#             */
+/*   Updated: 2021/07/04 15:03:21 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include <stddef.h>
 
-void	free_2d(char **arr)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
-
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-void	exit_err(char *message, t_pipex *pipex)
-{
-	ft_putstr_fd("Error\n", STD_ERR);
-	ft_putstr_fd(message, STD_ERR);
-	if (pipex->cmd_1)
-		free_2d(pipex->cmd_1);
-	if (pipex->cmd_2)
-		free_2d(pipex->cmd_2);
-	if (pipex->paths)
-		free_2d(pipex->paths);
-	exit(EXIT_FAIL);
+	while (n--)
+	{
+		if (!(*s1) || !(*s2) || *s1 != *s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

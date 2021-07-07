@@ -1,59 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute_cmd.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/05 15:33:50 by dahpark           #+#    #+#             */
+/*   Updated: 2021/07/05 18:19:38 by dahpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
-static void	execute_cmd(char *cmd, char **path)
+static int	execute_cmd(char **cmd, t_pipex *pipex)
 {
-	int i;
-	char *cmd_path;
-	char **argv;
+	int		i;
+	char	*cmd_path;
 
 	i = 0;
-	argv = ft_split(cmd, ' ');
-	while (path[i])
+	while (pipex->paths[i])
 	{
-		cmd_path = ft_strjoin(path[i], cmd[0]);
-		execve(cmd_path, argv, NULL);
+		cmd_path = ft_strjoin(pipex->paths[i], cmd[0]);
+		execve(cmd_path, cmd, pipex->envp);
 		free(cmd_path);
+		i++;
 	}
-	free_arr(argv);
-	print_error("Please make sure you entered the right command.\n");
+	return (-1);
 }
 
-void	execute_cmd1(t_pipex *pipex)
+void		execute_cmd_1(t_pipex *pipex)
 {
-	int file_fd;
-	pid_t pid;
+	pid_t	pid;
+	int		status;
 
-	file_fd = open(pipex->in_file, O_RDONLY);
-	if (file_fd < 0)
-		print_error("Open file failed.\n");
-	
 	pid = fork();
 	if (pid < 0)
-		print_error("Fork failed.\n");
+		exit_err("Fork failed.\n", pipex);
 	else if (pid == CHILD)
 	{
-		if (dup2(file_fd, STD_IN) < 0)
-			print_error("Redirection failed.\n");
-		close(file_fd);
-		if (dup2(pipex->pipe_fd[0], STD_OUT) < 0)
-			print_error("Connect cmd1 and cmd2 failed.\n");
-		execute_cmd(pipex->cmd_1, pipex->paths);
+		redirect_input(pipex);
+		close(pipex->pipe_fd[0]);
+		if (dup2(pipex->pipe_fd[1], STD_OUT) < 0)
+			exit_err("Connect cmd1 and cmd2 failed.\n", pipex);
+		close(pipex->pipe_fd[1]);
+		if (execute_cmd(pipex->cmd_1, pipex) < 0)
+			exit(EXIT_FAIL);
 	}
 	else
-		wait(NULL);
+	{
+		wait(&status);
+		if (WIFEXITED(status) == 0)
+			exit_err("When executing cmd1, something went wrong.\n", pipex);
+	}
 }
 
-void	execute_cmd2(t_pipex *pipex)
+void		execute_cmd_2(t_pipex *pipex)
 {
-	int file_fd;
-
-	file_fd = open(pipex->out_file, O_TRUNC | O_CREAT, 0644);
-	if (file_fd < 0)
-		print_error("Open file failed.\n");
-	if (dup2(file_fd, STD_OUT) < 0)
-		print_error("Redirection failed.\n");
-	close(file_fd);
-	if (dup2(pipex->pipe_fd[1], STD_IN) < 0)
-		print_error("Connect cmd1 and cmd2 failed.\n");
-	execute_cmd(pipex->cmd_2, pipex->paths);
+	close(pipex->pipe_fd[1]);
+	if (dup2(pipex->pipe_fd[0], STD_IN) < 0)
+		exit_err("Connect cmd1 and cmd2 failed.\n", pipex);
+	close(pipex->pipe_fd[0]);
+	redirect_output(pipex);
+	if (execute_cmd(pipex->cmd_2, pipex) < 0)
+		exit_err("When executing cmd2, something went wrong.\n", pipex);
 }

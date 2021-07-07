@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 15:45:21 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/05 18:07:09 by dahpark          ###   ########.fr       */
+/*   Created: 2021/07/05 15:33:34 by dahpark           #+#    #+#             */
+/*   Updated: 2021/07/05 17:23:28 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	free_2d(char **arr)
+void	redirect_input(t_pipex *pipex)
 {
-	int i;
+	int file_fd;
 
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
+	file_fd = open(pipex->infile, O_RDONLY);
+	if (file_fd < 0)
+		exit_err("Open infile failed.\n", pipex);
+	dup2(file_fd, STD_IN);
+	close(file_fd);
 }
 
-void	exit_err(char *message, t_pipex *pipex)
+void	redirect_output(t_pipex *pipex)
 {
-	ft_putstr_fd("Error\n", STD_ERR);
-	ft_putstr_fd(message, STD_ERR);
-	if (pipex->cmd_1)
-		free_2d(pipex->cmd_1);
-	if (pipex->cmd_2)
-		free_2d(pipex->cmd_2);
-	if (pipex->paths)
-		free_2d(pipex->paths);
-	exit(EXIT_FAIL);
+	int file_fd;
+
+	file_fd = open(pipex->outfile, O_RDWR | O_TRUNC);
+	if (file_fd < 0)
+		exit_err("Open outfile failed.\n", pipex);
+	dup2(file_fd, STD_OUT);
+	close(file_fd);
 }

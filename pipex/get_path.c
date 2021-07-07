@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 19:22:57 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/03 21:11:27 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/07/05 18:09:10 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	void	add_slash(char **path)
 {
-	int i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	i = 0;
 	while (path[i])
@@ -27,22 +27,14 @@ static	void	add_slash(char **path)
 	}
 }
 
-void	free_arr(char **arr)
+char			**find_paths(t_pipex *pipex)
 {
-	int i;
+	char	**env;
+	char	**path;
+	char	**paths;
+	int		i;
 
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-char	**find_paths(char **env)
-{
-	char **path;
-	char **paths;
-	int i;
-
+	env = pipex->envp;
 	i = 0;
 	paths = NULL;
 	while (env[i] != NULL)
@@ -52,13 +44,13 @@ char	**find_paths(char **env)
 		{
 			paths = ft_split(path[1], ':');
 			add_slash(paths);
-			free_arr(path);
-			break;
+			free_2d(path);
+			break ;
 		}
-		free_arr(path);
+		free_2d(path);
 		i++;
 	}
 	if (paths == NULL)
-		print_error("Finding path failed.\n");
+		exit_err("Finding path failed.\n", pipex);
 	return (paths);
 }
