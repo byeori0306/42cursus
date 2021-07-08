@@ -25,13 +25,14 @@ static int	execute_cmd(char **cmd, t_pipex *pipex)
 		free(cmd_path);
 		i++;
 	}
+	if (ft_strncmp(cmd[0], "EXIT", 5))
+		return (0);
 	return (-1);
 }
 
 void		execute_cmd_1(t_pipex *pipex)
 {
 	pid_t	pid;
-	int		status;
 
 	pid = fork();
 	if (pid < 0)
@@ -46,21 +47,23 @@ void		execute_cmd_1(t_pipex *pipex)
 		if (execute_cmd(pipex->cmd_1, pipex) < 0)
 			exit(EXIT_FAIL);
 	}
-	else
-	{
-		wait(&status);
-		if (WIFEXITED(status) == 0)
-			exit_err("When executing cmd1, something went wrong.\n", pipex);
-	}
 }
 
 void		execute_cmd_2(t_pipex *pipex)
 {
-	close(pipex->pipe_fd[1]);
-	if (dup2(pipex->pipe_fd[0], STD_IN) < 0)
-		exit_err("Connect cmd1 and cmd2 failed.\n", pipex);
-	close(pipex->pipe_fd[0]);
-	redirect_output(pipex);
-	if (execute_cmd(pipex->cmd_2, pipex) < 0)
-		exit_err("When executing cmd2, something went wrong.\n", pipex);
+	pid_t	pid;
+
+	pid = fork();
+	if (pid < 0)
+		exit_err("Fork failed.\n", pipex);
+	else if (pid == CHILD)
+	{
+		redirect_output(pipex);
+		close(pipex->pipe_fd[1]);
+		if (dup2(pipex->pipe_fd[0], STD_IN) < 0)
+			exit_err("Connect cmd1 and cmd2 failed.\n", pipex);
+		close(pipex->pipe_fd[0]);
+		if (execute_cmd(pipex->cmd_2, pipex) < 0)
+			exit(EXIT_FAIL);
+	}
 }
