@@ -24,6 +24,9 @@ static int basic_check(int argc, char **argv)
 
 static  int set_table(int argc, char **argv, t_table *tb)
 {
+    int init_res_1;
+    int init_res_2;
+
     if (argc == 6)
         tb->num_eat = ft_atoi(argv[5]);
     else
@@ -37,10 +40,12 @@ static  int set_table(int argc, char **argv, t_table *tb)
     tb->philo = (pthread_t *)malloc(sizeof(pthread_t) * tb->num_philo);
     tb->fork = (int *)malloc(sizeof(int) * tb->num_philo);
     tb->lock = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * tb->num_philo);
-    pthread_mutex_init(&(tb->printer), NULL);
-    pthread_mutex_init(&(tb->death), NULL);
+    init_res_1 = pthread_mutex_init(&(tb->printer), NULL);
+    init_res_2 = pthread_mutex_init(&(tb->death), NULL);
     if (!(tb->philo) || !(tb->fork) || !(tb->lock))
         return (print_error(tb, "Check arguments value."));
+    if (init_res_1 != 0 || init_res_2 != 0)
+        return (print_error(tb, INIT_ERR));
     return (0);
 }
 

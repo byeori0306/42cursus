@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 21:05:33 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/17 07:44:40 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/18 19:00:20 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int main(int argc, char **argv)
     t_table tb;
 
     if (init(argc, argv, &tb) < 0)
-        return (0);
+        return (finish_dinning(&tb));
     if (prepare_forks(&tb) < 0)
-        return (0);
+        return (finish_dinning(&tb));
     if (invite_philos(&tb) < 0)
-        return (0);
+        return (finish_dinning(&tb));
     finish_dinning(&tb);
     return (0);
 }

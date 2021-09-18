@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:56:42 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 13:32:06 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/18 19:00:13 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 #define TRUE 1
 #define FALSE 0
 #define VACANT -1
+#define STDERR 2
+#define TIME_ERR "Stopwatch doesn't work."
+#define INIT_ERR "pthread_mutex_init call error."
+#define	LOCK_ERR "pthread_mutex_lock call error."
 #define TAKE_FORK "has taken a fork"
 #define EATING "is eating"
 #define SLEEPING "is sleeping"
@@ -56,7 +60,7 @@ typedef struct  s_philo_info
 int init(int argc, char **argv, t_table *tb);
 int prepare_forks(t_table *tb);
 int invite_philos(t_table *tb);
-void finish_dinning(t_table *tb);
+int finish_dinning(t_table *tb);
 void    *routine(void *philo_info);
 int think_and_take_forks(t_table *tb, t_philo_info *p_info);
 int    put_forks(t_table *tb, t_philo_info *p_info);
@@ -67,7 +71,7 @@ int ft_isdigit(int c);
 int is_num(char *str);
 void	ft_putstr_fd(char *s, int fd);
 int print_error(t_table *tb, char *msg);
-void    print_status(t_table *tb, int id, char *msg);
+int    print_status(t_table *tb, long time, int id, char *msg);
 long stopwatch(t_table *tb);
 
 #endif
