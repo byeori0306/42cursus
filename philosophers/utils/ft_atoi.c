@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:17:12 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/16 12:38:14 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/18 21:03:00 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	result = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n'
-			|| *str == '\r' || *str == '\v' || *str == '\f')
+		|| *str == '\r' || *str == '\v' || *str == '\f')
 		str++;
 	if (*str == '+')
 		str++;
