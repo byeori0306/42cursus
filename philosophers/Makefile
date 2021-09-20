@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/18 23:45:41 by dahpark           #+#    #+#              #
-#    Updated: 2021/09/18 23:45:44 by dahpark          ###   ########.fr        #
+#    Updated: 2021/09/20 18:40:43 by dahpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ UTILS=$(addprefix utils/, ft_atoi.c ft_isdigit.c ft_putstr_fd.c utils.c)
 SRCS=philo.c\
 	init.c\
 	dinning.c\
+	invite_philo.c\
 	routine.c\
 	use_forks.c\
 	die.c\

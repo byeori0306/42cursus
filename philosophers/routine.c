@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:21:25 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 17:14:09 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:41:44 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	*routine(void *philo_info)
 	t_philo_info	*p_info;
 	t_table			*tb;
 	int				count;
+	int				res;
 
 	p_info = (t_philo_info *)philo_info;
 	tb = p_info->table;
@@ -82,7 +83,12 @@ void	*routine(void *philo_info)
 			break ;
 		if (sleeping(tb, p_info) < 0)
 			break ;
-		usleep(1000);
+		res = usleep(1000);
+		if (res != 0)
+		{
+			print_error(tb, SLP_ERR);
+			break;
+		}
 		if (start_thinking(tb, p_info) < 0)
 			break ;
 	}

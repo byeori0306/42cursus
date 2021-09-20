@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:56:42 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 17:51:21 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:32:58 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 # define FALSE 0
 # define VACANT -1
 # define STDERR 2
-# define TIME_ERR "Stopwatch doesn't work."
-# define INIT_ERR "pthread_mutex_init call error."
-# define LOCK_ERR "pthread_mutex_lock call error."
+# define TIME_ERR "Stopwatch doesn't work.\n"
+# define SLP_ERR "usleep call error.\n"
+# define INIT_ERR "pthread_mutex_init call error.\n"
+# define LOCK_ERR "pthread_mutex_lock call error.\n"
 # define TAKE_FORK 1
 # define EATING 2
 # define SLEEPING 3
