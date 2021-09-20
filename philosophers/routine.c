@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:21:25 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 19:09:37 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 19:15:58 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	sleeping(t_table *tb, t_philo_info *p_info)
 
 static int	take_a_break(t_table *tb)
 {
-	int res;
+	int	res;
 
 	res = usleep(1000);
 	if (res != 0)
