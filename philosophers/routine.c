@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:21:25 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 18:54:30 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 19:09:37 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static int	sleeping(t_table *tb, t_philo_info *p_info)
 	return (0);
 }
 
+static int	take_a_break(t_table *tb)
+{
+	int res;
+
+	res = usleep(1000);
+	if (res != 0)
+		return (print_error(tb, SLP_ERR));
+	return (0);
+}
+
 static int	start_thinking(t_table *tb, t_philo_info *p_info)
 {
 	int	print_res;
@@ -83,12 +93,8 @@ void	*routine(void *philo_info)
 			break ;
 		if (sleeping(tb, p_info) < 0)
 			break ;
-		res = usleep(1000);
-		if (res != 0)
-		{
-			print_error(tb, SLP_ERR);
+		if (take_a_break(tb) < 0)
 			break ;
-		}
 		if (start_thinking(tb, p_info) < 0)
 			break ;
 	}
