@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   use_forks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:32:56 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 23:44:59 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 09:54:01 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@ static int	when_only_one_philo(t_table *tb, t_philo_info *p_info)
 {
 	int	print_res;
 
+	tb->fork[p_info->id] = p_info->id;
+	print_res = print_status(tb, p_info, -1, TAKE_FORK);
+	if (print_res < 0)
+		return (print_error(tb, TIME_ERR));
 	while (tb->end == FALSE)
 	{
-		if (tb->fork[p_info->id] == VACANT)
-		{
-			tb->fork[p_info->id] = p_info->id;
-			print_res = print_status(tb, -1, p_info->id, TAKE_FORK);
-			if (print_res < 0)
-				return (print_error(tb, TIME_ERR));
-		}
 		if (exceed_limit(p_info) == TRUE)
 			return (announce_death(tb, p_info));
 	}
@@ -45,9 +42,9 @@ static int	take_forks(t_table *tb, t_philo_info *p_info)
 	if (tb->fork[p_info->right] == VACANT && tb->fork[p_info->left] == VACANT)
 	{
 		tb->fork[p_info->right] = p_info->id;
-		rt_print_res = print_status(tb, -1, p_info->id, TAKE_FORK);
+		rt_print_res = print_status(tb, p_info, -1, TAKE_FORK);
 		tb->fork[p_info->left] = p_info->id;
-		lt_print_res = print_status(tb, -1, p_info->id, TAKE_FORK);
+		lt_print_res = print_status(tb, p_info, -1, TAKE_FORK);
 		if (rt_print_res < 0 || lt_print_res < 0)
 			return (print_error(tb, TIME_ERR));
 	}
@@ -60,18 +57,13 @@ int	think_and_take_forks(t_table *tb, t_philo_info *p_info)
 {
 	int	die;
 
+	if (tb->num_philo == 1)
+		return (when_only_one_philo(tb, p_info));
 	while (TRUE)
 	{
-		if (tb->num_philo == 1)
-			return (when_only_one_philo(tb, p_info));
 		if (take_forks(tb, p_info) < 0)
 			return (-1);
-		die = exceed_limit(p_info);
-		if (die == TRUE)
-			return (announce_death(tb, p_info));
-		else if (die < 0)
-			return (print_error(tb, TIME_ERR));
-		if (tb->end == TRUE)
+		if (exit_routine(tb, p_info) < 0)
 			return (-1);
 		if (tb->fork[p_info->right] == p_info->id
 			&& tb->fork[p_info->left] == p_info->id)
@@ -98,12 +90,5 @@ int	put_forks(t_table *tb, t_philo_info *p_info)
 	tb->fork[rt] = VACANT;
 	pthread_mutex_unlock(&(tb->lock[lt]));
 	pthread_mutex_unlock(&(tb->lock[rt]));
-	die = exceed_limit(p_info);
-	if (die == TRUE)
-		return (announce_death(tb, p_info));
-	else if (die < 0)
-		return (print_error(tb, TIME_ERR));
-	if (tb->end == TRUE)
-		return (-1);
 	return (0);
 }

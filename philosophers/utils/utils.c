@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 20:58:50 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 21:09:08 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 09:06:33 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,27 @@ int	print_error(t_table *tb, char *msg)
 	return (-1);
 }
 
-int	print_status(t_table *tb, long time, int id, char *msg)
+static char *get_msg(int num)
 {
-	int	lock_res;
-	int	curr_time;
+	char *msg;
+
+	if (num == DIE)
+		msg = "died";
+	else if (num == TAKE_FORK)
+		msg = "has taken a fork";
+	else if (num == EATING)
+		msg = "is eating";
+	else if (num == SLEEPING)
+		msg = "is sleeping";
+	else if (num == THINKING)
+		msg = "is thinking";
+	return (msg);
+}
+
+int	print_status(t_table *tb, t_philo_info *p_info, long time, int status)
+{
+	int		lock_res;
+	long	curr_time;
 
 	lock_res = pthread_mutex_lock(&(tb->printer));
 	if (lock_res != 0)
@@ -42,10 +59,14 @@ int	print_status(t_table *tb, long time, int id, char *msg)
 		curr_time = stopwatch(tb);
 		if (curr_time < 0)
 			return (-1);
-		printf("%ld %d %s\n", stopwatch(tb), id, msg);
+		if ((status == DIE) || (status != DIE && tb->end == FALSE))
+			printf("%ld %d %s\n", curr_time, p_info->id, get_msg(status));
 	}
 	else
-		printf("%ld %d %s\n", time, id, msg);
+	{
+		if (status != DIE && tb->end == FALSE)
+			printf("%ld %d %s\n", time, p_info->id, get_msg(status));
+	}
 	pthread_mutex_unlock(&(tb->printer));
 	return (0);
 }

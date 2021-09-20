@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:56:42 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 21:15:34 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 17:51:21 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # define STDERR 2
 # define TIME_ERR "Stopwatch doesn't work."
 # define INIT_ERR "pthread_mutex_init call error."
-# define	LOCK_ERR "pthread_mutex_lock call error."
-# define TAKE_FORK "has taken a fork"
-# define EATING "is eating"
-# define SLEEPING "is sleeping"
-# define THINKING "is thinking"
-# define DIED "died"
+# define LOCK_ERR "pthread_mutex_lock call error."
+# define TAKE_FORK 1
+# define EATING 2
+# define SLEEPING 3
+# define THINKING 4
+# define DIE 5
 
 typedef struct s_table
 {
@@ -57,6 +57,7 @@ typedef struct s_philo_info
 	int		last_meal;
 }				t_philo_info;
 
+int		basic_check(int argc, char **argv);
 int		init(int argc, char **argv, t_table *tb);
 int		prepare_forks(t_table *tb);
 int		invite_philos(t_table *tb);
@@ -66,12 +67,13 @@ int		think_and_take_forks(t_table *tb, t_philo_info *p_info);
 int		put_forks(t_table *tb, t_philo_info *p_info);
 int		exceed_limit(t_philo_info *p_info);
 int		announce_death(t_table *tb, t_philo_info *p_info);
+int		exit_routine(t_table *tb, t_philo_info *p_info);
 int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 int		is_num(char *str);
 void	ft_putstr_fd(char *s, int fd);
 int		print_error(t_table *tb, char *msg);
-int		print_status(t_table *tb, long time, int id, char *msg);
+int		print_status(t_table *tb, t_philo_info *p_info, long time, int status);
 long	stopwatch(t_table *tb);
 
 #endif

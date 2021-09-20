@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 21:15:52 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 22:50:07 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 17:55:01 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	basic_check(int argc, char **argv)
-{
-	int	i;
-
-	if (!(argc == 5 || argc == 6))
-	{
-		printf("You need 4 or 5 arguments.\n");
-		return (-1);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		if (is_num(argv[i]) == FALSE)
-		{
-			printf("The arguments should be positive number.\n");
-			return (-1);
-		}
-		i++;
-	}
-	return (0);
-}
 
 static int	set_table(int argc, char **argv, t_table *tb)
 {
@@ -75,9 +53,29 @@ static int	check_table(t_table *tb)
 
 int	init(int argc, char **argv, t_table *tb)
 {
-	if (basic_check(argc, argv) < 0)
-		return (-1);
 	if (set_table(argc, argv, tb) < 0)
 		return (-1);
 	return (check_table(tb));
+}
+
+int	basic_check(int argc, char **argv)
+{
+	int	i;
+
+	if (!(argc == 5 || argc == 6))
+	{
+		ft_putstr_fd("Check number of arguments.\n", STDERR);
+		return (-1);
+	}
+	i = 1;
+	while (i < argc)
+	{
+		if (is_num(argv[i]) == FALSE)
+		{
+			ft_putstr_fd("Check arguments type.\n", STDERR);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
 }

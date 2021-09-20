@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:21:25 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 23:32:42 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 17:14:09 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,13 @@ static int	eating(t_table *tb, t_philo_info *p_info)
 	start_eating = stopwatch(tb);
 	curr_time = start_eating;
 	p_info->last_meal = start_eating;
-	print_status(tb, curr_time, p_info->id, EATING);
+	print_status(tb, p_info, curr_time, EATING);
 	while (curr_time - start_eating < tb->time_eat)
 	{
 		curr_time = stopwatch(tb);
 		if (curr_time < 0)
 			return (print_error(tb, TIME_ERR));
-		die = exceed_limit(p_info);
-		if (die == TRUE)
-			return (announce_death(tb, p_info));
-		else if (die < 0)
-			return (print_error(tb, TIME_ERR));
-		if (tb->end == TRUE)
+		if (exit_routine(tb, p_info) < 0)
 			return (-1);
 	}
 	return (0);
@@ -46,28 +41,23 @@ static int	sleeping(t_table *tb, t_philo_info *p_info)
 
 	start_sleeping = stopwatch(tb);
 	curr_time = start_sleeping;
-	print_status(tb, curr_time, p_info->id, SLEEPING);
+	print_status(tb, p_info, curr_time, SLEEPING);
 	while (curr_time - start_sleeping < tb->time_sleep)
 	{
 		curr_time = stopwatch(tb);
 		if (curr_time < 0)
 			return (print_error(tb, TIME_ERR));
-		die = exceed_limit(p_info);
-		if (die == TRUE)
-			return (announce_death(tb, p_info));
-		else if (die < 0)
-			return (print_error(tb, TIME_ERR));
-		if (tb->end == TRUE)
+		if (exit_routine(tb, p_info) < 0)
 			return (-1);
 	}
 	return (0);
 }
 
-static int	start_thinking(t_table *tb, int id)
+static int	start_thinking(t_table *tb, t_philo_info *p_info)
 {
 	int	print_res;
 
-	print_res = print_status(tb, -1, id, THINKING);
+	print_res = print_status(tb, p_info, -1, THINKING);
 	if (print_res < 0)
 		return (print_error(tb, TIME_ERR));
 	return (0);
@@ -92,7 +82,8 @@ void	*routine(void *philo_info)
 			break ;
 		if (sleeping(tb, p_info) < 0)
 			break ;
-		if (start_thinking(tb, p_info->id) < 0)
+		usleep(1000);
+		if (start_thinking(tb, p_info) < 0)
 			break ;
 	}
 	return (0);

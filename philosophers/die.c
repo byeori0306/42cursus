@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   die.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:18:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/18 23:20:53 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 09:04:52 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,24 @@ int	announce_death(t_table *tb, t_philo_info *p_info)
 	if (tb->end == FALSE)
 	{
 		tb->end = 1;
-		print_res = print_status(tb, -1, p_info->id, DIED);
+		print_res = print_status(tb, p_info, -1, DIE);
 		if (print_res < 0)
 			return (print_error(tb, TIME_ERR));
 	}
 	pthread_mutex_unlock(&(tb->death));
 	return (-1);
+}
+
+int	exit_routine(t_table *tb, t_philo_info *p_info)
+{
+	int die;
+
+	die = exceed_limit(p_info);
+	if (die == TRUE)
+		return (announce_death(tb, p_info));
+	else if (die < 0)
+		return (print_error(tb, TIME_ERR));
+	if (tb->end == TRUE)
+		return (-1);
+	return (0);
 }
