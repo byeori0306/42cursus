@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 20:58:50 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 09:06:33 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:15:54 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	print_error(t_table *tb, char *msg)
 	return (-1);
 }
 
-static char *get_msg(int num)
+static char	*get_msg(int num)
 {
-	char *msg;
+	char	*msg;
 
 	if (num == DIE)
 		msg = "died";

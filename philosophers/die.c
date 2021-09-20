@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:18:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 09:04:52 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:10:27 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	announce_death(t_table *tb, t_philo_info *p_info)
 
 int	exit_routine(t_table *tb, t_philo_info *p_info)
 {
-	int die;
+	int	die;
 
 	die = exceed_limit(p_info);
 	if (die == TRUE)

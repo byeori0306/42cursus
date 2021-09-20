@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 21:15:52 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 17:55:01 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:14:45 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ int	basic_check(int argc, char **argv)
 {
 	int	i;
 
+	i = 1;
 	if (!(argc == 5 || argc == 6))
 	{
 		ft_putstr_fd("Check number of arguments.\n", STDERR);
 		return (-1);
 	}
-	i = 1;
 	while (i < argc)
 	{
 		if (is_num(argv[i]) == FALSE)
