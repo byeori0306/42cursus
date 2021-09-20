@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 23:21:25 by dahpark           #+#    #+#             */
-/*   Updated: 2021/09/20 18:41:44 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/09/20 18:54:30 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	*routine(void *philo_info)
 		if (res != 0)
 		{
 			print_error(tb, SLP_ERR);
-			break;
+			break ;
 		}
 		if (start_thinking(tb, p_info) < 0)
 			break ;
