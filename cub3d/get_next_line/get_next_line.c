@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 02:57:06 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 04:13:01 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/16 19:41:02 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char	*gnl_strjoin(char *s1, char *s2)
 		l1 = 0;
 	l2 = ft_strlen(s2);
 	len = l1 + l2;
-	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (!result)
 		return (NULL);
 	if (s1)
 	{
@@ -39,12 +40,13 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (result);
 }
 
-int		gnl_split(char **storage, char *eol, char **line)
+int	gnl_split(char **storage, char *eol, char **line)
 {
 	size_t	len;
 
 	len = eol - *storage;
-	if (!(*line = (char *)malloc(sizeof(char) * (len + 1))))
+	*line = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(*line))
 		return (-1);
 	if (len == 0)
 		(*line)[0] = '\0';
@@ -54,50 +56,68 @@ int		gnl_split(char **storage, char *eol, char **line)
 	return (1);
 }
 
-int		gnl_result(ssize_t size, char **storage, char **line)
+int	gnl_result(ssize_t size, char **storage, char **line)
 {
 	char	*eol;
 
 	if (size < 0)
 		return (-1);
-	if (*storage && (eol = (ft_strchr(*storage, '\n'))))
+	eol = ft_strchr(*storage, '\n');
+	if (*storage && eol)
 		return (gnl_split(storage, eol, line));
 	else if (*storage)
 	{
-		if (!(*line = ft_strdup(*storage)))
+		*line = ft_strdup(*storage);
+		if (!(*line))
 			return (-1);
 		free(*storage);
 		*storage = NULL;
 	}
 	else
 	{
-		if (!(*line = ft_strdup("")))
+		*line = ft_strdup("");
+		if (!(*line))
 			return (-1);
 	}
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int	find_next_line(char **storage, char **buf, char **line)
+{
+	char	*eol;
+
+	eol = ft_strchr(*storage, '\n');
+	if (eol)
+	{
+		free(*buf);
+		return (gnl_split(storage, eol, line));
+	}
+	else
+		return (0);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	ssize_t		size;
 	char		*buf;
 	static char	*storage;
-	char		*eol;
 
 	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
 		return (-1);
-	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
 		return (-1);
-	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
+	while (1)
 	{
+		size = read(fd, buf, BUFFER_SIZE);
+		if (size <= 0)
+			break ;
 		buf[size] = '\0';
-		if (!(storage = gnl_strjoin(storage, buf)))
+		storage = gnl_strjoin(storage, buf);
+		if (!storage)
 			return (-1);
-		if ((eol = (ft_strchr(storage, '\n'))))
-		{
-			free(buf);
-			return (gnl_split(&storage, eol, line));
-		}
+		if (find_next_line(&storage, &buf, line))
+			return (1);
 	}
 	free(buf);
 	return (gnl_result(size, &storage, line));

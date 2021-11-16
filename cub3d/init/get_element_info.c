@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_element_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/09 12:38:34 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/11/16 19:50:29 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static int	get_2d_len(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
-}
 
 static void	check_rgb(char **colors, int **rgb)
 {
@@ -66,6 +56,7 @@ static void	get_color_info(t_elem_info *elem_info, char **parsed_line)
 		elem_info->f = rgb;
 	else if (!ft_strncmp(parsed_line[0], "C", 2))
 		elem_info->c = rgb;
+	free_2d(colors);
 }
 
 static void	get_img_info(char **dir, char **parsed_line)
@@ -74,12 +65,12 @@ static void	get_img_info(char **dir, char **parsed_line)
 		print_err("Invalid information : too many or too few information of element");
 	*dir = ft_strdup(parsed_line[1]);
 	if (!(*dir))
-		print_err("System error : memory allocation failed");	
+		print_err("System error : memory allocation failed");
 }
 
 void	get_elem_info(t_elem_info *elem_info, char *line)
 {
-	char **parsed_line;
+	char	**parsed_line;
 
 	parsed_line = ft_split(line, ' ');
 	if (!ft_strncmp(parsed_line[0], "NO", 3))
@@ -90,8 +81,10 @@ void	get_elem_info(t_elem_info *elem_info, char *line)
 		get_img_info(&(elem_info->we), parsed_line);
 	else if (!ft_strncmp(parsed_line[0], "EA", 3))
 		get_img_info(&(elem_info->ea), parsed_line);
-	else if (!ft_strncmp(parsed_line[0], "F", 2) || !ft_strncmp(parsed_line[0], "C", 2))
+	else if (!ft_strncmp(parsed_line[0], "F", 2)
+		|| !ft_strncmp(parsed_line[0], "C", 2))
 		get_color_info(elem_info, parsed_line);
 	else
 		print_err("Invalid information : invalid type identifier");
+	free_2d(parsed_line);
 }

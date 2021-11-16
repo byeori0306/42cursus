@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 03:14:42 by dahpark           #+#    #+#             */
-/*   Updated: 2021/02/28 03:15:52 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/16 19:21:43 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	len = ft_strlen(s1);
-	if ((dup = (char *)malloc(sizeof(char) * len + 1)) == NULL)
+	dup = (char *)malloc(sizeof(char) * len + 1);
+	if (!dup)
 		return (0);
 	i = 0;
 	while (s1[i] != '\0')

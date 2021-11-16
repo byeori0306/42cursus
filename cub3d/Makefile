@@ -3,27 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 21:06:34 by dahpark           #+#    #+#              #
-#    Updated: 2021/11/13 17:35:38 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2021/11/16 18:25:00 by dahpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -g3
 NAME	= cub3d
 LIB_DIR	= ./libft
 LIB		= ./libft/libft.a
 MLX_DIR	= ./minilibx_mms
 MLX_LIB	= ./minilibx_mms/libmlx.dylib
 MLX		= -L./minilibx_mms -lmlx -framework OpenGL -framework Appkit
-GNL		= $(addprefix get_next_line/, get_next_line.c get_next_line_utils.c)
-INIT	= $(addprefix init/, check_arg.c check_file.c init.c get_element_info.c get_map_info.c)
+GNL		= $(addprefix get_next_line/, get_next_line.c \
+									get_next_line_utils.c)
+INIT	= $(addprefix init/, check_arg.c \
+							check_file.c \
+							check_map.c \
+							init.c \
+							get_element_info.c \
+							get_map_info.c \
+							get_map.c)
 SRCS	= cub3d.c \
 		srcs/print_error.c \
 		srcs/event.c \
 		srcs/draw_mini_map.c \
+		srcs/move.c \
+		util/2d_array_util.c \
 		$(GNL) \
 		$(INIT)
 OBJS	= $(SRCS:.c=.o)
