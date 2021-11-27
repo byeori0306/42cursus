@@ -6,11 +6,24 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:29:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/16 20:03:53 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/27 21:51:30 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static int	is_wall(t_game *game, int keycode, int x, int y)
+{
+	int cur_pixel;
+
+	if (keycode == KEY_W || keycode == KEY_A)
+		cur_pixel = x + y * (game->map_info.col + 1) * TILE_SIZE;
+	else if (keycode == KEY_S || keycode == KEY_D)
+		cur_pixel = (x + PL_SIZE / 2) + (y + PL_SIZE) * (game->map_info.col + 1) * TILE_SIZE;
+	if (game->img.data[cur_pixel] == WHITE)
+		return (1);
+	return (0);
+}
 
 static void	change_player_pos(int keycode, t_game *game)
 {
@@ -20,14 +33,14 @@ static void	change_player_pos(int keycode, t_game *game)
 	x = game->player.pos_x;
 	y = game->player.pos_y;
 	if (keycode == KEY_W)
-		y -= 5;
+		y -= 2;
 	else if (keycode == KEY_A)
-		x -= 5;
+		x -= 2;
 	else if (keycode == KEY_S)
-		y += 5;
+		y += 2;
 	else if (keycode == KEY_D)
-		x += 5;
-	if (game->map_info.map[y / (TILE_SIZE + 1)][x / (TILE_SIZE + 1)] == '1')
+		x += 2;
+	if (is_wall(game, keycode, x, y))
 		return ;
 	else
 	{
@@ -39,6 +52,5 @@ static void	change_player_pos(int keycode, t_game *game)
 int	move(int keycode, t_game *game)
 {
 	change_player_pos(keycode, game);
-	mlx_clear_window(game->mlx, game->window);
 	return (0);
 }

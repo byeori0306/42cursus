@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/16 19:43:04 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/27 20:03:21 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void	init_window(t_game *game)
 	if (!game->mlx)
 		print_err("Can't start game.\n");
 	game->window = mlx_new_window(game->mlx,
-			game->map_info.col * (TILE_SIZE + 1),
-			game->map_info.row * (TILE_SIZE + 1), "cub3d");
+			game->map_info.col * TILE_SIZE,
+			game->map_info.row * TILE_SIZE, "cub3d");
 	if (!game->window)
 		print_err("Making window failed.\n");
+	game->img.img_ptr = mlx_new_image(game->mlx,
+			game->map_info.col * TILE_SIZE, game->map_info.row * TILE_SIZE);
+	game->img.data = (int *)mlx_get_data_addr(game->img.img_ptr,
+			&game->img.bpp, &game->img.size_line, &game->img.endian);
 }
