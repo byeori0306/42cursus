@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 10:34:38 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/27 20:38:04 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/30 14:04:39 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	draw_mini_map(t_game *game)
 		y++;
 	}
 	draw_player(game);
+	draw_rays(game);
 	mlx_put_image_to_window(game->mlx, game->window, game->img.img_ptr, 0, 0);
 	return (0);
 }

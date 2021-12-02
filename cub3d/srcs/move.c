@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:29:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/27 21:51:30 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/29 23:07:24 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@ static int	is_wall(t_game *game, int keycode, int x, int y)
 
 	if (keycode == KEY_W || keycode == KEY_A)
 		cur_pixel = x + y * (game->map_info.col + 1) * TILE_SIZE;
-	else if (keycode == KEY_S || keycode == KEY_D)
-		cur_pixel = (x + PL_SIZE / 2) + (y + PL_SIZE) * (game->map_info.col + 1) * TILE_SIZE;
+	else
+		cur_pixel = (x + PL_SIZE / 2) + (y + PL_SIZE / 2) * (game->map_info.col + 1) * TILE_SIZE;
 	if (game->img.data[cur_pixel] == WHITE)
 		return (1);
 	return (0);
+}
+
+static void	rotate(t_player *player, double angle)
+{
+	double old_dir_x;
+	
+	old_dir_x = player->dir_x;
+	player->dir_x = cos(angle) * player->dir_x - sin(angle) * player->dir_y;
+	player->dir_y = sin(angle) * player->dir_x + cos(angle) * player->dir_y;	
 }
 
 static void	change_player_pos(int keycode, t_game *game)
@@ -33,13 +42,19 @@ static void	change_player_pos(int keycode, t_game *game)
 	x = game->player.pos_x;
 	y = game->player.pos_y;
 	if (keycode == KEY_W)
-		y -= 2;
+	{
+		x += game->player.dir_x;
+		y += game->player.dir_y;
+	}
 	else if (keycode == KEY_A)
-		x -= 2;
+		rotate(&game->player, M_PI/36);
 	else if (keycode == KEY_S)
-		y += 2;
+	{
+		x -= game->player.dir_x;
+		y -= game->player.dir_y;
+	}
 	else if (keycode == KEY_D)
-		x += 2;
+		rotate(&game->player, -M_PI/36);
 	if (is_wall(game, keycode, x, y))
 		return ;
 	else

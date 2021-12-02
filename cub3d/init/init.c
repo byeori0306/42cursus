@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/27 20:03:21 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/11/29 22:53:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,30 @@ void	init_info(t_game *game)
 	game->elem_info.c = NULL;
 	game->player.pos_x = 0;
 	game->player.pos_y = 0;
+}
+
+void	init_dir(t_player *pl, char dir)
+{
+	if (dir == 'N')
+	{
+		pl->dir_x = 0;
+		pl->dir_y = -1;
+	}
+	else if (dir == 'S')
+	{
+		pl->dir_x = 0;
+		pl->dir_y = 1;
+	}
+	else if (dir == 'W')
+	{
+		pl->dir_x = -1;
+		pl->dir_y = 0;
+	}
+	else if (dir == 'E')
+	{
+		pl->dir_x = 1;
+		pl->dir_x = 0;	
+	}
 }
 
 void	init_map(t_map_info *map_info)

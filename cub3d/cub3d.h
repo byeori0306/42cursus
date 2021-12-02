@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/27 20:52:40 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/12/01 19:26:04 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
+# define YELLOW 0x00FFFF00
 
-# define MLX_SYNC_IMAGE_WRITABLE    1 
-# define MLX_SYNC_WIN_FLUSH_CMD     2
-# define MLX_SYNC_WIN_CMD_COMPLETED 3
+# define FOV M_PI / 3
+# define GAP 2
 
 typedef struct s_map_info
 {
@@ -65,6 +65,8 @@ typedef struct s_player
 {
 	int	pos_x;
 	int	pos_y;
+	double	dir_x;
+	double	dir_y;
 }				t_player;
 
 typedef struct s_img
@@ -76,6 +78,28 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+typedef struct s_temp_ray
+{
+	double	first_x;
+	double	first_y;
+	double	step_x;
+	double	step_y;
+	double	intersect_x;
+	double	intersect_y;
+	double	distance;
+	int		is_wall;
+}				t_temp_ray;
+
+typedef struct  s_ray
+{
+	double	angle;
+	double	intersect_x;
+	double	intersect_y;
+	double	distance;
+	int		hit_vertical;
+}				t_ray;
+
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -84,6 +108,7 @@ typedef struct s_game
 	t_elem_info	elem_info;
 	t_player	player;
 	t_img		img;
+	t_ray		ray;
 }				t_game;
 
 void	check_arg(int argc, char **argv);
@@ -91,12 +116,14 @@ void	check_file(t_game *game, char *file_name);
 void	check_map(t_map_info *map_info);
 void	init_info(t_game *game);
 void	init_map(t_map_info *map_info);
+void	init_dir(t_player *pl, char dir);
 void	init_window(t_game *game);
 void	get_elem_info(t_elem_info *elem_info, char *line);
 void	get_map_info(t_game *game, char *line);
 void	get_map(t_map_info *map_info, char *file_name);
 
 int		draw_mini_map(t_game *game);
+void	draw_rays(t_game *game);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
 int		move(int keycode, t_game *game);

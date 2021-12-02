@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 21:06:34 by dahpark           #+#    #+#              #
-#    Updated: 2021/11/16 18:25:00 by dahpark          ###   ########.fr        #
+#    Updated: 2021/11/30 14:04:11 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	= cub3d.c \
 		srcs/event.c \
 		srcs/draw_mini_map.c \
 		srcs/move.c \
+		srcs/draw_ray.c \
 		util/2d_array_util.c \
 		$(GNL) \
 		$(INIT)
