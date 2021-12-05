@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:14:28 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/16 19:52:30 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/12/03 14:54:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	check_map(t_map_info *map_info)
 		}
 		y++;
 	}
+	modify_map(map_info);
 }

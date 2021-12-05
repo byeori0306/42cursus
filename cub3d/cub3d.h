@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/01 19:26:04 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/05 18:04:56 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define FOV M_PI / 3
 # define GAP 2
 
+# define TRUE 1
+# define FALSE 0
+
 typedef struct s_map_info
 {
 	int		row;
@@ -63,10 +66,13 @@ typedef struct s_elem_info
 
 typedef struct s_player
 {
-	int	pos_x;
-	int	pos_y;
-	double	dir_x;
-	double	dir_y;
+	double	pos_x;
+	double	pos_y;
+	int		turn_dir; // -1 if left, +1 if right
+	int		walk_dir; // -1 if back, +1 if front
+	double	rotation_angle;
+	double	walk_speed;
+	double	turn_speed;
 }				t_player;
 
 typedef struct s_img
@@ -87,16 +93,19 @@ typedef struct s_temp_ray
 	double	intersect_x;
 	double	intersect_y;
 	double	distance;
-	int		is_wall;
+	int		found_wall;
 }				t_temp_ray;
 
 typedef struct  s_ray
 {
-	double	angle;
+	double	ray_angle;
 	double	intersect_x;
 	double	intersect_y;
 	double	distance;
-	int		hit_vertical;
+	int		is_facing_down;
+	int		is_facing_up;
+	int		is_facing_right;
+	int		is_facing_left;
 }				t_ray;
 
 
@@ -116,11 +125,12 @@ void	check_file(t_game *game, char *file_name);
 void	check_map(t_map_info *map_info);
 void	init_info(t_game *game);
 void	init_map(t_map_info *map_info);
-void	init_dir(t_player *pl, char dir);
+void	init_player(t_player *pl, char dir);
 void	init_window(t_game *game);
 void	get_elem_info(t_elem_info *elem_info, char *line);
 void	get_map_info(t_game *game, char *line);
 void	get_map(t_map_info *map_info, char *file_name);
+void	modify_map(t_map_info *map_info);
 
 int		draw_mini_map(t_game *game);
 void	draw_rays(t_game *game);

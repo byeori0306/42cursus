@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/29 22:53:29 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/05 18:06:15 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,20 @@ void	init_info(t_game *game)
 	game->player.pos_y = 0;
 }
 
-void	init_dir(t_player *pl, char dir)
+void	init_player(t_player *pl, char dir)
 {
+	pl->turn_dir = 0;
+	pl->walk_dir = 0;
 	if (dir == 'N')
-	{
-		pl->dir_x = 0;
-		pl->dir_y = -1;
-	}
+		pl->rotation_angle = 1.5 * M_PI;
 	else if (dir == 'S')
-	{
-		pl->dir_x = 0;
-		pl->dir_y = 1;
-	}
+		pl->rotation_angle = 0.5 * M_PI;
 	else if (dir == 'W')
-	{
-		pl->dir_x = -1;
-		pl->dir_y = 0;
-	}
+		pl->rotation_angle = M_PI;
 	else if (dir == 'E')
-	{
-		pl->dir_x = 1;
-		pl->dir_x = 0;	
-	}
+		pl->rotation_angle = 0;
+	pl->walk_speed = 2;
+	pl->turn_speed = 3 * (M_PI / 180);
 }
 
 void	init_map(t_map_info *map_info)

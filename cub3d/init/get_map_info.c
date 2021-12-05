@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:52:11 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/29 22:53:47 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/04 14:10:12 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static int	is_map_components(t_game *game, char ch, int cur_col)
 	{
 		if (game->player.pos_x > 0 || game->player.pos_y > 0)
 			print_err("Invalid map : multiple player's start position");
-		game->player.pos_x = cur_col * (TILE_SIZE + 1)
+		game->player.pos_x = cur_col * TILE_SIZE
 			+ ((TILE_SIZE - PL_SIZE) / 2);
-		game->player.pos_y = game->map_info.row * (TILE_SIZE + 1)
+		game->player.pos_y = game->map_info.row * TILE_SIZE
 			+ ((TILE_SIZE - PL_SIZE) / 2);
-		init_dir(&(game->player), ch);
+		init_player(&(game->player), ch);
 		return (1);
 	}
 	return (0);
