@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/05 18:04:56 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/06 19:31:02 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+
+# define WIDTH 640
+# define HEIGHT 640
 
 # define TILE_SIZE 32
 # define PL_SIZE 4
@@ -134,6 +137,10 @@ void	modify_map(t_map_info *map_info);
 
 int		draw_mini_map(t_game *game);
 void	draw_rays(t_game *game);
+
+int		render(t_game *game);
+void	render_walls(t_game *game, int column_id);
+
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
 int		move(int keycode, t_game *game);

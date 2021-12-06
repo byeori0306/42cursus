@@ -6,7 +6,7 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 21:06:34 by dahpark           #+#    #+#              #
-#    Updated: 2021/11/30 14:04:11 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2021/12/06 18:31:20 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS	= cub3d.c \
 		srcs/draw_mini_map.c \
 		srcs/move.c \
 		srcs/draw_ray.c \
+		srcs/render_walls.c \
 		util/2d_array_util.c \
 		$(GNL) \
 		$(INIT)

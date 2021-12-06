@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:09:05 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/05 18:05:09 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/06 19:15:36 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,34 @@ static int	hit_wall(t_game *game, double x, double y)
 	return (FALSE);
 }
 
-static void	draw_line(t_game *game, t_player *pl, t_ray *ray)
-{
-	double	ray_x;
-	double	ray_y;
-	double	dx;
-	double	dy;
-	double	max_value;
+// static void	draw_line(t_game *game, t_player *pl, t_ray *ray)
+// {
+// 	double	ray_x;
+// 	double	ray_y;
+// 	double	dx;
+// 	double	dy;
+// 	double	max_value;
 
-	ray_x = pl->pos_x;
-	ray_y = pl->pos_y;
+// 	ray_x = pl->pos_x;
+// 	ray_y = pl->pos_y;
 
-	dx = ray->intersect_x - pl->pos_x;
-	dy = ray->intersect_y - pl->pos_y;
+// 	dx = ray->intersect_x - pl->pos_x;
+// 	dy = ray->intersect_y - pl->pos_y;
 
-	max_value = fmax(fabs(dx), fabs(dy));
-	dx /= max_value;
-	dy /= max_value;
+// 	max_value = fmax(fabs(dx), fabs(dy));
+// 	dx /= max_value;
+// 	dy /= max_value;
 	
-	while (TRUE)
-	{
-		if (hit_wall(game, ray_x, ray_y))
-			break;
-		else
-			game->img.data[(game->map_info.col + 1) * TILE_SIZE * (int)floor(ray_y) + (int)floor(ray_x)] = YELLOW;
-		ray_x += dx;
-		ray_y += dy;
-	}
-}
+// 	while (TRUE)
+// 	{
+// 		if (hit_wall(game, ray_x, ray_y))
+// 			break;
+// 		else
+// 			game->img.data[(game->map_info.col + 1) * TILE_SIZE * (int)floor(ray_y) + (int)floor(ray_x)] = YELLOW;
+// 		ray_x += dx;
+// 		ray_y += dy;
+// 	}
+// }
 
 static double normalize_angle(double angle)
 {
@@ -121,7 +121,7 @@ static void	calculate_distance(t_game *game, t_temp_ray *temp_ray)
 	double	y2;
 
 	x1 = game->player.pos_x;
-	y1 = game->player.pos_x;
+	y1 = game->player.pos_y;
 	x2 = temp_ray->intersect_x;
 	y2 = temp_ray->intersect_y;
 	if (temp_ray->found_wall)
@@ -196,23 +196,24 @@ static void	cast_ray(t_game *game, double angle)
 		game->ray.intersect_y = vert.intersect_y;
 		game->ray.distance = vert.distance;
 	}
-	draw_line(game, &game->player, &game->ray);
+	//draw_line(game, &game->player, &game->ray);
 }
 
 void	draw_rays(t_game *game)
 {
 	int		col_id;
-	int		width;
+	//int		width;
 	double	ray_angle;
 	double	increment;
 
 	col_id = 0;
-	width = TILE_SIZE * game->map_info.col;
+	//width = TILE_SIZE * game->map_info.col;
 	ray_angle = game->player.rotation_angle - (FOV / 2);
-	increment = FOV / width;
-	while (col_id < width)
+	increment = FOV / WIDTH;
+	while (col_id < WIDTH)
 	{
 		cast_ray(game, ray_angle);
+		render_walls(game, col_id);
 		ray_angle += increment;
 		col_id++;
 	}
