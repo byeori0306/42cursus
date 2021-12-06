@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:09:05 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/06 19:15:36 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/06 22:08:48 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	init_ray(t_ray *ray, double angle)
 	ray->is_facing_left = !ray->is_facing_right;
 }
 
-static void	find_intersect(t_game *game, t_temp_ray *temp_ray)
+static void	find_intersect(t_game *game, t_temp_ray *temp_ray, int a, int b)
 {
 	double next_x;
 	double next_y;
@@ -99,7 +99,7 @@ static void	find_intersect(t_game *game, t_temp_ray *temp_ray)
 	next_y = temp_ray->first_y;
 	while (!temp_ray->found_wall)
 	{
-		if (hit_wall(game, next_x, next_y))
+		if (hit_wall(game, next_x + a, next_y + b))
 		{
 			temp_ray->found_wall = TRUE;
 			temp_ray->intersect_x = next_x;
@@ -149,7 +149,10 @@ static void	check_horz(t_game *game, t_temp_ray *horz)
 		horz->step_x *= -1;
 	else if (game->ray.is_facing_right && horz->step_x < 0)
 		horz->step_x *= -1;
-	find_intersect(game, horz);
+	if (game->ray.is_facing_up)
+		find_intersect(game, horz, 0, -1);
+	else
+		find_intersect(game, horz, 0, 0);
 	calculate_distance(game, horz);
 }
 
@@ -172,7 +175,10 @@ static void	check_vert(t_game *game, t_temp_ray *vert)
 		vert->step_y *= -1;
 	else if (game->ray.is_facing_down && vert->step_y < 0)
 		vert->step_y *= -1;
-	find_intersect(game, vert);
+	if (game->ray.is_facing_left)
+		find_intersect(game, vert, -1, 0);
+	else
+		find_intersect(game, vert, 0, 0);
 	calculate_distance(game, vert);
 }
 
@@ -186,15 +192,15 @@ static void	cast_ray(t_game *game, double angle)
 	check_vert(game, &vert);
 	if (horz.distance > vert.distance)
 	{
-		game->ray.intersect_x = horz.intersect_x;
-		game->ray.intersect_y = horz.intersect_y;
-		game->ray.distance = horz.distance;
+		game->ray.intersect_x = vert.intersect_x;
+		game->ray.intersect_y = vert.intersect_y;
+		game->ray.distance = vert.distance;	
 	}
 	else
 	{
-		game->ray.intersect_x = vert.intersect_x;
-		game->ray.intersect_y = vert.intersect_y;
-		game->ray.distance = vert.distance;
+		game->ray.intersect_x = horz.intersect_x;
+		game->ray.intersect_y = horz.intersect_y;
+		game->ray.distance = horz.distance;
 	}
 	//draw_line(game, &game->player, &game->ray);
 }
