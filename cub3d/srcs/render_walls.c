@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:53:35 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/06 19:42:30 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/07 18:43:04 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	render_walls(t_game *game, int column_id)
 {
 	int top;
 	int	bottom;
+	double correct_dist;
 	double dist_to_plane;
 	int projected_wall_height;
 
+	correct_dist = game->ray.distance * cos(game->ray.ray_angle - game->player.rotation_angle);
 	dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	projected_wall_height = (int)((TILE_SIZE / game->ray.distance) * dist_to_plane);
+	projected_wall_height = (int)((TILE_SIZE / correct_dist) * dist_to_plane);
 
 	top = (HEIGHT / 2) - (projected_wall_height / 2);
 	bottom = (HEIGHT / 2) + (projected_wall_height / 2);
