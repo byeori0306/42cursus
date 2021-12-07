@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:09:05 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/06 22:08:48 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/07 20:29:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	hit_wall(t_game *game, double x, double y)
 
 	if (x < 0 || x > (game->map_info.col * TILE_SIZE) || y < 0 || y > (game->map_info.row * TILE_SIZE))
 		return (TRUE);
-	col = (int)floor(x);
-	row = (int)floor(y);
-	col /= TILE_SIZE;
-	row /= TILE_SIZE;
+	col = (int)floor(x / TILE_SIZE);
+	row = (int)floor(y / TILE_SIZE);
+	if (col > game->map_info.col - 1 || row > game->map_info.row - 1)
+		return (TRUE);
 	if (game->map_info.map[row][col] == '1')
 		return (TRUE);
 	return (FALSE);

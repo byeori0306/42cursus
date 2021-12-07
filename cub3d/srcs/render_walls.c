@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:53:35 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/07 18:43:04 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/07 20:14:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ void	render_walls(t_game *game, int column_id)
 	projected_wall_height = (int)((TILE_SIZE / correct_dist) * dist_to_plane);
 
 	top = (HEIGHT / 2) - (projected_wall_height / 2);
+	if (top < 0)
+		top = 0;
 	bottom = (HEIGHT / 2) + (projected_wall_height / 2);
+	if (bottom > HEIGHT)
+		bottom = HEIGHT;
 
 	int y;
 
