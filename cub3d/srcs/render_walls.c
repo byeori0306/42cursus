@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:53:35 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/07 20:14:29 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/08 21:00:21 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	paint_sky(t_game *game, int column_id, int top)
 	y = 0;
 	while (y < top)
 	{
-		game->img.data[WIDTH * y + column_id] = 0x000000FF;
+		game->img.data[WIDTH * y + column_id] = game->elem_info.c;
 		y++;
 	}
 }
@@ -31,7 +31,7 @@ static void	paint_ground(t_game *game, int column_id, int bottom)
 	y = bottom;
 	while (y < HEIGHT)
 	{
-		game->img.data[WIDTH * y + column_id] = 0x00000000;
+		game->img.data[WIDTH * y + column_id] = game->elem_info.f;
 		y++;		
 	}	
 }

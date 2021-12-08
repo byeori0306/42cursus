@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/06 19:31:02 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/08 21:14:02 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_elem_info
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		*f;
-	int		*c;
+	int		f;
+	int		c;
 }				t_elem_info;
 
 typedef struct s_player

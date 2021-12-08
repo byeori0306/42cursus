@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_element_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/16 19:50:29 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/12/08 21:15:45 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,15 @@ static void	check_rgb(char **colors, int **rgb)
 	}
 }
 
-static void	get_color_info(t_elem_info *elem_info, char **parsed_line)
+static int	convert_dec_to_hex(int *rgb)
+{
+	int	result;
+
+	result = rgb[2] + (rgb[1] << 8) + (rgb[0] << 16);
+	return (result);
+}
+
+static void	get_color_info(t_elem_info *elem_info, char **parsed_line) // 여기서 계산
 {
 	char	**colors;
 	int		*rgb;
@@ -53,10 +61,11 @@ static void	get_color_info(t_elem_info *elem_info, char **parsed_line)
 		print_err("Invalid information : need RGB colors");
 	check_rgb(colors, &rgb);
 	if (!ft_strncmp(parsed_line[0], "F", 2))
-		elem_info->f = rgb;
+		elem_info->f = convert_dec_to_hex(rgb);
 	else if (!ft_strncmp(parsed_line[0], "C", 2))
-		elem_info->c = rgb;
+		elem_info->c = convert_dec_to_hex(rgb);
 	free_2d(colors);
+	free(rgb);
 }
 
 static void	get_img_info(char **dir, char **parsed_line)
