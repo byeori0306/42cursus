@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:20:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/11/16 19:56:27 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/12/09 16:19:07 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_file(t_game *game, char *file_name)
 			flag = is_map(&(game->elem_info), line);
 		}
 		if (flag == 0 && ft_strlen(line))
-			get_elem_info(&(game->elem_info), line);
+			get_elem_info(game, &(game->elem_info), line);
 		else if (flag == 1)
 		{
 			if (!ft_strlen(line))

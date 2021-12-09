@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/08 21:15:45 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/09 16:40:00 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ static void	get_img_info(char **dir, char **parsed_line)
 	*dir = ft_strdup(parsed_line[1]);
 	if (!(*dir))
 		print_err("System error : memory allocation failed");
-}
+} // 여기서 이미지 ptr로 변환 -> 나중에 destroy image 해줘야 함.
 
-void	get_elem_info(t_elem_info *elem_info, char *line)
+void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line)
 {
 	char	**parsed_line;
-
+	(void)game;
 	parsed_line = ft_split(line, ' ');
 	if (!ft_strncmp(parsed_line[0], "NO", 3))
 		get_img_info(&(elem_info->no), parsed_line);

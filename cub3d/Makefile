@@ -6,7 +6,7 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 21:06:34 by dahpark           #+#    #+#              #
-#    Updated: 2021/12/06 18:31:20 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2021/12/09 16:02:09 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,17 @@ INIT	= $(addprefix init/, check_arg.c \
 							get_element_info.c \
 							get_map_info.c \
 							get_map.c)
+UTIL	= $(addprefix util/, 2d_array_util.c \
+							print_error.c)
 SRCS	= cub3d.c \
-		srcs/print_error.c \
 		srcs/event.c \
 		srcs/draw_mini_map.c \
 		srcs/move.c \
 		srcs/draw_ray.c \
 		srcs/render_walls.c \
-		util/2d_array_util.c \
 		$(GNL) \
-		$(INIT)
+		$(INIT) \
+		$(UTIL)
 OBJS	= $(SRCS:.c=.o)
 RM		= rm -f
 

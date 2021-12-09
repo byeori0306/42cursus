@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/08 21:14:02 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/09 17:12:09 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 # define WIDTH 640
 # define HEIGHT 640
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
+# define TEX_SIZE 64
 # define PL_SIZE 4
 
 # define WHITE 0x00FFFFFF
@@ -65,6 +66,7 @@ typedef struct s_elem_info
 	char	*ea;
 	int		f;
 	int		c;
+	int		*ptr;
 }				t_elem_info;
 
 typedef struct s_player
@@ -77,15 +79,6 @@ typedef struct s_player
 	double	walk_speed;
 	double	turn_speed;
 }				t_player;
-
-typedef struct s_img
-{
-	void	*img_ptr;
-	int		*data;
-	int		size_line;
-	int		bpp;
-	int		endian;
-}				t_img;
 
 typedef struct s_temp_ray
 {
@@ -109,8 +102,26 @@ typedef struct  s_ray
 	int		is_facing_up;
 	int		is_facing_right;
 	int		is_facing_left;
+	int		hit_vertical;
 }				t_ray;
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	int		*data;
+	int		size_line;
+	int		bpp;
+	int		endian;
+}				t_img;
+
+typedef struct s_render
+{
+	double	correct_dist;
+	double	dist_to_plane;
+	int		projected_wall_height;
+	int		top;
+	int		bottom;
+}				t_render;
 
 typedef struct s_game
 {
@@ -121,6 +132,7 @@ typedef struct s_game
 	t_player	player;
 	t_img		img;
 	t_ray		ray;
+	t_render	render;
 }				t_game;
 
 void	check_arg(int argc, char **argv);
@@ -130,7 +142,7 @@ void	init_info(t_game *game);
 void	init_map(t_map_info *map_info);
 void	init_player(t_player *pl, char dir);
 void	init_window(t_game *game);
-void	get_elem_info(t_elem_info *elem_info, char *line);
+void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line);
 void	get_map_info(t_game *game, char *line);
 void	get_map(t_map_info *map_info, char *file_name);
 void	modify_map(t_map_info *map_info);
@@ -139,7 +151,7 @@ int		draw_mini_map(t_game *game);
 void	draw_rays(t_game *game);
 
 int		render(t_game *game);
-void	render_walls(t_game *game, int column_id);
+void	render_col(t_game *game, int column_id);
 
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:09:05 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/07 20:29:29 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/09 16:51:22 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,13 +194,15 @@ static void	cast_ray(t_game *game, double angle)
 	{
 		game->ray.intersect_x = vert.intersect_x;
 		game->ray.intersect_y = vert.intersect_y;
-		game->ray.distance = vert.distance;	
+		game->ray.distance = vert.distance;
+		game->ray.hit_vertical = TRUE;
 	}
 	else
 	{
 		game->ray.intersect_x = horz.intersect_x;
 		game->ray.intersect_y = horz.intersect_y;
 		game->ray.distance = horz.distance;
+		game->ray.hit_vertical = FALSE;
 	}
 	//draw_line(game, &game->player, &game->ray);
 }
@@ -219,7 +221,7 @@ void	draw_rays(t_game *game)
 	while (col_id < WIDTH)
 	{
 		cast_ray(game, ray_angle);
-		render_walls(game, col_id);
+		render_col(game, col_id);
 		ray_angle += increment;
 		col_id++;
 	}
