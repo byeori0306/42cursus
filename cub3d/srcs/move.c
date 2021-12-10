@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:29:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/05 16:52:50 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 20:27:19 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,49 @@ static int	is_wall(t_game *game, double x, double y)
 static void	change_player_dir(int keycode, t_player *pl)
 {
 	if (keycode == KEY_W)
-	{
-		pl->turn_dir = 0;
 		pl->walk_dir = 1;
-	}
 	else if (keycode == KEY_S)
-	{
-		pl->turn_dir = 0;
 		pl->walk_dir = -1;
-	}
-	else if (keycode == KEY_A)
-	{
+	else if (keycode == KEY_A || keycode == KEY_D)
+		pl->walk_dir = 1;
+	else if (keycode == KEY_LEFT)
 		pl->turn_dir = -1;
-		pl->walk_dir = 0;
-	}
-	else if (keycode == KEY_D)
-	{
+	else if (keycode == KEY_RIGHT)
 		pl->turn_dir = 1;
-		pl->walk_dir = 0;
-	}
 }
 
 // update player position based on turn direction and walk direction
 static void	change_player_pos(int keycode, t_game *game, t_player *pl)
 {
 	double	move_step;
+	double	move_angle;
 	double	new_pos_x;
 	double	new_pos_y;
 	
 	change_player_dir(keycode, pl);
 	pl->rotation_angle += pl->turn_dir * pl->turn_speed;
 	move_step = pl->walk_dir * pl->walk_speed;
-	new_pos_x = pl->pos_x + cos(pl->rotation_angle) * move_step;
-	new_pos_y = pl->pos_y + sin(pl->rotation_angle) * move_step;
+	if (keycode == KEY_A)
+		move_angle = -M_PI / 2;
+	else if (keycode == KEY_D)
+		move_angle = M_PI / 2;
+	else
+		move_angle = 0;
+	new_pos_x = pl->pos_x + cos(pl->rotation_angle + move_angle) * move_step;
+	new_pos_y = pl->pos_y + sin(pl->rotation_angle + move_angle) * move_step;
 	if (!is_wall(game, new_pos_x, new_pos_y))
 	{
 		pl->pos_x = new_pos_x;
 		pl->pos_y = new_pos_y;
 	}
+}
+
+void reset(int keycode, t_player *pl)
+{
+	if (keycode == KEY_W || keycode == KEY_S || keycode == KEY_A || keycode == KEY_D)
+		pl->walk_dir = 0;
+	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		pl->turn_dir = 0;
 }
 
 int	move(int keycode, t_game *game)

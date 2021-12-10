@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/10 16:47:08 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 20:15:08 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@
 
 # define DESTROY_NOTIFY 17
 # define KEY_PRESS 2
+# define KEY_RELEASE 3
 # define ESC 53
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 # define WIDTH 640
 # define HEIGHT 640
@@ -160,7 +163,9 @@ void	render_col(t_game *game, int column_id);
 
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
+int 	key_release(int keycode, t_game *game);
 int		move(int keycode, t_game *game);
+void	reset(int keycode, t_player *pl);
 
 void	print_err(char *msg);
 int		get_2d_len(char **arr);
