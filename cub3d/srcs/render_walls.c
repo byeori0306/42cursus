@@ -6,11 +6,23 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:53:35 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/09 17:37:36 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 16:56:32 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static int	find_direction(t_game *game)
+{
+	if (game->ray.hit_vertical == FALSE && (game->player.pos_y - game->ray.intersect_y) > 0)
+		return (NO);
+	else if (game->ray.hit_vertical == FALSE && (game->player.pos_y - game->ray.intersect_y) < 0)
+		return (SO);
+	else if (game->ray.hit_vertical == TRUE && (game->player.pos_x - game->ray.intersect_x) > 0)
+		return (WE);
+	else
+		return (EA);
+}
 
 static void	init_render(t_game *game, t_render *render)
 {
@@ -24,6 +36,7 @@ static void	init_render(t_game *game, t_render *render)
 	render->bottom = (HEIGHT / 2) + (render->projected_wall_height / 2);
 	if (render->bottom > HEIGHT)
 		render->bottom = HEIGHT;
+	render->dir = find_direction(game);
 }
 
 static void	paint_sky(t_game *game, int column_id, int top)
@@ -50,18 +63,27 @@ static void	paint_ground(t_game *game, int column_id, int bottom)
 	}	
 }
 
+static int	*find_wall_img(t_game *game)
+{
+	if (game->render.dir == NO)
+		return (game->elem_info.no);
+	else if (game->render.dir == SO)
+		return (game->elem_info.so);
+	else if (game->render.dir == WE)
+		return (game->elem_info.we);
+	else
+		return (game->elem_info.ea);	
+}
+
 static void	paint_wall(t_game *game, int column_id)
 {
 	int y;
 	int wall_height;
+	int *wall;
 
 	y = game->render.top;
 	wall_height = game->render.bottom - game->render.top;
-	// while (y < game->render.bottom)
-	// {
-	// 	game->img.data[WIDTH * y + column_id] = 0x0000FF00;
-	// 	y++;
-	// }
+	wall = find_wall_img(game);
 
 	int tex_pos_x;
 	int tex_pos_y;
@@ -72,7 +94,7 @@ static void	paint_wall(t_game *game, int column_id)
 	while (y < game->render.bottom)
 	{
 		tex_pos_y = (y - (HEIGHT / 2 - game->render.projected_wall_height / 2)) * TEX_SIZE / game->render.projected_wall_height;
-		game->img.data[WIDTH * y + column_id] = game->elem_info.ptr[TEX_SIZE * tex_pos_y + tex_pos_x];
+		game->img.data[WIDTH * y + column_id] = wall[TEX_SIZE * tex_pos_y + tex_pos_x];
 		y++;
 	}
 }

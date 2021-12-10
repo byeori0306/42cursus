@@ -6,31 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/09 17:40:04 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 16:34:53 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static	int	*get_texture_data(t_game *game, char *file)
-{
-	int		size;
-	void	*image;
-	int		*ptr;
-	int		bpp;
-	int		line_size;
-	int		endian;
-
-	size = TEX_SIZE;
-	image = mlx_png_file_to_image(game->mlx, file, &size, &size);
-	if (!image)
-	{
-		//destroy(game);
-		print_err("Load image failed.\n");
-	}
-	ptr = (int *)mlx_get_data_addr(image, &bpp, &line_size, &endian);
-	return (ptr);
-}
 
 void	init_info(t_game *game)
 {
@@ -103,6 +83,4 @@ void	init_window(t_game *game)
 			WIDTH, HEIGHT);
 	game->img.data = (int *)mlx_get_data_addr(game->img.img_ptr,
 			&game->img.bpp, &game->img.size_line, &game->img.endian);
-
-	game->elem_info.ptr = get_texture_data(game, "./img/cherry.png");
 }

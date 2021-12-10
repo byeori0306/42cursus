@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/09 17:12:09 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 16:47:08 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 # define TEX_SIZE 64
 # define PL_SIZE 4
 
+# define NO 1
+# define SO 2
+# define WE 3
+# define EA 4
+
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
 # define YELLOW 0x00FFFF00
@@ -60,13 +65,12 @@ typedef struct s_map_info
 
 typedef struct s_elem_info
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	int	*no;
+	int	*so;
+	int	*we;
+	int	*ea;
 	int		f;
 	int		c;
-	int		*ptr;
 }				t_elem_info;
 
 typedef struct s_player
@@ -121,6 +125,7 @@ typedef struct s_render
 	int		projected_wall_height;
 	int		top;
 	int		bottom;
+	int		dir;
 }				t_render;
 
 typedef struct s_game

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:44 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/06 18:58:00 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 16:34:10 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	init_game(t_game *game, int argc, char **argv)
 {
 	check_arg(argc, argv);
 	init_info(game);
+	init_window(game);
 	check_file(game, argv[1]);
 	get_map(&(game->map_info), argv[1]);
 	check_map(&(game->map_info));
-	init_window(game);
 }
 
 int	main(int argc, char **argv)

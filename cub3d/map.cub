@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./img/clover.png
+SO ./img/diamond.png
+WE ./img/spade.png
+EA ./img/heart.png
 
-F 165,130,90
-C 180,230,235
+F 255,255,255
+C 255,255,255
 
         1111111111111111111111111
         1000000000110000000000001

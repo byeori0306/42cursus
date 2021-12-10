@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/09 16:40:00 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/10 16:59:34 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,22 @@ static void	get_color_info(t_elem_info *elem_info, char **parsed_line) // 여기
 	free(rgb);
 }
 
-static void	get_img_info(char **dir, char **parsed_line)
+static void	get_wall_img(t_game *game, int **dir, char **parsed_line)
 {
+	int		size;
+	void	*image;
+	int		bpp;
+	int		line_size;
+	int		endian;
+	
 	if (get_2d_len(parsed_line) != 2)
 		print_err("Invalid information : too many or too few information of element");
-	*dir = ft_strdup(parsed_line[1]);
-	if (!(*dir))
-		print_err("System error : memory allocation failed");
-} // 여기서 이미지 ptr로 변환 -> 나중에 destroy image 해줘야 함.
+	size = TEX_SIZE;
+	image = mlx_png_file_to_image(game->mlx, parsed_line[1], &size, &size);
+	if (!image)
+		print_err("Load image failed\n");
+	*dir = (int *)mlx_get_data_addr(image, &bpp, &line_size, &endian);
+}
 
 void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line)
 {
@@ -83,13 +91,13 @@ void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line)
 	(void)game;
 	parsed_line = ft_split(line, ' ');
 	if (!ft_strncmp(parsed_line[0], "NO", 3))
-		get_img_info(&(elem_info->no), parsed_line);
+		get_wall_img(game, &(elem_info->no), parsed_line);
 	else if (!ft_strncmp(parsed_line[0], "SO", 3))
-		get_img_info(&(elem_info->so), parsed_line);
+		get_wall_img(game, &(elem_info->so), parsed_line);
 	else if (!ft_strncmp(parsed_line[0], "WE", 3))
-		get_img_info(&(elem_info->we), parsed_line);
+		get_wall_img(game, &(elem_info->we), parsed_line);
 	else if (!ft_strncmp(parsed_line[0], "EA", 3))
-		get_img_info(&(elem_info->ea), parsed_line);
+		get_wall_img(game, &(elem_info->ea), parsed_line);
 	else if (!ft_strncmp(parsed_line[0], "F", 2)
 		|| !ft_strncmp(parsed_line[0], "C", 2))
 		get_color_info(elem_info, parsed_line);
