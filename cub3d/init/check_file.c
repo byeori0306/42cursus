@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:20:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/09 16:19:07 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/11 16:03:35 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	complete_elem_info(t_elem_info *elem_info)
 {
 	if (elem_info->no && elem_info->so && elem_info->we
-		&& elem_info->ea && elem_info->f && elem_info->c)
+		&& elem_info->ea && elem_info->f >= 0 && elem_info->c >= 0)
 		return (1);
 	return (0);
 }
@@ -63,6 +63,8 @@ void	check_file(t_game *game, char *file_name)
 		if (res == 0)
 			break ;
 	}
+	if (game->player.pos_x < 0 && game->player.pos_y < 0)
+		print_err("Invalid map : map needs player");
 	if (res < 0)
 		print_err("System error : get next line failed");
 }

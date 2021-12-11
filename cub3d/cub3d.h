@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/10 20:15:08 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/11 15:37:40 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_game
 }				t_game;
 
 void	check_arg(int argc, char **argv);
+int		check_file_type(char *file_name, char *extension);
 void	check_file(t_game *game, char *file_name);
 void	check_map(t_map_info *map_info);
 void	init_info(t_game *game);

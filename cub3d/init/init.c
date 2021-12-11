@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/10 16:34:53 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/11 16:03:13 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	init_info(t_game *game)
 	game->elem_info.so = NULL;
 	game->elem_info.we = NULL;
 	game->elem_info.ea = NULL;
-	game->elem_info.f = 0;
-	game->elem_info.c = 0;
-	game->player.pos_x = 0;
-	game->player.pos_y = 0;
+	game->elem_info.f = -1;
+	game->elem_info.c = -1;
+	game->player.pos_x = -1;
+	game->player.pos_y = -1;
 }
 
 void	init_player(t_player *pl, char dir)

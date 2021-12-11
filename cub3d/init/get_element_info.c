@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/10 16:59:34 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/11 16:04:34 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static void	get_wall_img(t_game *game, int **dir, char **parsed_line)
 	
 	if (get_2d_len(parsed_line) != 2)
 		print_err("Invalid information : too many or too few information of element");
+	if (check_file_type(parsed_line[1], ".png"))
+		print_err("Invalid information : program requires (.png) image file");
 	size = TEX_SIZE;
 	image = mlx_png_file_to_image(game->mlx, parsed_line[1], &size, &size);
 	if (!image)
