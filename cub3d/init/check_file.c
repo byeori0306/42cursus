@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:20:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/11 16:03:35 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/12 16:57:27 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,23 @@ static int	is_map(t_elem_info *elem_info, char *line)
 	return (0);
 }
 
+static void	check_line(t_game *game, char *line, int *flag)
+{
+	if (*flag == 0)
+	{
+		game->map_info.start_line += 1;
+		*flag = is_map(&(game->elem_info), line);
+	}
+	if (*flag == 0 && ft_strlen(line))
+		get_elem_info(game, &(game->elem_info), line);
+	else if (*flag == 1)
+	{
+		if (!ft_strlen(line))
+			print_err("Invalid map : map content can't be separated by one or more empty line(s)");
+		get_map_info(game, line);
+	}
+}
+
 void	check_file(t_game *game, char *file_name)
 {
 	int		fd;
@@ -46,25 +63,13 @@ void	check_file(t_game *game, char *file_name)
 		res = get_next_line(fd, &line);
 		if (res < 0)
 			break ;
-		if (flag == 0)
-		{
-			game->map_info.start_line += 1;
-			flag = is_map(&(game->elem_info), line);
-		}
-		if (flag == 0 && ft_strlen(line))
-			get_elem_info(game, &(game->elem_info), line);
-		else if (flag == 1)
-		{
-			if (!ft_strlen(line))
-				print_err("Invalid map : map content can't be separated by one or more empty line(s)");
-			get_map_info(game, line);
-		}
+		check_line(game, line, &flag);
 		free(line);
 		if (res == 0)
 			break ;
 	}
+	if (res < 0)
+		print_err("get next line failed");
 	if (game->player.pos_x < 0 && game->player.pos_y < 0)
 		print_err("Invalid map : map needs player");
-	if (res < 0)
-		print_err("System error : get next line failed");
 }

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:29:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/10 20:27:19 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/12 16:40:46 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ static void	change_player_dir(int keycode, t_player *pl)
 		pl->turn_dir = 1;
 }
 
-// update player position based on turn direction and walk direction
-static void	change_player_pos(int keycode, t_game *game, t_player *pl)
+int	change_player_pos(int keycode, t_game *game, t_player *pl)
 {
 	double	move_step;
 	double	move_angle;
@@ -64,18 +63,13 @@ static void	change_player_pos(int keycode, t_game *game, t_player *pl)
 		pl->pos_x = new_pos_x;
 		pl->pos_y = new_pos_y;
 	}
+	return (0);
 }
 
-void reset(int keycode, t_player *pl)
+void reset_player_dir(int keycode, t_player *pl)
 {
 	if (keycode == KEY_W || keycode == KEY_S || keycode == KEY_A || keycode == KEY_D)
 		pl->walk_dir = 0;
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		pl->turn_dir = 0;
-}
-
-int	move(int keycode, t_game *game)
-{
-	change_player_pos(keycode, game, &game->player);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/11 16:04:34 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/12 15:48:52 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	convert_dec_to_hex(int *rgb)
 	return (result);
 }
 
-static void	get_color_info(t_elem_info *elem_info, char **parsed_line) // 여기서 계산
+static void	get_color_info(t_elem_info *elem_info, char **parsed_line)
 {
 	char	**colors;
 	int		*rgb;

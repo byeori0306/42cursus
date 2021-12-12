@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/11 15:37:40 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/12 16:59:47 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,26 +147,34 @@ void	check_arg(int argc, char **argv);
 int		check_file_type(char *file_name, char *extension);
 void	check_file(t_game *game, char *file_name);
 void	check_map(t_map_info *map_info);
+
 void	init_info(t_game *game);
 void	init_map(t_map_info *map_info);
 void	init_player(t_player *pl, char dir);
 void	init_window(t_game *game);
+
 void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line);
 void	get_map_info(t_game *game, char *line);
 void	get_map(t_map_info *map_info, char *file_name);
 void	modify_map(t_map_info *map_info);
 
-int		draw_mini_map(t_game *game);
-void	draw_rays(t_game *game);
+int		close_window(t_game *game);
+int		key_press(int keycode, t_game *game);
+int 	key_release(int keycode, t_game *game);
+
+int		change_player_pos(int keycode, t_game *game, t_player *pl);
+void 	reset_player_dir(int keycode, t_player *pl);
+
+void	cast_rays(t_game *game);
+void	check_horz(t_game *game, t_temp_ray *horz);
+void	check_vert(t_game *game, t_temp_ray *vert);
 
 int		render(t_game *game);
 void	render_col(t_game *game, int column_id);
 
-int		close_window(t_game *game);
-int		key_press(int keycode, t_game *game);
-int 	key_release(int keycode, t_game *game);
-int		move(int keycode, t_game *game);
-void	reset(int keycode, t_player *pl);
+void	paint_wall(t_game *game, int column_id);
+void	paint_sky(t_game *game, int column_id, int top);
+void	paint_ground(t_game *game, int column_id, int bottom);
 
 void	print_err(char *msg);
 int		get_2d_len(char **arr);

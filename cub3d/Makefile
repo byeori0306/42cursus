@@ -6,7 +6,7 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 21:06:34 by dahpark           #+#    #+#              #
-#    Updated: 2021/12/09 16:02:09 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2021/12/12 16:48:54 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,11 @@ UTIL	= $(addprefix util/, 2d_array_util.c \
 							print_error.c)
 SRCS	= cub3d.c \
 		srcs/event.c \
-		srcs/draw_mini_map.c \
 		srcs/move.c \
-		srcs/draw_ray.c \
-		srcs/render_walls.c \
+		srcs/cast_rays.c \
+		srcs/find_intersect.c \
+		srcs/paint.c \
+		srcs/render.c \
 		$(GNL) \
 		$(INIT) \
 		$(UTIL)

@@ -6,35 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:21:44 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/03 14:58:52 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/12 15:43:43 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static void	print_map(t_map_info *map_info)
-{
-	int	i;
-
-	i = 0;
-	while (i < map_info->row + 2)
-	{
-		printf("%s\n", map_info->map[i]);
-		i++;
-	}
-}
-
-static void	print_map_2(t_map_info *map_info)
-{
-	int	i;
-
-	i = 0;
-	while (map_info->map[i])
-	{
-		printf("%s\n", map_info->map[i]);
-		i++;
-	}
-}
 
 void	get_map(t_map_info *map_info, char *file_name)
 {
@@ -62,9 +38,6 @@ void	get_map(t_map_info *map_info, char *file_name)
 	}
 	if (res < 0)
 		print_err("get next line failed");
-	// if (!map_info->map)
-	// 	print_err("Invalid map : map doesn't exist or map isn't the last");
-	print_map(map_info);
 }
 
 void	modify_map(t_map_info *map_info)
@@ -88,5 +61,4 @@ void	modify_map(t_map_info *map_info)
 	temp_map[map_info->row] = NULL;
 	free_2d(map_info->map);
 	map_info->map = temp_map;
-	print_map_2(map_info);
 }
