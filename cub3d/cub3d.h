@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/12 16:59:47 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/13 20:54:41 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,12 @@
 # define HEIGHT 640
 
 # define TILE_SIZE 64
-# define TEX_SIZE 64
-# define PL_SIZE 4
+# define FOV M_PI / 3
 
 # define NO 1
 # define SO 2
 # define WE 3
 # define EA 4
-
-# define WHITE 0x00FFFFFF
-# define BLACK 0x00000000
-# define YELLOW 0x00FFFF00
-
-# define FOV M_PI / 3
-# define GAP 2
 
 # define TRUE 1
 # define FALSE 0
@@ -66,12 +58,19 @@ typedef struct s_map_info
 	char	**map;
 }				t_map_info;
 
+typedef struct s_texture
+{
+	int		*texture;
+	int	width;
+	int	height;
+}				t_texture;
+
 typedef struct s_elem_info
 {
-	int	*no;
-	int	*so;
-	int	*we;
-	int	*ea;
+	t_texture	no;
+	t_texture	so;
+	t_texture	we;
+	t_texture	ea;
 	int		f;
 	int		c;
 }				t_elem_info;

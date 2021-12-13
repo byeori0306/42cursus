@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/11 16:03:13 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/13 20:22:31 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_info(t_game *game)
 	game->map_info.start_pos = 0;
 	game->map_info.start_line = 0;
 	game->map_info.map = NULL;
-	game->elem_info.no = NULL;
-	game->elem_info.so = NULL;
-	game->elem_info.we = NULL;
-	game->elem_info.ea = NULL;
+	game->elem_info.no.texture = NULL;
+	game->elem_info.so.texture = NULL;
+	game->elem_info.we.texture = NULL;
+	game->elem_info.ea.texture = NULL;
 	game->elem_info.f = -1;
 	game->elem_info.c = -1;
 	game->player.pos_x = -1;

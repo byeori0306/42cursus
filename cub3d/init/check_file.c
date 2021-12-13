@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:20:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/12 16:57:27 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/13 20:24:22 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	complete_elem_info(t_elem_info *elem_info)
 {
-	if (elem_info->no && elem_info->so && elem_info->we
-		&& elem_info->ea && elem_info->f >= 0 && elem_info->c >= 0)
+	if (elem_info->no.texture && elem_info->so.texture && elem_info->we.texture
+		&& elem_info->ea.texture && elem_info->f >= 0 && elem_info->c >= 0)
 		return (1);
 	return (0);
 }

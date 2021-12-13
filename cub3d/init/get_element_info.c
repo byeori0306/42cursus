@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:11:43 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/12 15:48:52 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/13 20:27:46 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ static void	get_color_info(t_elem_info *elem_info, char **parsed_line)
 	free(rgb);
 }
 
-static void	get_wall_img(t_game *game, int **dir, char **parsed_line)
+static void	get_wall_img(t_game *game, t_texture *tex, char **parsed_line)
 {
-	int		size;
 	void	*image;
 	int		bpp;
 	int		line_size;
@@ -80,11 +79,10 @@ static void	get_wall_img(t_game *game, int **dir, char **parsed_line)
 		print_err("Invalid information : too many or too few information of element");
 	if (check_file_type(parsed_line[1], ".png"))
 		print_err("Invalid information : program requires (.png) image file");
-	size = TEX_SIZE;
-	image = mlx_png_file_to_image(game->mlx, parsed_line[1], &size, &size);
+	image = mlx_png_file_to_image(game->mlx, parsed_line[1], &tex->width, &tex->height);
 	if (!image)
-		print_err("Load image failed\n");
-	*dir = (int *)mlx_get_data_addr(image, &bpp, &line_size, &endian);
+		print_err("Load image failed");
+	tex->texture = (int *)mlx_get_data_addr(image, &bpp, &line_size, &endian);
 }
 
 void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line)
