@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:55:59 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/13 20:22:31 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:30:26 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_map(t_map_info *map_info)
 	map_info->map = malloc(sizeof(char *) * (row + 1));
 	if (!map_info->map)
 		strerror(ENOMEM);
-	while (i < row + 1)
+	while (i < row)
 	{
 		map_info->map[i] = malloc(sizeof(char) * (col + 1));
 		if (!map_info->map[i])
@@ -66,7 +66,7 @@ void	init_map(t_map_info *map_info)
 		map_info->map[i][col] = '\0';
 		i++;
 	}
-	map_info->map[row + 1] = NULL;
+	map_info->map[row] = NULL;
 }
 
 void	init_window(t_game *game)

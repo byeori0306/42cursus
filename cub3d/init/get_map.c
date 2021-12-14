@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:21:44 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/12 15:43:43 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:34:29 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	modify_map(t_map_info *map_info)
 	if (!map_info->map)
 		strerror(ENOMEM);
 	i = 0;
-	while (i < map_info->row + 1)
+	while (i < map_info->row)
 	{
 		temp_map[i] = malloc(sizeof(char) * (map_info->col + 1));
 		if (!map_info->map[i])
