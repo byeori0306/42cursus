@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:06:41 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/13 20:54:41 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:52:20 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,17 +145,17 @@ typedef struct s_game
 void	check_arg(int argc, char **argv);
 int		check_file_type(char *file_name, char *extension);
 void	check_file(t_game *game, char *file_name);
-void	check_map(t_map_info *map_info);
+void	check_map(t_game *game, t_map_info *map_info);
 
 void	init_info(t_game *game);
-void	init_map(t_map_info *map_info);
+void	init_map(t_game *game, t_map_info *map_info);
 void	init_player(t_player *pl, char dir);
 void	init_window(t_game *game);
 
 void	get_elem_info(t_game *game, t_elem_info *elem_info, char *line);
 void	get_map_info(t_game *game, char *line);
-void	get_map(t_map_info *map_info, char *file_name);
-void	modify_map(t_map_info *map_info);
+void	get_map(t_game *game, t_map_info *map_info, char *file_name);
+void	modify_map(t_game *game, t_map_info *map_info);
 
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
@@ -176,6 +176,7 @@ void	paint_sky(t_game *game, int column_id, int top);
 void	paint_ground(t_game *game, int column_id, int bottom);
 
 void	print_err(char *msg);
+void	print_err_2(t_game *game, char *msg);
 int		get_2d_len(char **arr);
 void	free_2d(char **arr);
 

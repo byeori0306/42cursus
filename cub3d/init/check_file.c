@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:20:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/13 20:24:22 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:41:34 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	check_line(t_game *game, char *line, int *flag)
 	else if (*flag == 1)
 	{
 		if (!ft_strlen(line))
-			print_err("Invalid map : map content can't be separated by one or more empty line(s)");
+			print_err_2(game, "Invalid map : map content can't be separated by one or more empty line(s)");
 		get_map_info(game, line);
 	}
 }
@@ -69,7 +69,7 @@ void	check_file(t_game *game, char *file_name)
 			break ;
 	}
 	if (res < 0)
-		print_err("get next line failed");
+		print_err_2(game, "get next line failed");
 	if (game->player.pos_x < 0 && game->player.pos_y < 0)
-		print_err("Invalid map : map needs player");
+		print_err_2(game, "Invalid map : map needs player");
 }

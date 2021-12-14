@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:52:11 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/13 20:58:07 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:45:43 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_map_components(t_game *game, char ch, int cur_col)
 	else if (ch == 'N' || ch == 'S' || ch == 'E' || ch == 'W')
 	{
 		if (game->player.pos_x > 0 || game->player.pos_y > 0)
-			print_err("Invalid map : multiple player's start position");
+			print_err_2(game, "Invalid map : multiple player's start position");
 		game->player.pos_x = cur_col * TILE_SIZE + (TILE_SIZE / 2);
 		game->player.pos_y = game->map_info.row * TILE_SIZE + (TILE_SIZE / 2);
 		init_player(&(game->player), ch);
@@ -36,7 +36,7 @@ void	get_map_info(t_game *game, char *line)
 	while (line[i] != '\0')
 	{
 		if (!is_map_components(game, line[i], i))
-			print_err("Invalid map : invalid map components");
+			print_err_2(game, "Invalid map : invalid map components");
 		i++;
 	}
 	if (i > game->map_info.col)
