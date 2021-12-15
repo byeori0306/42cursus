@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:14:28 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/03 14:54:29 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/14 14:50:51 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_wall_pos(t_map_info *map_info, int x, int y)
 	return (0);
 }
 
-void	check_map(t_map_info *map_info)
+void	check_map(t_game *game, t_map_info *map_info)
 {
 	int	x;
 	int	y;
@@ -46,10 +46,10 @@ void	check_map(t_map_info *map_info)
 				continue ;
 			}
 			if (is_wall_pos(map_info, x, y) && map_info->map[y][x] != '1')
-				print_err("Invalid map : map must be surrounded by walls");
+				print_err_2(game, "Invalid map : map must be surrounded by walls");
 			x++;
 		}
 		y++;
 	}
-	modify_map(map_info);
+	modify_map(game, map_info);
 }
