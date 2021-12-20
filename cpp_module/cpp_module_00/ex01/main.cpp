@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:15:03 by dahpark           #+#    #+#             */
-/*   Updated: 2021/10/25 18:52:14 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/12/20 15:59:16 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(void)
 {
 	std::string cmd;
+	PhoneBook phonebook;
 
 	while (TRUE)
 	{
@@ -27,9 +28,9 @@ int main(void)
 			return 0;
 		}
 		if (cmd == "ADD")
-			std::cout << "Add contact" << std::endl;
+			phonebook.add_contact();
 		else if (cmd == "SEARCH")
-			std::cout << "Search phone book" << std::endl;
+			phonebook.search_contact();
 		else if (cmd == "EXIT")
 			return 0;
 		else

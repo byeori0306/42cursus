@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/25 15:04:06 by dahpark           #+#    #+#              #
-#    Updated: 2021/10/25 17:14:09 by dahpark          ###   ########.fr        #
+#    Updated: 2021/12/20 17:16:46 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= phonebook
-SRCS		= main.cpp
+SRCS		= main.cpp contact.cpp phonebook.cpp
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
 
