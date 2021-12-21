@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 15:11:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/21 14:13:41 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/21 14:22:27 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	PhoneBook::search_contact() {
 	limit = this->cnt % 8;
 	this->display_contacts(limit);
 	std::cout << "Please input the index of the desired entry : ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	idx = atoi(input.c_str());
 	if ((idx < 1 || idx > 8) || idx >= limit + 1)
 	{
