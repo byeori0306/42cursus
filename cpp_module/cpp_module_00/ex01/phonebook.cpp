@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 15:11:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/20 17:16:06 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/21 14:13:41 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,25 @@ void	PhoneBook::display_contacts(int limit) {
 }
 
 void	PhoneBook::search_contact() {
+	std::string	input;
 	int	idx;
 	int	limit;
 
 	if (this->cnt == 0)
+	{
 		std::cout << "There is no contact yet." << std::endl;
+		return ;
+	}
 	limit = this->cnt % 8;
 	this->display_contacts(limit);
 	std::cout << "Please input the index of the desired entry : ";
-	std::cin >> idx;
-	idx -= 1;
-	// 숫자가 아닌 문자를 집어넣었다면?? 아무것도 입력을 안 했다면??
-	if (idx < 0 || idx > limit)
+	std::cin >> input;
+	idx = atoi(input.c_str());
+	if ((idx < 1 || idx > 8) || idx >= limit + 1)
+	{
 		std::cout << "Index out of range." << std::endl;
+		return ;
+	}
 	else
-		this->contacts[idx].show_info();
+		this->contacts[idx - 1].show_info();
 }
