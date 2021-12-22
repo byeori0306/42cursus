@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 14:56:12 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/21 17:12:11 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/22 13:29:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	Account::makeDeposit(int deposit) {
 	int p_amount = this->_amount;
 	this->_amount += deposit;
 	this->_nbDeposits += 1;
+	_totalAmount += deposit;
 	_totalNbDeposits += 1;
 	
 	_displayTimestamp();
