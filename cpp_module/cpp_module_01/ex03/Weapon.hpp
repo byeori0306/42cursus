@@ -6,12 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 15:14:37 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/23 16:03:17 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/26 14:36:14 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#ifndef WEAPON_H_
+#define WEAPON_H_
 
 #include <iostream>
 

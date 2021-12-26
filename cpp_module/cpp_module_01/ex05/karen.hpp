@@ -6,12 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 13:36:36 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/25 13:54:37 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/26 14:26:18 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_H
-#define KAREN_H
+#ifndef KAREN_H_
+#define KAREN_H_
 
 #include <string>
 #include <iostream>

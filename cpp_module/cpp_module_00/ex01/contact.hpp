@@ -6,12 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 17:15:09 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/20 17:15:51 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/26 14:35:57 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CONTACT_H_
+#define CONTACT_H_
 
 #include <iostream>
 #include <string>

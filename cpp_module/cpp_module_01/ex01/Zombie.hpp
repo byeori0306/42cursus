@@ -6,12 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 16:17:58 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/22 16:36:13 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/26 14:36:06 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef ZOMBIE_H_
+#define ZOMBIE_H_
 
 #include <iostream>
 #include <string>

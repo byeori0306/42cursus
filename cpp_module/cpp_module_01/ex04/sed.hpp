@@ -6,12 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 21:38:55 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/24 23:45:03 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/26 14:26:22 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SED_H
-#define SED_H
+#ifndef SED_H_
+#define SED_H_
 
 #include <fstream>
 #include <string>
