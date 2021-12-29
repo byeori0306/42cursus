@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:46:48 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/28 20:45:04 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/29 21:28:59 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ Fixed::Fixed() : value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int integer) {
-	
+Fixed::Fixed(const int integer) : value(integer << bits) {
+	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float floating) {
-	
+Fixed::Fixed(const float floating) : value(std::roundf(floating * (1 << bits))) {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &fixed) {
@@ -44,23 +44,22 @@ Fixed	&Fixed::operator=(const Fixed &fixed) {
 }
 
 int	Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (value);
 }
 
 void	Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
 }
 
 float	Fixed::toFloat(void) const {
-	
+	return (float(value) / (1 << bits));
 }
 
 int		Fixed::toInt(void) const {
-	
+	return (value >> bits);
 }
 
 std::ostream&	operator<<(std::ostream &out, const Fixed &fixed) {
-	
+	out << fixed.toFloat();
+	return (out);
 }

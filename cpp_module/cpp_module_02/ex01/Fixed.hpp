@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:46:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/28 20:44:31 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2021/12/29 21:21:41 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define FIXED_H_
 
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 	private:
