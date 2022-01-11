@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:18:45 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/30 20:11:35 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/01/11 20:16:10 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ClapTrap {
 		int			energyPoints;
 		int			attackDamage;
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &claptrap);
 		~ClapTrap();
