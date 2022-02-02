@@ -6,11 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:40:13 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/30 21:08:54 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/02 18:11:50 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ice.hpp"
+#include "Ice.hpp"
 
 Ice::Ice(void) : AMateria("ice") {
 	std::cout << "Ice default constructor called" <<std::endl;

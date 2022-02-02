@@ -6,11 +6,11 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:09:15 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/30 21:12:34 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/02 18:12:04 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cure.hpp"
+#include "Cure.hpp"
 
 Cure::Cure(void) : AMateria("cure") {
 	std::cout << "Cure default constructor called" <<std::endl;

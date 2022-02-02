@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:18:38 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/30 22:25:10 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/02 18:02:58 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class Character : public ICharacter {
 		Character& operator=(const Character& ch);
 		~Character();
 
-		std::string const & getName() const = 0;
-		void equip(AMateria* m) = 0;
-		void unequip(int idx) = 0;
-		void use(int idx, ICharacter& target) = 0;
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 
 #endif

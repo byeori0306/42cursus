@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:18:36 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/30 23:22:13 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/02 17:56:54 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ Character::Character(const Character &ch) {
 	std::cout << "Character copy constructor called" <<std::endl;
 	name = ch.getName();
 	for (int i = 0; i < MAX_SLOT; i++) {
-		inventory[i] = ch.inventory[i];
+		if (inventory[i]) {
+			delete inventory[i];
+			inventory[i] = NULL;
+		}
+		if (ch.inventory[i])
+			inventory[i] = ch.inventory[i]->clone();
 	}
 }
 
@@ -40,9 +45,12 @@ Character& Character::operator=(const Character& ch) {
 		return (*this);
 	name = ch.getName();
 	for (int i = 0; i < MAX_SLOT; i++) {
-		if (inventory[i])
+		if (inventory[i]) {
 			delete inventory[i];
-		inventory[i] = ch.inventory[i];
+			inventory[i] = NULL;
+		}
+		if (ch.inventory[i])
+			inventory[i] = ch.inventory[i]->clone();
 	}
 	return (*this);
 }
@@ -50,7 +58,10 @@ Character& Character::operator=(const Character& ch) {
 Character::~Character(void) {
 	std::cout << "Character destructor called" <<std::endl;
 	for (int i = 0; i < MAX_SLOT; i++) {
-		delete inventory[i];
+		if (inventory[i]) {
+			delete inventory[i];
+			inventory[i] = NULL;
+		}
 	}
 }
 

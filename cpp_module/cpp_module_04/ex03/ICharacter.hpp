@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:55:04 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/25 15:58:34 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/02 18:11:33 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter {
 	public:
