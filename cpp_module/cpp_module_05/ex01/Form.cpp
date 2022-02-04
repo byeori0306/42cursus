@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:20 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/03 22:18:58 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/04 22:29:37 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ Form& Form::operator=(const Form& form) {
 Form::~Form() { }
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return ("Error: Grade too high!");	
+	return ("grade is too high");	
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low!");	
+	return ("grade is too low");	
 }
 
 std::string const Form::getName() const {

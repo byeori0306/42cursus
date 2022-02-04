@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/03 22:24:47 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/04 22:29:31 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& br) {
 Bureaucrat::~Bureaucrat() { }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Error: Grade too high!");
+	return ("grade is too high");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low!");	
+	return ("grade is too low");	
 }
 
 std::string Bureaucrat::getName() const {
@@ -62,10 +62,12 @@ void Bureaucrat::decrementGrade() {
 }
 
 void Bureaucrat::signForm(Form& form) {
-	if (form.getSigned() == true)
+	try {
+		form.beSigned(*this);
 		std::cout << name << " signs " << form.getName() << std::endl;
-	else
-		std::cout << name << " cannot sign " << form.getName() << " because grade is too low" << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+	}		
 }
 
 std::ostream& operator<<(std::ostream& out, Bureaucrat& br) {
