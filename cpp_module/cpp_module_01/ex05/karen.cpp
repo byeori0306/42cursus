@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 13:36:39 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/25 14:34:23 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/09 15:29:48 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	karen::error(void) {
 }
 
 void	karen::complain(std::string level) {
-	std::string	level_arr[4] = {"debug", "info", "warning", "error"};
+	std::string	level_arr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void	(karen::*pFn[4])(void);
 
 	pFn[0] = &karen::debug;
