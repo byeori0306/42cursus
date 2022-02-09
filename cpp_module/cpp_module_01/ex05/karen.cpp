@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 13:36:39 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/09 15:29:48 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/09 20:47:16 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	karen::complain(std::string level) {
 	pFn[3] = &karen::error;
 	std::string *res = std::find(level_arr, level_arr + 4, level);
 	int idx = res - level_arr;
+	if (idx < 0 || idx > 3)
+		return;
 	(this->*pFn[idx])();
 }

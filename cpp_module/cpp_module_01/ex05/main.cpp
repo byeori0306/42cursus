@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 13:36:33 by dahpark           #+#    #+#             */
-/*   Updated: 2021/12/25 14:18:48 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/09 20:47:53 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int main(void) {
 	karen	Karen;
 
-	Karen.complain("debug");
-	Karen.complain("info");
-	Karen.complain("warning");
-	Karen.complain("error");
+	Karen.complain("DEBUG");
+	Karen.complain("INFO");
+	Karen.complain("WARNING");
+	Karen.complain("ERROR");
 }
