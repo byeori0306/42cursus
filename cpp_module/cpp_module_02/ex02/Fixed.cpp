@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:46:48 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/04 21:11:44 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/10 17:32:03 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ Fixed&	Fixed::operator++(void) {
 
 Fixed&	Fixed::operator--(void) {
 	value--;
-	return (*this);	
+	return (*this);
 }
 
 Fixed	Fixed::operator++(int) {
@@ -130,6 +130,20 @@ static Fixed&	max(Fixed& n1, Fixed& n2) {
 
 static Fixed&	min(Fixed& n1, Fixed& n2) {
 	if (n1.operator>(n2))
+		return (n2);
+	else
+		return (n1);
+}
+
+static const Fixed&	max(const Fixed& n1, const Fixed& n2) {
+	if (n1.getRawBits() > n2.getRawBits())
+		return (n1);
+	else
+		return (n2);
+}
+
+static const Fixed&	min(const Fixed& n1, const Fixed& n2) {
+	if (n1.getRawBits() > n2.getRawBits())
 		return (n2);
 	else
 		return (n1);
