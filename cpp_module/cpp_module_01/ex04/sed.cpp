@@ -6,12 +6,14 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 21:38:52 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/09 14:54:01 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/10 14:29:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sed.hpp"
 #include <iostream>
+#include <sstream>
+#include <string>
 
 void	sed::change_content(std::string& content, std::string src, std::string dst, std::ofstream& file) {
 	unsigned long	idx = 0;
@@ -45,8 +47,9 @@ int	sed::replace(char *_file_name, char *_s1, char *_s2) {
 		std::cerr << "Open file failed" << std::endl;
 		return (1);
 	}
-	std::istreambuf_iterator<char> begin(ifile), end;
-  	std::string buffer(begin, end);
+	std::stringstream sbuffer;
+	sbuffer << ifile.rdbuf();
+	std::string buffer = sbuffer.str();
 	ifile.close();
 		
 	std::ofstream ofile(file_name);
