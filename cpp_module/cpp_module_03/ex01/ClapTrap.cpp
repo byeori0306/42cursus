@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:18:41 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/11 20:46:03 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/11 15:34:41 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,4 @@ void	ClapTrap::printStatus(void) {
 	std::cout << "* " << name << "\'s HP : " << hitpoints << std::endl;
 	std::cout << "* " << name << "\'s EP : " << energyPoints << std::endl;
 	std::cout << "* " << name << "\'s AD : " << attackDamage << std::endl;
-}
-
-int	ClapTrap::getAttackDamage(void) {
-	return (attackDamage);
 }

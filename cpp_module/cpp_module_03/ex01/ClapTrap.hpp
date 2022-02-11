@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:18:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/11 20:18:07 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/11 15:34:46 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class ClapTrap {
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		void	printStatus(void);
-		int		getAttackDamage(void);
 };
 
 #endif
