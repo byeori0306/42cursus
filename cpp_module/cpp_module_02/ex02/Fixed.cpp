@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:46:48 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/10 17:32:03 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/11 18:38:45 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ Fixed&	Fixed::operator--(void) {
 }
 
 Fixed	Fixed::operator++(int) {
-	Fixed	n(value);
+	Fixed	n(*this);
 	value++;
 	return (n);
 }
 
 Fixed	Fixed::operator--(int) {
-	Fixed	n(value);
+	Fixed	n(*this);
 	value--;
 	return (n);
 }
@@ -121,28 +121,28 @@ int		Fixed::toInt(void) const {
 	return (value >> bits);
 }
 
-static Fixed&	max(Fixed& n1, Fixed& n2) {
-	if (n1.operator>(n2))
+Fixed&	Fixed::max(Fixed& n1, Fixed& n2) {
+	if (n1 > n2)
 		return (n1);
 	else
 		return (n2);
 }
 
-static Fixed&	min(Fixed& n1, Fixed& n2) {
-	if (n1.operator>(n2))
+Fixed&	Fixed::min(Fixed& n1, Fixed& n2) {
+	if (n1 > n2)
 		return (n2);
 	else
 		return (n1);
 }
 
-static const Fixed&	max(const Fixed& n1, const Fixed& n2) {
+const Fixed&	Fixed::max(const Fixed& n1, const Fixed& n2) {
 	if (n1.getRawBits() > n2.getRawBits())
 		return (n1);
 	else
 		return (n2);
 }
 
-static const Fixed&	min(const Fixed& n1, const Fixed& n2) {
+const Fixed&	Fixed::min(const Fixed& n1, const Fixed& n2) {
 	if (n1.getRawBits() > n2.getRawBits())
 		return (n2);
 	else
