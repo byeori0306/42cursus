@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/25 14:48:41 by dahpark           #+#    #+#              #
-#    Updated: 2021/10/25 17:06:49 by dahpark          ###   ########.fr        #
+#    Updated: 2022/02/12 16:23:28 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= megaphone
 SRCS		= megaphone.cpp

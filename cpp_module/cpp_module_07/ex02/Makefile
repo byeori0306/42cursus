@@ -6,11 +6,11 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 16:08:19 by dahpark           #+#    #+#              #
-#    Updated: 2022/02/05 22:38:39 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2022/02/12 16:25:53 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= a.out
 SRCS		= main.cpp

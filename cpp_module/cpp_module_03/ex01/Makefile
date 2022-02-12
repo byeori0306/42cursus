@@ -6,11 +6,11 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/30 18:18:49 by dahpark           #+#    #+#              #
-#    Updated: 2022/01/11 19:49:00 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2022/02/12 16:20:41 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= scavtrap
 SRCS		= main.cpp ClapTrap.cpp ScavTrap.cpp

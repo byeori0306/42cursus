@@ -6,11 +6,11 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 18:30:41 by dahpark           #+#    #+#              #
-#    Updated: 2022/01/24 15:19:27 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2022/02/12 16:24:55 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= a.out
 SRCS		= main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp

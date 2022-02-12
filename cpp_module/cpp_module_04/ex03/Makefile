@@ -6,11 +6,11 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 18:30:41 by dahpark           #+#    #+#              #
-#    Updated: 2022/01/30 23:13:25 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2022/02/12 16:25:04 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= a.out
 SRCS		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
