@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:28 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 22:47:22 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 19:28:57 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& ppf
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& ppf) {
 	if (this == &ppf)
 		return (*this);
-	target = ppf.target;
+	setSigned(ppf.getSigned());
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:31 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 21:54:37 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 18:58:43 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 class PresidentialPardonForm : public Form {
 	private:
-		std::string target;
+		std::string const target;
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(std::string const target);
 		PresidentialPardonForm(const PresidentialPardonForm& ppf);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& ppf);
 		~PresidentialPardonForm();

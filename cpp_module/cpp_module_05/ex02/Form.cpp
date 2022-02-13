@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:20 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 22:45:19 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 19:28:38 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Form::Form() : name("form"), sign_grade(50), excute_grade(10), is_signed(false) { }
 
-Form::Form(std::string name, int sign_grade, int excute_grade, bool is_signed = false) 
+Form::Form(std::string const name, int const sign_grade, int const excute_grade, bool is_signed = false) 
 : name(name), sign_grade(sign_grade), excute_grade(excute_grade), is_signed(is_signed) {
 	if (sign_grade < 1 || excute_grade < 1)
 		throw Form::GradeTooHighException();
@@ -43,19 +43,23 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return ("grade is too low");	
 }
 
+void	Form::setSigned(bool const status) {
+	is_signed = status;
+}
+
 std::string const Form::getName() const {
 	return (name);
 }
 
-int Form::getSignGrade() const {
+int const Form::getSignGrade() const {
 	return (sign_grade);
 }
 
-int Form::getExcuteGrade() const {
+int const Form::getExcuteGrade() const {
 	return (excute_grade);
 }
 
-bool Form::getSigned() const {
+bool const Form::getSigned() const {
 	return (is_signed);
 }
 

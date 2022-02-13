@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:39 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 22:47:40 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 19:31:08 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) 
 : Form("shrubbery creation form", S_SIGN_GRADE, S_EXEC_GRADE, false), target(target) { }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ppf)
-: Form(ppf.getName(), S_SIGN_GRADE, S_EXEC_GRADE, ppf.getSigned()), target(ppf.target) { } 
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& scf)
+: Form(scf.getName(), S_SIGN_GRADE, S_EXEC_GRADE, scf.getSigned()), target(scf.target) { } 
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& ppf) {
-	if (this == &ppf)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& scf) {
+	if (this == &scf)
 		return (*this);
-	target = ppf.target;
+	setSigned(scf.getSigned());
 	return (*this);
 }
 

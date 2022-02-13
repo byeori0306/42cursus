@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:23 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/03 22:17:48 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 18:54:33 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Form {
 		bool is_signed;
 	public:
 		Form();
-		Form(std::string name, int sign_grade, int excute_grade, bool is_signed);
+		Form(std::string const name, int const sign_grade, int const excute_grade, bool is_signed);
 		Form(const Form& form);
 		Form& operator=(const Form& form);
 		~Form();
@@ -40,9 +40,9 @@ class Form {
 		};
 
 		std::string const getName() const;
-		int getSignGrade() const;
-		int getExcuteGrade() const;
-		bool getSigned() const;
+		int const getSignGrade() const;
+		int const getExcuteGrade() const;
+		bool const getSigned() const;
 		void beSigned(Bureaucrat& br);
 };
 

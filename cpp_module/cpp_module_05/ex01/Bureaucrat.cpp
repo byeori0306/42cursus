@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 22:29:31 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 18:47:06 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat() : name("John Doe"), grade(75) { }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
+Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name), grade(grade) {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -26,7 +26,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& br) : name(br.getName()), grade(br.getG
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& br) {
 	if (this == &br)
 		return (*this);
-	name = br.getName();
 	grade = br.getGrade();
 	return (*this);
 }
@@ -34,18 +33,18 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& br) {
 Bureaucrat::~Bureaucrat() { }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("grade is too high");
+	return ("Error: Grade too high!");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("grade is too low");	
+	return ("Error: Grade too low!");	
 }
 
-std::string Bureaucrat::getName() const {
+std::string const Bureaucrat::getName() const {
 	return (name);
 }
 
-int Bureaucrat::getGrade() const {
+int const Bureaucrat::getGrade() const {
 	return (grade);
 }
 

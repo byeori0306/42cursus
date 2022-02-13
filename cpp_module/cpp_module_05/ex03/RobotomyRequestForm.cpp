@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:34 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 22:47:35 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 19:30:55 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ RobotomyRequestForm::RobotomyRequestForm()
 RobotomyRequestForm::RobotomyRequestForm(std::string target) 
 : Form("robotomy request form", R_SIGN_GRADE, R_EXEC_GRADE, false), target(target) { }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& ppf)
-: Form(ppf.getName(), R_SIGN_GRADE, R_EXEC_GRADE, ppf.getSigned()), target(ppf.target) { } 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& rrf)
+: Form(rrf.getName(), R_SIGN_GRADE, R_EXEC_GRADE, rrf.getSigned()), target(rrf.target) { } 
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& ppf) {
-	if (this == &ppf)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rrf) {
+	if (this == &rrf)
 		return (*this);
-	target = ppf.target;
+	setSigned(rrf.getSigned());
 	return (*this);
 }
 

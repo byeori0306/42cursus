@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:36 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 21:55:02 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 18:58:50 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 class RobotomyRequestForm : public Form {
 	private:
-		std::string target;
+		std::string const target;
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(std::string const target);
 		RobotomyRequestForm(const RobotomyRequestForm& rrf);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm &rrf);
 		~RobotomyRequestForm();

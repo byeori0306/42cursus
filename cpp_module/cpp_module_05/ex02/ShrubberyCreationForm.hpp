@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:42 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/04 21:55:21 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 18:58:33 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 class ShrubberyCreationForm : public Form {
 	private:
-		std::string target;
+		std::string const target;
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string target);		
+		ShrubberyCreationForm(std::string const target);		
 		ShrubberyCreationForm(const ShrubberyCreationForm& scf);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& scf);
 		~ShrubberyCreationForm();
