@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:31:32 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/18 20:39:11 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/13 21:21:26 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,10 @@ int main() {
 	std::cout << w->getType() << " " << std::endl;
 	w->makeSound();
 	wrong->makeSound();
+
+	delete meta;
+	delete i;
+	delete j;
+	delete wrong;
+	delete w;
 }
