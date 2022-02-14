@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:09:35 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/24 16:08:35 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/14 16:34:17 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Cat::Cat(void) {
 Cat::Cat(const Cat &cat) {
 	std::cout << "Cat copy constructor called." << std::endl;
 	type = cat.getType();
+	brain = new Brain();
 	*brain = *cat.brain;
 }
 

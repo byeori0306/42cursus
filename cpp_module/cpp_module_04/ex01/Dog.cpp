@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:21:09 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/24 16:08:17 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/14 16:32:47 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Dog::Dog(void) {
 Dog::Dog(const Dog &dog) {
 	std::cout << "Dog copy constructor called." << std::endl;
 	type = dog.getType();
+	brain = new Brain();
 	*brain = *dog.brain;
 }
 
