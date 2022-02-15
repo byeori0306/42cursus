@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:21:09 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/14 16:32:47 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/15 17:39:41 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Dog::Dog(void) {
 	std::cout << "Dog default constructor called" <<std::endl;
 	type = "Dog";
 	brain = new Brain();
+	std::cout << "address of brain : " << brain << std::endl;
 }
 
 Dog::Dog(const Dog &dog) {
@@ -23,6 +24,7 @@ Dog::Dog(const Dog &dog) {
 	type = dog.getType();
 	brain = new Brain();
 	*brain = *dog.brain;
+	std::cout << "address of brain : " << brain << std::endl;
 }
 
 Dog::~Dog(void) {

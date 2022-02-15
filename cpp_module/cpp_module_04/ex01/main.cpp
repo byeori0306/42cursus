@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:31:32 by dahpark           #+#    #+#             */
-/*   Updated: 2022/01/24 16:18:11 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/15 17:39:59 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int main() {
 
 	j->makeSound();
 	i->makeSound();
+
+	Dog a_dog;
+	Dog b_dog(a_dog);
 
 	for (int i = 0; i < 10; i++)
 		delete meta[i];
