@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 18:47:06 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:54:13 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return ("Error: Grade too low!");	
 }
 
-std::string const Bureaucrat::getName() const {
+std::string Bureaucrat::getName() const {
 	return (name);
 }
 
-int const Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
 	return (grade);
 }
 

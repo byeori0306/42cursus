@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:23 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 18:54:33 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:53:42 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ class Form {
 				const char* what() const throw();
 		};
 
-		std::string const getName() const;
-		int const getSignGrade() const;
-		int const getExcuteGrade() const;
-		bool const getSigned() const;
+		std::string getName() const;
+		int getSignGrade() const;
+		int getExcuteGrade() const;
+		bool getSigned() const;
 		void beSigned(Bureaucrat& br);
 };
 

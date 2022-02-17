@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:20 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 19:28:38 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:52:37 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ void	Form::setSigned(bool const status) {
 	is_signed = status;
 }
 
-std::string const Form::getName() const {
+std::string Form::getName() const {
 	return (name);
 }
 
-int const Form::getSignGrade() const {
+int Form::getSignGrade() const {
 	return (sign_grade);
 }
 
-int const Form::getExcuteGrade() const {
+int Form::getExcuteGrade() const {
 	return (excute_grade);
 }
 
-bool const Form::getSigned() const {
+bool Form::getSigned() const {
 	return (is_signed);
 }
 

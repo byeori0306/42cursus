@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:04:23 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 19:28:16 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:52:22 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ class Form {
 		};
 
 		void setSigned(bool const status);
-		std::string const getName() const;
-		int const getSignGrade() const;
-		int const getExcuteGrade() const;
-		bool const getSigned() const;
+		std::string getName() const;
+		int getSignGrade() const;
+		int getExcuteGrade() const;
+		bool getSigned() const;
 		void beSigned(Bureaucrat& br);
 		void checkExecGrade(Bureaucrat const & executor) const;
 		virtual void execute(Bureaucrat const & executor) const = 0;

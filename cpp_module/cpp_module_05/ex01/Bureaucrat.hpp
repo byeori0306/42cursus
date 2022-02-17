@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:42 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 18:45:17 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:54:07 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ class Bureaucrat {
 				const char* what() const throw();
 		};
 
-		std::string const getName() const;
-		int const getGrade() const;
+		std::string getName() const;
+		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
 		void signForm(Form& form);
