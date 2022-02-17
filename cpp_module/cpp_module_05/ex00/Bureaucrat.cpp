@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:54:25 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 23:48:43 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& br) {
 Bureaucrat::~Bureaucrat() { }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Error: Grade too high!");
+	return ("grade is too high");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low!");	
+	return ("grade is too low");
 }
 
 std::string Bureaucrat::getName() const {
