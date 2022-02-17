@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 22:56:20 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/05 14:05:57 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 21:42:43 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const char* Intern::unknownForm::what() const throw() {
 	return ("the requested form is unknown.");
 }
 
-Form* Intern::makeForm(const std::string name, const std::string target) {
+Form* Intern::makeForm(std::string const name, std::string const target) {
 	int idx = 0;
 	Form* form = NULL;
 	std::string forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
