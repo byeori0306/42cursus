@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:46:02 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:20:35 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void Bureaucrat::signForm(Form& form) {
 		form.beSigned(*this);
 		std::cout << name << " signs " << form.getName() << std::endl;
 	} catch (std::exception& e) {
-		std::cerr << name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
 	}		
 }
 

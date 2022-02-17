@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:38 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:34:50 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:19:22 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main() {
 		std::cout << form1 << std::endl;
 		br1.signForm(form1);
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -33,7 +33,7 @@ int main() {
 		std::cout << form2 << std::endl;
 		br1.signForm(form2); // sucess
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	
 	std::cout << std::endl;
@@ -45,6 +45,6 @@ int main() {
 		std::cout << form3 << std::endl;
 		br2.signForm(form3); // fail
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }

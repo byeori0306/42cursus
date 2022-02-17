@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:38 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:37:21 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:20:05 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main() {
 		br1.signForm(ppf);
 		br1.executeForm(ppf);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -36,7 +36,7 @@ int main() {
 		br2.signForm(rrf);
 		br2.executeForm(rrf);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -48,7 +48,7 @@ int main() {
 		br3.signForm(scf);
 		br3.executeForm(scf);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -62,6 +62,6 @@ int main() {
 		br1.signForm(ppf);
 		br2.executeForm(ppf); // fail
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }

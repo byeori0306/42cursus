@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:38 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:33:10 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:18:44 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 		br1.incrementGrade();
 		std::cout << br1 << std::endl;
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	try {
@@ -30,7 +30,7 @@ int main() {
 		br2.decrementGrade();
 		std::cout << br2 << std::endl;
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	try {
@@ -39,6 +39,6 @@ int main() {
 		br3.decrementGrade(); 
 		std::cout << br3 << std::endl;
 	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }

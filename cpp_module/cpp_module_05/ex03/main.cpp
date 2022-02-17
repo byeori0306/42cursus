@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:38 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 21:39:06 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:20:26 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main() {
 		br1.signForm(*form);
 		br1.executeForm(*form);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -40,7 +40,7 @@ int main() {
 		br2.signForm(*form);
 		br2.executeForm(*form);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -52,7 +52,7 @@ int main() {
 		br3.signForm(*form);
 		br3.executeForm(*form);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -64,6 +64,6 @@ int main() {
 		br3.signForm(*form);
 		br3.executeForm(*form);
 	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
