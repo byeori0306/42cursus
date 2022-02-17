@@ -6,10 +6,12 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:14:34 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/13 19:29:14 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/17 22:09:18 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib>
+#include <ctime>
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
@@ -32,10 +34,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 RobotomyRequestForm::~RobotomyRequestForm() { }
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+	srand((unsigned int)time(NULL));
+	int result = rand() % 2;
 	try {
 		checkExecGrade(executor);
 		std::cout << "* DRRRRRRRRRRRRR *" << std::endl;
-		std::cout << target << " has been robotomized successfully 50\% of the time." << std::endl;
+		if (result)
+			std::cout << target << " has been robotomized successfully" << std::endl;
+		else
+			std::cout << target << " has failed to be robotomized." << std::endl;
 	} catch (std::exception& e) {
 		throw e.what();
 	}
