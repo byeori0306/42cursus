@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:08:45 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/17 23:49:07 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/18 14:36:49 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::incrementGrade() {
-	grade--;
-	if (grade < 1)
+	if (grade == 1)
 		throw Bureaucrat::GradeTooHighException();
+	else
+		grade--;
 }
 
 void Bureaucrat::decrementGrade() {
-	grade++;
-	if (grade > 150)
+	if (grade == 150)
 		throw Bureaucrat::GradeTooLowException();
+	else
+		grade++;
 }
 
 void Bureaucrat::signForm(Form& form) {
