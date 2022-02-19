@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:11:33 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/05 16:05:01 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/19 15:36:39 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv) {
 	if (argc != 2) {
-		std::cerr << "Wrong input!" << std::endl;
+		std::cout << "Wrong input!" << std::endl;
 		return (0);
 	}
 
