@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 17:29:31 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/05 17:46:54 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/19 17:05:14 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,11 @@
 
 #include <iostream>
 
-class Data {
-	private:
-		std::string data;
-	public:
-		Data();
-		Data(std::string data);
-		Data(const Data& d);
-		Data& operator=(const Data& d);
-		~Data();
-
-		std::string getData();
-		uintptr_t serialize(Data *ptr);
-		Data* deserialize(uintptr_t raw);	
+struct Data {
+	std::string data;
 };
+
+uintptr_t serialize(Data *ptr);
+Data* deserialize(uintptr_t raw);
 
 #endif
