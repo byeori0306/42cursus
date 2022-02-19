@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 14:41:09 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/06 19:50:47 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/19 20:34:56 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Array {
 			if (this == &array)
 				return (*this);
 			n = array.n;
-			array = new T[n]();
 			for (unsigned int i = 0; i < n; i++)
 				arr[i] = array.arr[i];
 			return (*this);
