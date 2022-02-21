@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:05:26 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/21 22:29:08 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/21 23:08:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ten_thousand_elem_test(std::vector<int>& array) {
 		Span sp = Span(10001);
 
 		sp.addNumber(array.begin(), array.end());
+		sp.addNumber(1);
 		
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
@@ -52,7 +53,7 @@ void	ten_thousand_elem_test(std::vector<int>& array) {
 int main()
 {
 	std::vector<int> array;
-	for (int i = 1; i <= 10001; i++) {
+	for (int i = 1; i <= 10000; i++) {
 		array.push_back(i * 2);
 	}
 	

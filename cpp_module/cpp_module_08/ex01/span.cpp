@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 21:57:35 by dahpark           #+#    #+#             */
-/*   Updated: 2022/02/21 22:24:31 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/02/21 23:07:55 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ unsigned int	Span::shortestSpan() {
 		throw NoNumbers();
 	
 	std::vector<int> arr2(arr);
+	std::sort(arr2.begin(), arr2.end());
 	std::adjacent_difference(arr2.begin(), arr2.end(), arr2.begin());
 	std::transform(arr2.begin(), arr2.end(), arr2.begin(), trans);
 	return (*min_element(arr2.begin(), arr2.end()));
