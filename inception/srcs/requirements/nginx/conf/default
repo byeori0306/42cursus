@@ -1,0 +1,19 @@
+server {
+		listen 443 ssl;
+		listen [::]:443 ssl;
+
+		server_name 127.0.0.1;
+		error_page 497 https://$host:$server_port$request_uri;
+
+		ssl_certificate /etc/ssl/certs/localhost.crt;
+		ssl_certificate_key /etc/ssl/private/localhost.key;
+		ssl_protocols TLSv1.2;
+
+		root /var/www/html;
+
+		index index.html index.htm index.nginx-debian.html;
+
+		location / {
+				try_files $uri $uri/ =404;
+		}
+}
