@@ -9,3 +9,8 @@ services:
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb
+  environment:
+   - MARIADB_DB
+   - MARIADB_ROOT_PW
+   - MARIADB_ID
+   - MARIADB_PW
