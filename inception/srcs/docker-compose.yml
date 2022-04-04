@@ -6,6 +6,8 @@ services:
   build: ./requirements/nginx
   ports:
    - "443:443"
+  volumes:
+   - wordpress_data:/var/www/html
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb
@@ -14,3 +16,18 @@ services:
    - MARIADB_ROOT_PW
    - MARIADB_ID
    - MARIADB_PW
+  volumes:
+   - mariadb_data:/var/lib/mysql
+  expose:
+   - "3306"
+ wordpress:
+  container_name: wordpress
+  build: ./requirements/wordpress
+  expose:
+   - "9000"
+  volumes:
+   - wordpress_data:/wordpress
+
+volumes:
+ mariadb_data:
+ wordpress_data:
