@@ -8,6 +8,8 @@ services:
    - "443:443"
   volumes:
    - wordpress_data:/var/www/html
+  networks:
+   - inception
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb
@@ -20,13 +22,20 @@ services:
    - mariadb_data:/var/lib/mysql
   expose:
    - "3306"
+  networks:
+   - inception
  wordpress:
   container_name: wordpress
   build: ./requirements/wordpress
   expose:
    - "9000"
   volumes:
-   - wordpress_data:/wordpress
+   - wordpress_data:/var/www/html
+  networks:
+   - inception
+
+networks:
+ inception:
 
 volumes:
  mariadb_data:
