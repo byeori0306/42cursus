@@ -29,6 +29,12 @@ services:
  wordpress:
   container_name: wordpress
   build: ./requirements/wordpress
+  depends_on:
+   - mariadb
+  environment:
+   - MARIADB_DB
+   - MARIADB_ID
+   - MARIADB_PW
   expose:
    - "9000"
   volumes:
