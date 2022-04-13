@@ -31,11 +31,8 @@ services:
   build: ./requirements/wordpress
   depends_on:
    - mariadb
-  environment:
-   - MARIADB_DB
-   - MARIADB_ID
-   - MARIADB_PW
-   - MARIADB_HOST
+  env_file:
+   - .env
   expose:
    - "9000"
   volumes:
