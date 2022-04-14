@@ -10,3 +10,4 @@ fclean:
 	@cd srcs && docker-compose down
 	@docker image prune -a -f
 	@docker network prune -f
+	
