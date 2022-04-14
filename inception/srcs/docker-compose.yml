@@ -45,4 +45,14 @@ networks:
 
 volumes:
  mariadb_data:
+  driver: local
+  driver_opts:
+   type: volume
+   o: bind
+   device: /Users/dahee/Desktop/dahpark/data/db
  wordpress_data:
+  driver: local
+  driver_opts:
+   type: volume
+   o: bind
+   device: /Users/dahee/Desktop/dahpark/data/site
