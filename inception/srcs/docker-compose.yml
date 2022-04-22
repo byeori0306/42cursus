@@ -6,6 +6,7 @@ services:
   build: ./requirements/nginx
   depends_on:
    - wordpress
+  restart: on-failure
   ports:
    - "443:443"
   volumes:
@@ -15,6 +16,7 @@ services:
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb
+  restart: on-failure
   environment:
    - MARIADB_DB
    - MARIADB_ROOT_PW
@@ -29,6 +31,7 @@ services:
  wordpress:
   container_name: wordpress
   build: ./requirements/wordpress
+  restart: on-failure
   depends_on:
    - mariadb
   env_file:
@@ -49,10 +52,10 @@ volumes:
   driver_opts:
    type: volume
    o: bind
-   device: /Users/dahee/Desktop/dahpark/data/db
+   device: /home/dahpark/data/db
  wordpress_data:
   driver: local
   driver_opts:
    type: volume
    o: bind
-   device: /Users/dahee/Desktop/dahpark/data/site
+   device: /home/dahpark/data/site
