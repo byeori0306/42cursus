@@ -1,8 +1,8 @@
 all:
-	@mkdir -p ~/Desktop/dahpark/data/db
-	@mkdir -p ~/Desktop/dahpark/data/site
+	@sudo mkdir -p /home/dahpark/data/db
+	@sudo mkdir -p /home/dahpark/data/site
 	@sudo chmod 777 /etc/hosts
-	@sudo sed -i '' 's/localhost/dahpark.42.fr/' /etc/hosts
+	@sudo sed -i 's/localhost/dahpark.42.fr/g' /etc/hosts
 	@cd srcs && docker-compose up -d
 up:
 	@cd srcs && docker-compose up -d
@@ -11,7 +11,6 @@ down:
 fclean:
 	@cd srcs && docker-compose down
 	@docker system prune --all --force
-	@docker volume rm srcs_wordpress_data
-	@docker volume rm srcs_mariadb_data
-	@rm -rf ~/Desktop/dahpark/data/db
-	@rm -rf ~/Desktop/dahpark/data/site
+	@docker volume ls -qf dangling=true | xargs -r docker volume rm
+	@sudo rm -rf /home/dahpark/data
+	@sudo sed -i 's/dahpark.42.fr/localhost/g' /etc/hosts
