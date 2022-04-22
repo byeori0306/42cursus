@@ -5,8 +5,8 @@ server {
 		server_name dahpark.42.fr;
 		error_page 497 https://$host:$server_port$request_uri;
 
-		ssl_certificate /etc/ssl/certs/localhost.crt;
-		ssl_certificate_key /etc/ssl/private/localhost.key;
+		ssl_certificate /etc/ssl/certs/dahpark.crt;
+		ssl_certificate_key /etc/ssl/private/dahpark.key;
 		ssl_protocols TLSv1.2;
 
 		root /var/www/html;
