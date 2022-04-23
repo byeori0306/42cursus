@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -d /var/lib/mysql/$MARIADB_DB]
+if [ ! -d /var/lib/mysql/$MARIADB_DB ]
 then
 service mysql start
 
