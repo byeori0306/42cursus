@@ -10,7 +10,7 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MARIADB_ROOT_PW');"
 mysql -u root -e "UPDATE mysql.user SET plugin = '' WHERE user = 'root' AND host = 'localhost';"
 
-sleep 3;
+sleep 3
 
 service mysql stop
 fi
