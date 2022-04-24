@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! -f $WP_PATH/wp-config.php]
+if [ ! -f $WP_PATH/wp-config.php ]
 then
 mv $WP_PATH/wp-config-sample.php $WP_PATH/wp-config.php
 
@@ -18,7 +18,7 @@ while ! mysqladmin ping -h "$MARIADB_HOST" --silent; do
 done
 
 wp core install \
-	--url=127.0.0.1 \
+	--url=$DOMAIN_NAME \
 	--title=$TITLE \
 	--admin_user=$ADMIN_ID \
 	--admin_password=$ADMIN_PW \
@@ -28,7 +28,7 @@ wp core install \
 	--path=$WP_PATH
 
 wp user create $USER_ID $USER_EMAIL \
-	--user_pass=USER_PW \
+	--user_pass=$USER_PW \
 	--allow-root \
 	--path=$WP_PATH
 fi
