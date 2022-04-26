@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:17:32 by dahpark           #+#    #+#             */
-/*   Updated: 2022/04/25 16:32:22 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/04/25 17:30:03 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ namespace ft {
 			*/
 			typedef size_t										size_type;
 	};
-}
+} // namespace ft
 
 #endif
