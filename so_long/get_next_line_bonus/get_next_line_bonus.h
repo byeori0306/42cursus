@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 02:56:56 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/07 10:36:14 by dahpark          ###   ########.fr       */
+/*   Created: 2021/02/28 03:10:48 by dahpark           #+#    #+#             */
+/*   Updated: 2021/07/07 07:58:08 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-int				main(int argc, char **argv)
-{
-	t_game	game;
+# include <stddef.h>
+# define OPEN_MAX 256
+# define BUFFER_SIZE 10
 
-	check_argument(argc, argv[1]);
-	init_map_info(&game.map_info);
-	check_map(argv[1], &game.map_info);
-	get_map(argv[1], &game.map_info);
-	init_game(&game);
-	draw_map(&game);
-	mlx_hook(game.window, DESTROY_NOTIFY, 0, &close_window, &game);
-	mlx_hook(game.window, KEY_PRESS, 0, &key_press_event, &game);
-	mlx_loop(game.mlx);
-}
+int		get_next_line(int fd, char **line);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*ft_strdup(const char *s1);
+
+#endif

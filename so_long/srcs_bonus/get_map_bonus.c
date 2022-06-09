@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   get_map_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 03:30:46 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/07 10:39:08 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 10:39:28 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-#include "../get_next_line/get_next_line.h"
+#include "../so_long_bonus.h"
+#include "../get_next_line_bonus/get_next_line_bonus.h"
 #include <fcntl.h>
 #include <unistd.h>
 

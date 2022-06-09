@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 06:30:10 by dahpark           #+#    #+#             */
-/*   Updated: 2021/07/07 10:38:57 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 10:39:21 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-#include "../get_next_line/get_next_line.h"
+#include "../so_long_bonus.h"
+#include "../get_next_line_bonus/get_next_line_bonus.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -71,7 +71,9 @@ static	void	check_lines(char *line, t_map_info *map_info)
 			map_info->exit++;
 		else if (line[i] == 'C')
 			map_info->collectibles++;
-		else if (line[i] != '1' && line[i] != '0')
+		else if (line[i] == '0')
+			map_info->space++;
+		else if (line[i] != '1')
 			print_error("Only 5 possible characters allowed.\n");
 		i++;
 	}

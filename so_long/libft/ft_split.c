@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 10:13:55 by dahpark           #+#    #+#             */
-/*   Updated: 2020/11/29 15:22:51 by dahpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 08:01:57 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 static	int		get_arr_len(char const *s, char c)
 {
