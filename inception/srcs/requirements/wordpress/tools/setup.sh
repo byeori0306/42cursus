@@ -18,7 +18,7 @@ while ! mysqladmin ping -h "$MARIADB_HOST" --silent; do
 done
 
 wp core install \
-	--url=dahpark.42.fr \
+	--url=$DOMAIN_NAME \
 	--title=$TITLE \
 	--admin_user=$ADMIN_ID \
 	--admin_password=$ADMIN_PW \
