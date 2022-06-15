@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   VectorIterator.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dahpark <dahpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:30:21 by dahpark           #+#    #+#             */
-/*   Updated: 2022/05/19 22:16:56 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/15 15:39:01 by dahpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,95 @@ namespace ft {
 	template <typename T>
 	class vector_iterator {
 		public:
-			typedef	T										value_type;
+			typedef typename T								value_type;
 			typedef	std::ptrdiff_t							difference_type;
-			typedef	T*										pointer;
-			typedef	T&										reference;
+			typedef	typename T*								pointer;
+			typedef	typename T&								reference;
 			typedef ft::random_access_iterator_tag			iterator_category;
 
 		private:
-			T _elem;
+			pointer _elem;
 		
 		public:
+			vector_iterator() : _elem(NULL) { }
+			vector_iterator(pointer elem) : _elem(elem) { }
+			vector_iterator(const vector_iterator& iter) : _elem(iter->_elem) { }
+			vector_iterator& operator=(const vector_iterator& iter) {
+				if (this == &iter)
+					return *this;
+				_elem = iter->_elem;
+				return *this;
+			}
+			~vector_iterator() { }
 			
+			bool operator==(const vector_iterator& iter) {
+				return (_elem == iter->elem);
+			}
+			bool operator!=(const vector_iterator& iter) {
+				return (_elem != iter->elem);
+			}
+
+			reference operator*() {
+				return (*_elem);
+			}
+			pointer operator->() {
+				return (_elem);
+			}
+
+			vector_iterator& operator++() {
+				_elem++;
+				return (*this);
+			}
+			vector_iterator operator++(int) {
+				vector_iterator temp(*this);
+				_elem++;
+				return (temp);
+			}
+			vector_iterator& operator--() {
+				_elem--;
+				return (*this);
+			}
+			vector_iterator operator--(int) {
+				vector_iterator temp(*this);
+				_elem--;
+				return (temp);
+			}
+
+			vector_iterator operator+(difference_type n) {
+				return vector_iterator(_elem + n);
+			}
+			vector_iterator operator-(difference_type n) {
+				return vector_iterator(_elem - n);
+			}
+			vector_iterator operator-(const vector_iterator& iter) {
+				return vector_iterator(_elem - iter->_elem);
+			}
+
+			bool operator<(const vector_iterator& iter) {
+				return (_elem < iter->elem);
+			}
+			bool operator>(const vector_iterator& iter) {
+				return (_elem > iter->elem);
+			}
+			bool operator<=(const vector_iterator& iter) {
+				return (_elem <= iter->elem);
+			}
+			bool operator>=(const vector_iterator& iter) {
+				return (_elem >= iter->elem);
+			}
+
+			vector_iterator& operator+=(difference_type n) {
+				_elem += n;
+				return (*this);
+			}
+			vector_iterator& operator-=(difference_type n) {
+				_elem -= n;
+				return (*this);
+			}
+			
+			reference operator[] (difference_type n) {
+				return (*(elem + n));
+			}
 	};
 } // namespace ft
 
