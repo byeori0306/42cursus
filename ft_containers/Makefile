@@ -6,7 +6,7 @@
 #    By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/01 23:10:30 by dahpark           #+#    #+#              #
-#    Updated: 2022/05/01 23:13:03 by dahpark          ###   ########seoul.kr   #
+#    Updated: 2022/06/20 16:03:05 by dahpark          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror
 NAME		= a.out
 SRCS		= main.cpp \
-			test/test_reverse_iterator.cpp
+			test/test_vector.cpp
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
 
