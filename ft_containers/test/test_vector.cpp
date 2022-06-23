@@ -6,13 +6,13 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:47:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/23 19:55:25 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/23 20:18:29 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Test.hpp"
-#include "../Vector.hpp"
-#include "../VectorIterator.hpp"
+#include "../container/Vector.hpp"
+#include "../container/VectorIterator.hpp"
 #include <vector>
 
 void test_vector(void) {
