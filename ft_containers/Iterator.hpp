@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:42:32 by dahpark           #+#    #+#             */
-/*   Updated: 2022/05/01 22:41:14 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/23 20:12:51 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ namespace ft {
 	/* Predefined iterator */
 	template <class Iterator>
 	class reverse_iterator {
-		private:
-			Iterator _current;
 		public:
 			/* Member types */
 			typedef Iterator												iterator_type;
@@ -65,7 +63,11 @@ namespace ft {
 			typedef typename iterator_traits<Iterator>::difference_type		difference_type;
 			typedef typename iterator_traits<Iterator>::pointer				pointer;
 			typedef typename iterator_traits<Iterator>::reference			reference;
+		
+		private:
+			iterator_type _current;
 
+		public:
 			/* Member functions */
 			// default constructor
 			reverse_iterator() { }
@@ -161,7 +163,7 @@ namespace ft {
 	typename reverse_iterator<Iterator>::difference_type operator- (
     	const reverse_iterator<Iterator>& lhs,
     	const reverse_iterator<Iterator>& rhs)
-	{ return (lhs.base() - rhs.base()); }
+	{ return (rhs.base() - lhs.base()); }
 } // namespace ft
 
 #endif

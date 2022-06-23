@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.hpp                                           :+:      :+:    :+:   */
+/*   Test.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 23:06:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/19 23:13:35 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/23 15:16:30 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void print_vector_result(std::string test, std::vector<T> &stl, ft::vector<T> &f
 }
 
 void test_vector(void);
+void test_vector_iterator(void);
+void test_reverse_iterator_with_vector(void);
 
 #endif

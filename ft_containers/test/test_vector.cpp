@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_vector_iterator.cpp                           :+:      :+:    :+:   */
+/*   test_vector.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:47:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/20 16:00:59 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/23 19:55:25 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ void test_vector(void) {
 	stl_v.resize(13, 130);
 	ft_v.resize(13, 130);
 	print_result<int>("resize (n > v.size())", int(stl_v.size()), int(ft_v.size()));
+	print_vector_result<int>("resize (n > v.size())", stl_v, ft_v);
 	
 	// resize() (n < v.size())
-	stl_v.resize(10);
-	ft_v.resize(10);
+	stl_v.resize(9, 130);
+	ft_v.resize(9, 130);
 	print_result<int>("resize (n < v.size())", int(stl_v.size()), int(ft_v.size()));
+	print_vector_result<int>("resize (n < v.size())", stl_v, ft_v);
 
 	// Element access
 	print_result<int>("[] operator overload", stl_v[5], ft_v[5]);
@@ -190,60 +192,122 @@ void test_vector(void) {
 }
 
 void test_vector_iterator(void) {
-	// std::vector<int>::iterator iter = stl_v.begin();
+	std::cout << HIGHLIGHT << "============================ vector iterator test ============================" << RESET << std::endl;
+	std::vector<int> stl_v;
+	ft::vector<int> ft_v;
 
-	// ++iter;
-	// std::cout << *iter << std::endl;
+	for (int i = 10; i <= 100; i += 10) {
+		stl_v.push_back(i);
+		ft_v.push_back(i);
+	}
+
+	std::vector<int>::iterator stl_iter = stl_v.begin();
+	ft::vector<int>::iterator ft_iter = ft_v.begin();
+
+	print_result("++iter", *(++stl_iter), *(++ft_iter));
+	print_result("iter++", *(stl_iter++), *(ft_iter++));
+	print_result("--iter", *(--stl_iter), *(--ft_iter));
+	print_result("iter--", *(stl_iter--), *(ft_iter--));
+
+	stl_iter = stl_v.begin();
+	ft_iter = ft_v.begin();
+	print_result("iter + 3", *(stl_iter + 3), *(ft_iter + 3));
+	stl_iter = stl_v.end();
+	ft_iter = ft_v.end();
+	print_result("iter - 3", *(stl_iter - 3), *(ft_iter - 3));
+
+	stl_iter = stl_v.begin();
+	ft_iter = ft_v.begin();
+	stl_iter += 2;
+	ft_iter += 2;
+	print_result("iter += 2", *stl_iter, *ft_iter);
+
+	stl_iter -= 2;
+	ft_iter -= 2;
+	print_result("iter -= 2", *stl_iter, *ft_iter);
+
+	print_result("iter[3]", stl_iter[3], ft_iter[3]);
+
+	*stl_iter = 101;
+	*ft_iter = 101;
+	print_result("*iter = 101", *stl_iter, *ft_iter);
+
+
+	std::vector<int>::iterator stl_a = stl_v.begin() + 3;
+	std::vector<int>::iterator stl_b = stl_v.begin() + 6;
+
+	ft::vector<int>::iterator ft_a = ft_v.begin() + 3;
+	ft::vector<int>::iterator ft_b = ft_v.begin() + 6;
 	
-	// iter++;
-	// std::cout << *iter << std::endl;
+	print_result("iter1 == iter2", (stl_a == stl_b), (ft_a == ft_b));
+	print_result("iter1 != iter2", (stl_a != stl_b), (ft_a != ft_b));
+	print_result("iter1 < iter2", (stl_a < stl_b), (ft_a < ft_b));
+	print_result("iter1 > iter2", (stl_a > stl_b), (ft_a > ft_b));
+	print_result("iter1 < iter2", (stl_a <= stl_b), (ft_a <= ft_b));
+	print_result("iter1 > iter2", (stl_a >= stl_b), (ft_a >= ft_b));
+	print_result("iter2 - iter1", (stl_b - stl_a), (ft_b - ft_a));
 
-	// *iter++;
-	// std::cout << *iter << std::endl;
+	std::vector<int>::iterator stl_c(stl_iter);
+	ft::vector<int>::iterator ft_c(ft_iter);
+	print_result("copy assignment", *stl_c, *ft_c);
+}
 
-	// --iter;
-	// std::cout << *iter << std::endl;
+void test_reverse_iterator_with_vector(void) {
+	std::cout << HIGHLIGHT << "======================= reverse iterator test with vector ======================" << RESET << std::endl;
+	std::vector<int> stl_v;
+	ft::vector<int> ft_v;
+
+	for (int i = 10; i <= 100; i += 10) {
+		stl_v.push_back(i);
+		ft_v.push_back(i);
+	}
+
+	std::vector<int>::reverse_iterator stl_iter = stl_v.rbegin();
+	ft::vector<int>::reverse_iterator ft_iter = ft_v.rbegin();
+
+	print_result("++iter", *(++stl_iter), *(++ft_iter));
+	print_result("iter++", *(stl_iter++), *(ft_iter++));
+	print_result("--iter", *(--stl_iter), *(--ft_iter));
+	print_result("iter--", *(stl_iter--), *(ft_iter--));
+
+	stl_iter = stl_v.rbegin();
+	ft_iter = ft_v.rbegin();
+	print_result("iter + 3", *(stl_iter + 3), *(ft_iter + 3));
+	stl_iter = stl_v.rend();
+	ft_iter = ft_v.rend();
+	print_result("iter - 3", *(stl_iter - 3), *(ft_iter - 3));
+
+	stl_iter = stl_v.rbegin();
+	ft_iter = ft_v.rbegin();
+	stl_iter += 2;
+	ft_iter += 2;
+	print_result("iter += 2", *stl_iter, *ft_iter);
+
+	stl_iter -= 2;
+	ft_iter -= 2;
+	print_result("iter -= 2", *stl_iter, *ft_iter);
+
+	print_result("iter[3]", stl_iter[3], ft_iter[3]);
+
+	*stl_iter = 101;
+	*ft_iter = 101;
+	print_result("*iter = 101", *stl_iter, *ft_iter);
+
+	std::vector<int>::reverse_iterator stl_a = stl_v.rbegin() + 3;
+	std::vector<int>::reverse_iterator stl_b = stl_v.rbegin() + 6;
+
+	ft::vector<int>::reverse_iterator ft_a = ft_v.rbegin() + 3;
+	ft::vector<int>::reverse_iterator ft_b = ft_v.rbegin() + 6;
 	
-	// iter--;
-	// std::cout << *iter << std::endl;
+	print_result("iter1 == iter2", (stl_a == stl_b), (ft_a == ft_b));
+	print_result("iter1 != iter2", (stl_a != stl_b), (ft_a != ft_b));
+	print_result("iter1 < iter2", (stl_a < stl_b), (ft_a < ft_b));
+	print_result("iter1 > iter2", (stl_a > stl_b), (ft_a > ft_b));
+	print_result("iter1 < iter2", (stl_a <= stl_b), (ft_a <= ft_b));
+	print_result("iter1 > iter2", (stl_a >= stl_b), (ft_a >= ft_b));
+	print_result("iter2 - iter1", (stl_b - stl_a), (ft_b - ft_a));
 
-	// *iter--;
-	// std::cout << *iter << std::endl;
-
-	// iter = v.begin() + 3;
-	// std::cout << *iter << std::endl;
-
-	// iter = 3 + v.begin();
-	// std::cout << *iter << std::endl;
-
-	// iter = v.end() - 3;
-	// std::cout << *iter << std::endl;
-
-	// iter += 2;
-	// std::cout << *iter << std::endl;
-
-	// iter -= 2;
-	// std::cout << *iter << std::endl;
-
-	// iter = v.begin();
-	// std::cout << iter[5] << std::endl;
-
-	// *iter = 101;
-	// std::cout << *iter << std::endl;
-
-	// std::vector<int>::iterator a = stl_v.begin() + 3;
-	// std::vector<int>::iterator b = stl_v.begin() + 6;
-	// *a = 30;
-	// *b = 30;
-	// std::cout << *b << std::endl;
-	// std::cout << (a == b) << std::endl;
-	// std::cout << (a != b) << std::endl;
-	// std::cout << (a < b) << std::endl;
-	// std::cout << (a > b) << std::endl;
-	// std::cout << (a <= b) << std::endl;
-	// std::cout << (a >= b) << std::endl;
-	// std::cout << (b - a) << std::endl;
-
-	// std::vector<int>::iterator c(a);
-	// std::cout << *c << std::endl;
+	std::vector<int>::reverse_iterator stl_c(stl_iter);
+	ft::vector<int>::reverse_iterator ft_c(ft_iter);
+	print_result("copy assignment", *stl_c, *ft_c);
 }

@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:30:21 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/19 23:44:36 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/23 16:39:57 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,91 +26,91 @@ namespace ft {
 			typedef ft::random_access_iterator_tag	iterator_category;
 
 		private:
-			pointer _elem;
+			pointer _ptr;
 		
 		public:
-			vector_iterator() : _elem(NULL) { }
-			vector_iterator(pointer elem) : _elem(elem) { }
-			vector_iterator(const vector_iterator& iter) : _elem(iter._elem) { }
+			vector_iterator() : _ptr(NULL) { }
+			vector_iterator(pointer ptr) : _ptr(ptr) { }
+			vector_iterator(const vector_iterator& iter) : _ptr(iter._ptr) { }
 			vector_iterator& operator=(const vector_iterator& iter) {
 				if (this == &iter)
 					return (*this);
-				_elem = iter._elem;
+				_ptr = iter._ptr;
 				return (*this);
 			}
 			~vector_iterator() { }
 			
-			bool operator==(const vector_iterator& iter) {
-				return (_elem == iter._elem);
+			bool operator==(const vector_iterator& iter) const {
+				return (_ptr == iter._ptr);
 			}
-			bool operator!=(const vector_iterator& iter) {
-				return (_elem != iter._elem);
+			bool operator!=(const vector_iterator& iter) const {
+				return (_ptr != iter._ptr);
 			}
 
-			reference operator*() {
-				return (*_elem);
+			reference operator*() const {
+				return (*_ptr);
 			}
 			pointer operator->() const{
-				return (_elem);
+				return (_ptr);
 			}
 
 			vector_iterator& operator++() {
-				_elem++;
+				_ptr++;
 				return (*this);
 			}
 			vector_iterator operator++(int) {
 				vector_iterator temp(*this);
-				_elem++;
+				_ptr++;
 				return (temp);
 			}
 			vector_iterator& operator--() {
-				_elem--;
+				_ptr--;
 				return (*this);
 			}
 			vector_iterator operator--(int) {
 				vector_iterator temp(*this);
-				_elem--;
+				_ptr--;
 				return (temp);
 			}
 
-			vector_iterator operator+(difference_type n) {
-				return vector_iterator(_elem + n);
+			vector_iterator operator+(difference_type n) const {
+				return vector_iterator(_ptr + n);
 			}
-			vector_iterator operator-(difference_type n) {
-				return vector_iterator(_elem - n);
+			vector_iterator operator-(difference_type n) const {
+				return vector_iterator(_ptr - n);
 			}
-			difference_type operator-(const vector_iterator& iter) {
-				return (_elem - iter._elem);
+			difference_type operator-(const vector_iterator& iter) const {
+				return (_ptr - iter._ptr);
 			}
 
-			bool operator<(const vector_iterator& iter) {
-				return (_elem < iter._elem);
+			bool operator<(const vector_iterator& iter) const {
+				return (_ptr < iter._ptr);
 			}
-			bool operator>(const vector_iterator& iter) {
-				return (_elem > iter._elem);
+			bool operator>(const vector_iterator& iter) const {
+				return (_ptr > iter._ptr);
 			}
-			bool operator<=(const vector_iterator& iter) {
-				return (_elem <= iter._elem);
+			bool operator<=(const vector_iterator& iter) const {
+				return (_ptr <= iter._ptr);
 			}
-			bool operator>=(const vector_iterator& iter) {
-				return (_elem >= iter._elem);
+			bool operator>=(const vector_iterator& iter) const {
+				return (_ptr >= iter._ptr);
 			}
 
 			vector_iterator& operator+=(difference_type n) {
-				_elem += n;
+				_ptr += n;
 				return (*this);
 			}
 			vector_iterator& operator-=(difference_type n) {
-				_elem -= n;
+				_ptr -= n;
 				return (*this);
 			}
 			
-			reference operator[] (difference_type n) {
-				return (*(_elem + n));
+			reference operator[] (difference_type n) const {
+				return (*(_ptr + n));
 			}
 
-			pointer get_elem() const{
-				return (_elem);
+			pointer get_ptr() const {
+				return (_ptr);
 			}
 	};
 } // namespace ft
