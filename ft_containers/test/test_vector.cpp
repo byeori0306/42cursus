@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:47:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/23 20:18:29 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/25 20:48:10 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,63 @@ void test_vector(void) {
 	for (ft::vector<int>::iterator iter = ft_v_2.begin(); iter != ft_v_2.end(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
+
+	// relational operators
+	std::vector<int> std_v1;
+	std::vector<int> std_v2_1;
+	std::vector<int> std_v2_2;
+
+	ft::vector<int> ft_v1;
+	ft::vector<int> ft_v2_1;
+	ft::vector<int> ft_v2_2;
+
+	for (int i = 10; i < 100; i++) {
+		std_v1.push_back(i);
+		std_v2_1.push_back(i);
+		std_v2_2.push_back(i);
+		ft_v1.push_back(i);
+		ft_v2_1.push_back(i);
+		ft_v2_2.push_back(i);
+	}
+
+	std_v2_2[5] = 90;
+	ft_v2_2[5] = 90;
+
+	std::cout << YELLOW << "----- V1 == V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 == std_v2_1) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 == ft_v2_1) << std::endl; 
+
+	std::cout << YELLOW << "----- V1 != V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 != std_v2_1) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 != ft_v2_1) << std::endl;
+
+	std::cout << YELLOW << "----- V1 < V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 < std_v2_2) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 < ft_v2_2) << std::endl;
+
+	std::cout << YELLOW << "----- V1 <= V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 <= std_v2_2) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 <= ft_v2_2) << std::endl;
+
+	std::cout << YELLOW << "----- V1 > V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 > std_v2_2) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 > ft_v2_2) << std::endl;
+
+	std::cout << YELLOW << "----- V1 >= V2 " << RESET << std::endl;
+	std::cout << BLUE << "STL: " << RESET;
+	std::cout << (std_v1 >= std_v2_2) << std::endl; 
+	std::cout << MAGENTA << "ft: " << RESET;
+	std::cout << (ft_v1 >= ft_v2_2) << std::endl;
 }
 
 void test_vector_iterator(void) {
@@ -250,6 +307,13 @@ void test_vector_iterator(void) {
 	std::vector<int>::iterator stl_c(stl_iter);
 	ft::vector<int>::iterator ft_c(ft_iter);
 	print_result("copy assignment", *stl_c, *ft_c);
+
+	// const iterator
+	// std::vector<int>::const_iterator stl_citer = stl_v.begin();
+	// ft::vector<int>::const_iterator ft_citer = ft_v.begin();
+
+	// *(stl_citer) = 5;
+	// *(ft_citer) = 5;
 }
 
 void test_reverse_iterator_with_vector(void) {

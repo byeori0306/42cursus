@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:17:32 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/23 20:18:02 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/25 20:20:15 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ namespace ft {
 			typedef typename allocator_type::pointer			pointer;
 			typedef typename allocator_type::const_pointer		const_pointer;
 			typedef ft::vector_iterator<value_type>				iterator;
-			typedef ft::vector_iterator<const value_type>		const_iterator;
+			typedef ft::const_vector_iterator<value_type>		const_iterator;
 			typedef ft::reverse_iterator<iterator>				reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
 			typedef ptrdiff_t									difference_type;
@@ -81,16 +81,16 @@ namespace ft {
 
 			/* iterators */
 			iterator begin() {
-				return (_container);
+				return (iterator(_container));
 			}
 			const_iterator begin() const {
-				return (_container);
+				return (const_iterator(_container));
 			}
 			iterator end() {
-				return (begin() + _size);
+				return (iterator(begin() + _size));
 			}
 			const_iterator end() const {
-				return (begin() + _size);
+				return (const_iterator(begin() + _size));
 			}
 			reverse_iterator rbegin() {
 				return (reverse_iterator(begin() + _size));
