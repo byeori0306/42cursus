@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 23:06:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/23 20:18:56 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/25 21:35:23 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 #include <iostream>
 #include <vector>
+#include <stack>
 #include "../container/Vector.hpp"
 #include "../container/VectorIterator.hpp"
+#include "../container/Stack.hpp"
 
 #define RESET "\033[0m"
 #define RED "\033[1;31m"
@@ -38,19 +40,9 @@ void print_result(std::string test, const T& a, const T& b) {
 		std::cout << "Result: " << RED << "KO" << RESET << std::endl;
 }
 
-template <class T>
-void print_vector_result(std::string test, std::vector<T> &stl, ft::vector<T> &ft) {
-	std::string stl_res = "";
-	std::string ft_res = "";
-	for (std::vector<int>::iterator iter = stl.begin(); iter != stl.end(); iter++)
-		stl_res += (std::to_string(*iter) + " ");
-	for (ft::vector<int>::iterator iter = ft.begin(); iter != ft.end(); iter++)
-		ft_res += (std::to_string(*iter) + " ");
-	print_result<std::string>(test, stl_res, ft_res);
-}
-
 void test_vector(void);
 void test_vector_iterator(void);
 void test_reverse_iterator_with_vector(void);
+void test_stack(void);
 
 #endif

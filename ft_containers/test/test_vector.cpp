@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:47:07 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/25 20:48:10 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/25 21:36:33 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include "../container/Vector.hpp"
 #include "../container/VectorIterator.hpp"
 #include <vector>
+
+void print_vector_result(std::string test, std::vector<int> &stl, ft::vector<int> &ft) {
+	std::string stl_res = "";
+	std::string ft_res = "";
+	for (std::vector<int>::iterator iter = stl.begin(); iter != stl.end(); iter++)
+		stl_res += (std::to_string(*iter) + " ");
+	for (ft::vector<int>::iterator iter = ft.begin(); iter != ft.end(); iter++)
+		ft_res += (std::to_string(*iter) + " ");
+	print_result<std::string>(test, stl_res, ft_res);
+}
 
 void test_vector(void) {
 	std::cout << HIGHLIGHT << "================================= vector test ================================" << RESET << std::endl;
@@ -72,13 +82,13 @@ void test_vector(void) {
 	stl_v.resize(13, 130);
 	ft_v.resize(13, 130);
 	print_result<int>("resize (n > v.size())", int(stl_v.size()), int(ft_v.size()));
-	print_vector_result<int>("resize (n > v.size())", stl_v, ft_v);
+	print_vector_result("resize (n > v.size())", stl_v, ft_v);
 	
 	// resize() (n < v.size())
 	stl_v.resize(9, 130);
 	ft_v.resize(9, 130);
 	print_result<int>("resize (n < v.size())", int(stl_v.size()), int(ft_v.size()));
-	print_vector_result<int>("resize (n < v.size())", stl_v, ft_v);
+	print_vector_result("resize (n < v.size())", stl_v, ft_v);
 
 	// Element access
 	print_result<int>("[] operator overload", stl_v[5], ft_v[5]);

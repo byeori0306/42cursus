@@ -6,7 +6,7 @@
 /*   By: dahpark <dahpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 20:20:41 by dahpark           #+#    #+#             */
-/*   Updated: 2022/06/23 21:21:27 by dahpark          ###   ########seoul.kr  */
+/*   Updated: 2022/06/25 21:52:02 by dahpark          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ namespace ft {
 			container_type _container;
 
 		public:
+			/* friend */
+			template <class T_, class Container_>
+				friend bool operator== (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+			template <class T_, class Container_>
+				friend bool operator!= (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+			template <class T_, class Container_>
+				friend bool operator<  (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+			template <class T_, class Container_>
+				friend bool operator<= (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+			template <class T_, class Container_>
+				friend bool operator>  (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+			template <class T_, class Container_>
+				friend bool operator>= (const stack<T_, Container_>& lhs, const stack<T_, Container_>& rhs);
+
 			/* Member functions */
 			explicit stack (const container_type& container = container_type()) : _container(container) { }
 			~stack() { }
